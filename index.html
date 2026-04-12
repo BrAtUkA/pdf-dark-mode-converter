@@ -50,13 +50,26 @@
             height: 100%;
         }
         .notice {
-            background-color: #1e1e1e;
-            padding: 10px;
-            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 12px 20px;
+            border-radius: 10px;
             margin: 20px auto 20px auto;
             font-size: 14px;
-            color: #bbb;
+            color: #ccc;
             max-width: 80%;
+            line-height: 1.4;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .notice-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            color: rgba(255,255,255,0.5);
+            transition: color 0.3s;
         }
         .file-input {
             display: none;
@@ -64,14 +77,19 @@
         .custom-file-upload {
             display: inline-block;
             padding: 10px 15px;
-            background-color: var(--accent);
-            color: var(--accent-contrast);
-            border-radius: 5px;
+            background-color: var(--btn-bg, #3c3c3c);
+            color: #fff;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: 500;
             margin-bottom: 0;
             line-height: 1.2;
-            border: 1px solid var(--accent);
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: background-color 0.3s, filter 0.2s;
+        }
+        .custom-file-upload:hover {
+            filter: brightness(1.2);
         }
         .custom-file-upload:focus-visible {
             outline: 3px solid var(--focus-glow);
@@ -86,17 +104,83 @@
             margin-bottom: 20px;
         }
         .theme-selector {
-            padding: 10px 15px;
-            background-color: #2a2a2a;
-            color: white;
-            border: 1px solid #444;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
+            display: none;
         }
-        .theme-selector:focus {
-            outline: none;
+        .custom-dropdown {
+            position: relative;
+            min-width: 180px;
+        }
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 9px 14px;
+            background: rgba(255,255,255,0.06);
+            color: #ddd;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .dropdown-toggle:hover {
+            border-color: rgba(255,255,255,0.25);
+        }
+        .dropdown-toggle .arrow {
+            width: 10px;
+            height: 10px;
+            opacity: 0.4;
+            transition: transform 0.2s;
+        }
+        .custom-dropdown.open .dropdown-toggle {
             border-color: var(--accent);
+            border-radius: 8px 8px 0 0;
+        }
+        .custom-dropdown.open .arrow {
+            transform: rotate(180deg);
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+            z-index: 100;
+            display: none;
+        }
+        .custom-dropdown.open .dropdown-menu {
+            display: block;
+        }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
+            font-size: 14px;
+            color: #bbb;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+        }
+        .dropdown-item:hover {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+        .dropdown-item.active {
+            color: #fff;
+        }
+        .dropdown-item .swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            border: 1px solid rgba(255,255,255,0.2);
+            flex-shrink: 0;
         }
         canvas {
             border: 1px solid white;
@@ -108,43 +192,55 @@
             margin: 0 auto;
         }
         #progressContainer {
-            width: 80%;
-            max-width: 400px;
-            background-color: #222;
+            width: 90%;
+            max-width: 520px;
+            background-color: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
             display: none;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 20px auto;
+            padding: 16px 20px 12px;
+            border-radius: 12px;
+            margin: 24px auto;
             text-align: center;
+        }
+        #progressTrack {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 5px;
+            overflow: hidden;
         }
         #progressBar {
-            height: 20px;
-            background-color: var(--accent);
+            height: 100%;
+            background: var(--bar-color, rgba(255,255,255,0.6));
             width: 0;
-            text-align: center;
-            line-height: 20px;
-            color: var(--accent-contrast);
             border-radius: 5px;
-            transition: width 0.3s ease-in-out;
+            transition: width 0.3s ease-in-out, background 0.3s;
         }
         #progressText {
-            margin-top: 5px;
-            color: white;
-            font-weight: bold;
+            margin-top: 10px;
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.01em;
         }
         #downloadBtn {
             margin-top: 20px;
             padding: 10px 20px;
-            background-color: var(--accent);
-            color: var(--accent-contrast);
-            border: none;
+            background-color: var(--btn-bg, #3c3c3c);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.12);
             cursor: pointer;
             display: none;
             position: relative;
             left: 50%;
             transform: translateX(-50%);
             font-size: 16px;
-            border-radius: 5px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: background-color 0.3s, filter 0.2s;
+        }
+        #downloadBtn:hover {
+            filter: brightness(1.2);
         }
         #downloadBtn:focus-visible {
             outline: 3px solid var(--focus-glow);
@@ -152,13 +248,127 @@
         }
         .github-ribbon {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 0;
+            left: 0;
             z-index: 1000;
         }
         .github-ribbon picture,
         .github-ribbon img {
             display: block;
+        }
+        .bratuka-logo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .bratuka-logo img {
+            height: 48px;
+            width: auto;
+            display: block;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+        .bratuka-logo img:hover {
+            opacity: 1;
+        }
+        .credit {
+            font-size: 13px;
+            color: #999;
+            margin: -5px 0 15px;
+        }
+        .credit a {
+            color: #7fb3ff;
+            text-decoration: none;
+        }
+        .credit a:hover {
+            text-decoration: underline;
+        }
+        .tool-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
+            max-width: 480px;
+            margin: 4px auto 20px;
+            line-height: 1.5;
+        }
+        .color-picker-hidden {
+            display: none;
+        }
+        .dropdown-item .swatch.custom-swatch {
+            background: transparent !important;
+            border: 1px dashed rgba(255,255,255,0.35) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dropdown-item .swatch.custom-swatch svg {
+            width: 8px;
+            height: 8px;
+            stroke: rgba(255,255,255,0.5);
+        }
+        .color-panel {
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 10px);
+            transform: translateY(-50%);
+            background: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 12px;
+            z-index: 200;
+            display: none;
+            width: auto;
+        }
+        .color-panel.visible {
+            display: block;
+        }
+        .color-panel-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 24px);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .color-panel-swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            box-sizing: border-box;
+            transition: border-color 0.15s;
+        }
+        .color-panel-swatch:hover {
+            border-color: rgba(255,255,255,0.35);
+        }
+        .color-panel-swatch.selected {
+            border-color: #fff;
+        }
+        .color-panel-hex {
+            display: flex;
+            align-items: center;
+        }
+        .color-panel-hex input {
+            flex: 1;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+            color: #eee;
+            font-family: monospace;
+            font-size: 13px;
+            padding: 5px 8px;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .color-panel-hex input:focus {
+            border-color: rgba(255,255,255,0.3);
+        }
+        @media (max-width: 768px) {
+            .color-panel {
+                left: 50%;
+                top: calc(100% + 8px);
+                transform: translateX(-50%);
+            }
         }
         .sr-only {
             position: absolute;
@@ -171,16 +381,154 @@
             white-space: nowrap;
             border: 0;
         }
+        .settings-toggle {
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        .settings-toggle-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            user-select: none;
+            padding: 6px 0;
+            transition: color 0.2s;
+            background: none;
+            border: none;
+            width: 100%;
+        }
+        .settings-toggle-btn:hover {
+            color: rgba(255,255,255,0.65);
+        }
+        .settings-toggle-btn .chevron {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(-45deg);
+            transition: transform 0.3s ease;
+            margin-top: -2px;
+        }
+        .settings-toggle.open .settings-toggle-btn .chevron {
+            transform: rotate(45deg);
+            margin-top: 0;
+        }
+        .settings-collapsible {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .settings-toggle.open .settings-collapsible {
+            max-height: 200px;
+            opacity: 1;
+        }
+        .settings-panel {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            padding: 18px 24px;
+            background-color: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+        }
+        .slider-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 200px;
+        }
+        .slider-group label {
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #999;
+            letter-spacing: 0.02em;
+        }
+        .slider-group label span {
+            color: #eee;
+            font-weight: 600;
+        }
+        .slider-group input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.1);
+            outline: none;
+            margin: 0;
+        }
+        .slider-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.3);
+            transition: box-shadow 0.15s;
+        }
+        .slider-group input[type="range"]::-webkit-slider-thumb:hover {
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.15);
+        }
+        .slider-group input[type="range"]:active::-webkit-slider-thumb {
+            box-shadow: 0 0 0 6px rgba(255,255,255,0.1);
+        }
+        .slider-group input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.3);
+        }
+        .slider-group input[type="range"]::-moz-range-track {
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+        }
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            margin-top: 10px;
+        }
+        .preview-slot img {
+            border: 1px solid white;
+            margin-top: 10px;
+            width: 100%;
+            height: auto;
+        }
         @media (max-width: 768px) {
             .github-ribbon {
                 top: auto;
-                bottom: 20px;
+                bottom: 10px;
                 right: 10px;
                 left: auto;
             }
             .github-ribbon img {
                 width: 100px;
                 height: auto;
+            }
+            .bratuka-logo {
+                top: auto;
+                bottom: 70px;
+                right: 10px;
+            }
+            .bratuka-logo img {
+                height: 36px;
             }
             .notice {
                 font-size: 12px;
@@ -189,36 +537,98 @@
             .controls {
                 flex-direction: column;
             }
+            .settings-panel {
+                gap: 15px;
+                padding: 10px 15px;
+            }
+            .slider-group {
+                min-width: 160px;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter" class="github-ribbon">
+    <svg style="display:none" aria-hidden="true">
+        <filter id="darkModeFilter" color-interpolation-filters="sRGB">
+            <feColorMatrix id="darkModeMatrix" type="matrix"
+                values="-0.299 -0.587 -0.114 0 1  -0.299 -0.587 -0.114 0 1  -0.299 -0.587 -0.114 0 1  0 0 0 1 0"/>
+        </filter>
+    </svg>
+    <a href="https://github.com/BrAtUkA/pdf-dark-mode-converter" class="github-ribbon">
         <picture>
             <source srcset="./img/forkme_left_red_aa0000.webp 1x, ./img/forkme_left_red_aa0000@2x.webp 2x" type="image/webp">
             <img decoding="async" fetchpriority="high" width="149" height="149" src="./img/forkme_left_red_aa0000.png" srcset="./img/forkme_left_red_aa0000.png 1x, ./img/forkme_left_red_aa0000@2x.png 2x" alt="View Source Code on GitHub">
         </picture>
     </a>
+    <a href="https://github.com/BrAtUkA" class="bratuka-logo" aria-label="BrAtUkA on GitHub">
+        <img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">
+    </a>
     <main class="container" id="mainContent" role="main">
         <div class="notice">
-            🔒 This tool runs completely on your device. No data is uploaded or sent to any server. Your privacy is 100% protected.
+            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>This tool runs completely on your device. No data is uploaded or sent to any server. Your privacy is 100% protected.</span>
         </div>
         <h1>PDF Dark Mode Converter</h1>
+        <p class="credit">Originally by <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter">Chizkiyahu</a> · Made up to 10x faster by <a href="https://github.com/BrAtUkA">BrAtUkA</a></p>
         <div class="controls">
             <label for="fileInput" class="custom-file-upload">Choose PDF File</label>
             <label class="sr-only" for="themeSelector">Theme</label>
             <select id="themeSelector" class="theme-selector">
                 <option value="classic">Classic Inversion</option>
+                <option value="slate">Slate</option>
                 <option value="claude" selected>Claude Warm</option>
                 <option value="chatgpt">ChatGPT Cool</option>
                 <option value="sepia">Sepia Dark</option>
                 <option value="midnight">Midnight Blue</option>
                 <option value="forest">Forest Green</option>
+                <option value="solarized">Solarized</option>
+                <option value="nord">Nord</option>
+                <option value="dracula">Dracula</option>
+                <option value="gruvbox">Gruvbox</option>
+                <option value="monokai">Monokai</option>
+                <option value="tokyonight">Tokyo Night</option>
+                <option value="rosepine">Rosé Pine</option>
+                <option value="cobalt">Cobalt</option>
+                <option value="custom">Custom...</option>
             </select>
+            <input type="color" id="customColorPicker" value="#1e1e1e" class="color-picker-hidden">
+            <div class="custom-dropdown" id="customDropdown">
+                <div class="dropdown-toggle" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox">
+                    <span class="dropdown-label">Claude Warm</span>
+                    <svg class="arrow" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="dropdown-menu" role="listbox"></div>
+                <div class="color-panel" id="colorPanel">
+                    <div class="color-panel-grid" id="colorPanelGrid"></div>
+                    <div class="color-panel-hex">
+                        <input type="text" id="hexInput" maxlength="7" placeholder="#1e1e1e" spellcheck="false" autocomplete="off">
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="settings-toggle" id="settingsToggle">
+            <button type="button" class="settings-toggle-btn" id="settingsBtn">
+                <span class="chevron"></span> Advanced settings
+            </button>
+            <div class="settings-collapsible">
+                <div class="settings-panel">
+                    <div class="slider-group">
+                        <label for="resolutionSlider">Resolution: <span id="resolutionValue">3x</span></label>
+                        <input type="range" id="resolutionSlider" min="1" max="3" step="0.5" value="3">
+                        <span class="slider-labels"><span>Faster</span><span>Sharper</span></span>
+                    </div>
+                    <div class="slider-group">
+                        <label for="qualitySlider">Output Quality: <span id="qualityValue">90%</span></label>
+                        <input type="range" id="qualitySlider" min="60" max="100" step="5" value="90">
+                        <span class="slider-labels"><span>Smaller file</span><span>Best quality</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="tool-desc">Upload a PDF and get a dark-mode version in seconds. Pick a theme, adjust resolution and quality to your liking - the converted file downloads automatically. Works entirely offline.</p>
         <input type="file" id="fileInput" class="file-input" accept="application/pdf">
         <div id="progressContainer" aria-live="polite">
-            <div id="progressBar"></div>
+            <div id="progressTrack"><div id="progressBar"></div></div>
             <div id="progressText">0/0</div>
         </div>
         <button id="downloadBtn">Download failed? Click here</button>
@@ -230,21 +640,38 @@
         let originalPdfData = null;
         let originalFileName = "";
         let currentRenderId = 0;
-        // Theme definitions
 
         const themes = {
             classic: { r: 0, g: 0, b: 0, name: 'Classic' },
+            slate: { r: 40, g: 42, b: 46, name: 'Slate' },
             claude: { r: 42, g: 37, b: 34, name: 'Claude Warm' },
             chatgpt: { r: 52, g: 53, b: 65, name: 'ChatGPT Cool' },
             sepia: { r: 40, g: 35, b: 25, name: 'Sepia' },
             midnight: { r: 25, g: 30, b: 45, name: 'Midnight Blue' },
-            forest: { r: 25, g: 35, b: 30, name: 'Forest Green' }
+            forest: { r: 25, g: 35, b: 30, name: 'Forest Green' },
+            solarized: { r: 0, g: 43, b: 54, name: 'Solarized' },
+            nord: { r: 46, g: 52, b: 64, name: 'Nord' },
+            dracula: { r: 40, g: 42, b: 54, name: 'Dracula' },
+            gruvbox: { r: 40, g: 40, b: 40, name: 'Gruvbox' },
+            monokai: { r: 39, g: 40, b: 34, name: 'Monokai' },
+            tokyonight: { r: 26, g: 27, b: 38, name: 'Tokyo Night' },
+            rosepine: { r: 35, g: 33, b: 54, name: 'Rosé Pine' },
+            cobalt: { r: 0, g: 28, b: 53, name: 'Cobalt' },
+            custom: { r: 30, g: 30, b: 30, name: 'Custom' }
         };
 
         const pdfJsSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js";
         const pdfWorkerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
         const pdfLibSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.11.0/pdf-lib.min.js";
         let pdfLibReadyPromise = null;
+
+        // GPU-accelerated canvas filter support detection
+        const supportsCanvasFilter = (() => {
+            try {
+                const ctx = document.createElement('canvas').getContext('2d');
+                return 'filter' in ctx;
+            } catch (e) { return false; }
+        })();
 
         function loadPdfLibraries() {
             if (pdfLibReadyPromise) return pdfLibReadyPromise;
@@ -280,7 +707,272 @@
 
         function applyThemeBackground(theme) {
             document.body.style.backgroundColor = `rgb(${theme.r}, ${theme.g}, ${theme.b})`;
+
+            // Tint the notice to subtly follow the theme
+            const notice = document.querySelector('.notice');
+            const icon = document.querySelector('.notice-icon');
+            if (notice) {
+                const tintR = Math.min(theme.r + 80, 255);
+                const tintG = Math.min(theme.g + 80, 255);
+                const tintB = Math.min(theme.b + 80, 255);
+                notice.style.borderColor = `rgba(${tintR}, ${tintG}, ${tintB}, 0.25)`;
+                notice.style.background = `rgba(${tintR}, ${tintG}, ${tintB}, 0.07)`;
+                if (icon) icon.style.color = `rgba(${tintR}, ${tintG}, ${tintB}, 0.7)`;
+            }
+
+            // Tint buttons: solid mid-tone tinted with theme (visible but readable)
+            const btnR = Math.min(theme.r + 60, 255);
+            const btnG = Math.min(theme.g + 60, 255);
+            const btnB = Math.min(theme.b + 60, 255);
+            document.documentElement.style.setProperty('--btn-bg', `rgb(${btnR}, ${btnG}, ${btnB})`);
+
+            // Tint progress bar: bright enough to read against the container
+            const barR = Math.min(theme.r + 140, 255);
+            const barG = Math.min(theme.g + 140, 255);
+            const barB = Math.min(theme.b + 140, 255);
+            document.documentElement.style.setProperty('--bar-color', `rgb(${barR}, ${barG}, ${barB})`);
         }
+
+        // Update SVG feColorMatrix to match current theme (GPU-accelerated color transform)
+        // Math: for each channel c, output = 1 - (1 - bg_c/255) * luminance(input)
+        // This maps white→background color and black→white, matching the pixel algorithm exactly.
+        function updateSvgFilter(theme) {
+            const bR = theme.r / 255;
+            const bG = theme.g / 255;
+            const bB = theme.b / 255;
+            const values = [
+                -(1 - bR) * 0.299, -(1 - bR) * 0.587, -(1 - bR) * 0.114, 0, 1,
+                -(1 - bG) * 0.299, -(1 - bG) * 0.587, -(1 - bG) * 0.114, 0, 1,
+                -(1 - bB) * 0.299, -(1 - bB) * 0.587, -(1 - bB) * 0.114, 0, 1,
+                0, 0, 0, 1, 0
+            ].join(' ');
+            document.getElementById('darkModeMatrix').setAttribute('values', values);
+        }
+
+        // Apply dark mode color transform: GPU path via SVG filter, JS pixel fallback
+        function applyDarkMode(sourceCanvas, theme) {
+            if (supportsCanvasFilter) {
+                const canvas = document.createElement('canvas');
+                canvas.width = sourceCanvas.width;
+                canvas.height = sourceCanvas.height;
+                const ctx = canvas.getContext('2d');
+                ctx.filter = 'url(#darkModeFilter)';
+                ctx.drawImage(sourceCanvas, 0, 0);
+                return canvas;
+            }
+            // Fallback: pixel-by-pixel manipulation
+            const ctx = sourceCanvas.getContext('2d');
+            const imageData = ctx.getImageData(0, 0, sourceCanvas.width, sourceCanvas.height);
+            const data = imageData.data;
+            const bgR = theme.r, bgG = theme.g, bgB = theme.b;
+            for (let j = 0; j < data.length; j += 4) {
+                const brightness = 0.299 * data[j] + 0.587 * data[j + 1] + 0.114 * data[j + 2];
+                const factor = 1 - brightness / 255;
+                data[j]     = bgR + (255 - bgR) * factor;
+                data[j + 1] = bgG + (255 - bgG) * factor;
+                data[j + 2] = bgB + (255 - bgB) * factor;
+            }
+            ctx.putImageData(imageData, 0, 0);
+            return sourceCanvas;
+        }
+
+        // Process a single page: render with pdf.js → apply dark mode → encode as JPEG
+        async function processPage(pdf, pageNum, theme, scale, jpegQuality) {
+            const page = await pdf.getPage(pageNum);
+            const viewport = page.getViewport({ scale });
+
+            const canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            const ctx = canvas.getContext('2d');
+
+            // White background ensures proper JPEG output (no transparency artifacts)
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            await page.render({ canvasContext: ctx, viewport }).promise;
+
+            const resultCanvas = applyDarkMode(canvas, theme);
+
+            // JPEG encoding is 5-10x faster than PNG with negligible quality difference
+            const blob = await new Promise(resolve =>
+                resultCanvas.toBlob(resolve, 'image/jpeg', jpegQuality / 100)
+            );
+            const bytes = new Uint8Array(await blob.arrayBuffer());
+
+            page.cleanup();
+
+            // Free canvas memory immediately
+            canvas.width = 1; canvas.height = 1;
+            if (resultCanvas !== canvas) {
+                resultCanvas.width = 1; resultCanvas.height = 1;
+            }
+
+            return { bytes, width: viewport.width, height: viewport.height };
+        }
+
+        // --- UI Setup ---
+        const resolutionSlider = document.getElementById('resolutionSlider');
+        const resolutionValue = document.getElementById('resolutionValue');
+        const qualitySlider = document.getElementById('qualitySlider');
+        const qualityValue = document.getElementById('qualityValue');
+
+        resolutionSlider.addEventListener('input', () => {
+            resolutionValue.textContent = resolutionSlider.value + 'x';
+        });
+        qualitySlider.addEventListener('input', () => {
+            qualityValue.textContent = qualitySlider.value + '%';
+        });
+
+        // Re-process when slider is released (not during drag)
+        function onSettingsChange() {
+            if (originalPdfData) {
+                ensurePdfLibraries().then(() => {
+                    document.getElementById('progressContainer').style.display = 'block';
+                    document.getElementById('downloadBtn').style.display = 'none';
+                    renderPDF(originalPdfData);
+                });
+            }
+        }
+        resolutionSlider.addEventListener('change', onSettingsChange);
+        qualitySlider.addEventListener('change', onSettingsChange);
+
+        // --- Custom dropdown ---
+        (function initCustomDropdown() {
+            const select = document.getElementById('themeSelector');
+            const dropdown = document.getElementById('customDropdown');
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const label = dropdown.querySelector('.dropdown-label');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            const colorPicker = document.getElementById('customColorPicker');
+
+            // Build items with color swatches
+            const options = Array.from(select.options);
+            options.forEach(opt => {
+                const theme = themes[opt.value];
+                const item = document.createElement('div');
+                item.className = 'dropdown-item' + (opt.selected ? ' active' : '');
+                item.setAttribute('role', 'option');
+                item.dataset.value = opt.value;
+
+                const swatch = document.createElement('span');
+                swatch.className = 'swatch' + (opt.value === 'custom' ? ' custom-swatch' : '');
+                if (opt.value !== 'custom') {
+                    const sr = Math.min(theme.r + 60, 255);
+                    const sg = Math.min(theme.g + 60, 255);
+                    const sb = Math.min(theme.b + 60, 255);
+                    swatch.style.background = `rgb(${sr},${sg},${sb})`;
+                } else {
+                    swatch.innerHTML = '<svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 1.5l2 2M1 11l.5-2L9 1.5l2 2L3.5 11z"/></svg>';
+                }
+
+                item.appendChild(swatch);
+                item.appendChild(document.createTextNode(opt.textContent));
+                menu.appendChild(item);
+
+                item.addEventListener('click', (e) => {
+                    if (opt.value === 'custom') {
+                        e.stopPropagation();
+                        dropdown.classList.remove('open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                        const panel = document.getElementById('colorPanel');
+                        panel.classList.toggle('visible');
+                        return;
+                    }
+                    document.getElementById('colorPanel').classList.remove('visible');
+                    select.value = opt.value;
+                    select.dispatchEvent(new Event('change'));
+                    label.textContent = opt.textContent;
+                    menu.querySelectorAll('.dropdown-item').forEach(el => el.classList.remove('active'));
+                    item.classList.add('active');
+                    dropdown.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Custom color panel
+            const panelColors = [
+                '#441220','#3c0838','#101044','#104438',
+                '#441010','#384410','#443810','#441e08'
+            ];
+            const panelGrid = document.getElementById('colorPanelGrid');
+            const hexInput = document.getElementById('hexInput');
+            const panel = document.getElementById('colorPanel');
+
+            function applyCustomColor(hex) {
+                const clean = hex.replace('#', '');
+                if (!/^[0-9a-f]{6}$/i.test(clean)) return;
+                const r = parseInt(clean.slice(0,2), 16);
+                const g = parseInt(clean.slice(2,4), 16);
+                const b = parseInt(clean.slice(4,6), 16);
+                themes.custom.r = r;
+                themes.custom.g = g;
+                themes.custom.b = b;
+                select.value = 'custom';
+                select.dispatchEvent(new Event('change'));
+                label.textContent = 'Custom';
+                menu.querySelectorAll('.dropdown-item').forEach(el => {
+                    el.classList.toggle('active', el.dataset.value === 'custom');
+                });
+                hexInput.value = '#' + clean;
+                panelGrid.querySelectorAll('.color-panel-swatch').forEach(s => {
+                    s.classList.toggle('selected', s.dataset.color === '#' + clean);
+                });
+            }
+
+            panelColors.forEach(c => {
+                const sw = document.createElement('div');
+                sw.className = 'color-panel-swatch';
+                sw.style.background = c;
+                sw.dataset.color = c;
+                sw.addEventListener('click', () => applyCustomColor(c));
+                panelGrid.appendChild(sw);
+            });
+
+            hexInput.addEventListener('input', () => {
+                const val = hexInput.value.replace('#', '');
+                if (val.length === 6) applyCustomColor(val);
+            });
+            hexInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') { e.preventDefault(); applyCustomColor(hexInput.value); }
+            });
+
+            // Close panel on outside click
+            document.addEventListener('click', (e) => {
+                if (!panel.contains(e.target) && !e.target.closest('.dropdown-item[data-value="custom"]')) {
+                    panel.classList.remove('visible');
+                }
+            });
+
+            toggle.addEventListener('click', () => {
+                const isOpen = dropdown.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+
+            // Close on outside click
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Keyboard support
+            toggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggle.click();
+                } else if (e.key === 'Escape') {
+                    dropdown.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+
+        // Toggle advanced settings
+        document.getElementById('settingsBtn').addEventListener('click', function() {
+            document.getElementById('settingsToggle').classList.toggle('open');
+        });
 
         applyThemeBackground(themes[document.getElementById('themeSelector').value]);
 
@@ -291,8 +983,7 @@
                 const fileData = new Uint8Array(this.result);
                 await ensurePdfLibraries();
                 originalPdfData = fileData;
-                const progressContainer = document.getElementById('progressContainer');
-                progressContainer.style.display = 'block';
+                document.getElementById('progressContainer').style.display = 'block';
                 document.getElementById('downloadBtn').style.display = 'none';
                 await renderPDF(fileData);
             };
@@ -300,9 +991,7 @@
         }
 
         document.getElementById('fileInput').addEventListener('change', function(event) {
-            if (event.target.files.length > 0) {
-                handleFile(event.target.files[0]);
-            }
+            if (event.target.files.length > 0) handleFile(event.target.files[0]);
         });
 
         document.body.addEventListener('dragover', function(event) {
@@ -311,18 +1000,15 @@
 
         document.body.addEventListener('drop', function(event) {
             event.preventDefault();
-            if (event.dataTransfer.files.length > 0) {
-                handleFile(event.dataTransfer.files[0]);
-            }
+            if (event.dataTransfer.files.length > 0) handleFile(event.dataTransfer.files[0]);
         });
 
         document.getElementById('themeSelector').addEventListener('change', async function() {
-            const selectedTheme = document.getElementById('themeSelector').value;
+            const selectedTheme = this.value;
             applyThemeBackground(themes[selectedTheme]);
             if (originalPdfData) {
                 await ensurePdfLibraries();
-                const progressContainer = document.getElementById('progressContainer');
-                progressContainer.style.display = 'block';
+                document.getElementById('progressContainer').style.display = 'block';
                 document.getElementById('downloadBtn').style.display = 'none';
                 await renderPDF(originalPdfData);
             }
@@ -332,153 +1018,147 @@
             loadPdfLibraries().catch(() => {});
         });
 
+        // --- Main render pipeline with concurrent page processing ---
         async function renderPDF(pdfData) {
             const renderId = ++currentRenderId;
             const selectedTheme = document.getElementById('themeSelector').value;
             const theme = themes[selectedTheme];
+            const scale = parseFloat(resolutionSlider.value);
+            const jpegQuality = parseInt(qualitySlider.value);
+
             applyThemeBackground(theme);
-            
-            // Initialize PDF document later or in chunks
+            if (supportsCanvasFilter) updateSvgFilter(theme);
+
             const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+            const totalPages = pdf.numPages;
+
             const progressBar = document.getElementById('progressBar');
             const progressText = document.getElementById('progressText');
             const pdfContainer = document.getElementById('pdfContainer');
             const progressContainer = document.getElementById('progressContainer');
+
             modifiedPdfBytes = null;
             progressBar.style.width = '0';
-            progressText.innerText = `0/${pdf.numPages}`;
+            progressText.innerText = `0/${totalPages}`;
+
+            // Clean up previous preview blob URLs to avoid memory leaks
+            pdfContainer.querySelectorAll('img').forEach(img => {
+                if (img.src.startsWith('blob:')) URL.revokeObjectURL(img.src);
+            });
             pdfContainer.innerHTML = '';
 
-            const CHUNK_SIZE = 50; // Process 50 pages at a time to save memory
+            const PREVIEW_LIMIT = 20;
+            // Adaptive concurrency: fewer parallel pages at higher resolution (more memory per page)
+            const maxConcurrency = scale <= 1.5 ? 6 : scale >= 2.5 ? 2 : 4;
+            const CONCURRENCY = Math.min(navigator.hardwareConcurrency || 2, maxConcurrency, totalPages);
+
+            // Create ordered preview placeholder slots so pages appear in order
+            const previewSlots = [];
+            for (let i = 0; i < Math.min(PREVIEW_LIMIT, totalPages); i++) {
+                const slot = document.createElement('div');
+                slot.className = 'preview-slot';
+                pdfContainer.appendChild(slot);
+                previewSlots.push(slot);
+            }
+
+            let completedPages = 0;
+            const pageResults = new Array(totalPages);
+            const startTime = performance.now();
+
+            // Concurrent worker pool: each worker grabs the next unprocessed page
+            let nextPageIdx = 0;
+
+            async function worker() {
+                while (nextPageIdx < totalPages) {
+                    if (renderId !== currentRenderId) return;
+                    const pageIdx = nextPageIdx++;
+
+                    try {
+                        const result = await processPage(pdf, pageIdx + 1, theme, scale, jpegQuality);
+                        if (renderId !== currentRenderId) return;
+
+                        pageResults[pageIdx] = result;
+                        completedPages++;
+
+                        // Update progress bar and time estimate
+                        const percent = (completedPages / totalPages) * 100;
+                        progressBar.style.width = `${percent}%`;
+
+                        const elapsed = performance.now() - startTime;
+                        const remaining = Math.ceil((totalPages - completedPages) * (elapsed / completedPages) / 1000);
+                        const mins = Math.floor(remaining / 60);
+                        const secs = remaining % 60;
+                        const timeStr = mins > 0 ? `${mins}m ${secs}s left` : `${secs}s left`;
+                        progressText.innerText = completedPages < totalPages
+                            ? `${completedPages} of ${totalPages} pages  ·  ${timeStr}`
+                            : `${completedPages} of ${totalPages} pages`;
+
+                        // Show preview as lightweight <img> from JPEG bytes (no canvas in DOM)
+                        if (pageIdx < PREVIEW_LIMIT) {
+                            const previewBlob = new Blob([result.bytes], { type: 'image/jpeg' });
+                            const img = document.createElement('img');
+                            img.src = URL.createObjectURL(previewBlob);
+                            img.alt = `Page ${pageIdx + 1}`;
+                            previewSlots[pageIdx].appendChild(img);
+                        }
+                    } catch (err) {
+                        console.error(`Error processing page ${pageIdx + 1}:`, err);
+                        completedPages++;
+                    }
+                }
+            }
+
+            // Launch concurrent workers
+            await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
+
+            if (renderId !== currentRenderId) return;
+
+            // --- Build output PDF from JPEG pages ---
+            progressText.innerText = 'Building PDF...';
+
+            const CHUNK_SIZE = 50;
             const chunks = [];
-            const totalPages = pdf.numPages;
 
             for (let chunkStart = 0; chunkStart < totalPages; chunkStart += CHUNK_SIZE) {
                 if (renderId !== currentRenderId) return;
-
-                // Create a temporary document for this chunk
                 const chunkDoc = await PDFLib.PDFDocument.create();
                 const chunkEnd = Math.min(chunkStart + CHUNK_SIZE, totalPages);
 
                 for (let i = chunkStart; i < chunkEnd; i++) {
-                    if (renderId !== currentRenderId) return;
-
-                    // Update progress
-                    const percent = ((i + 1) / totalPages) * 100;
-                    progressBar.style.width = `${percent}%`;
-                    progressText.innerText = `${i + 1}/${totalPages}`;
-
-                    const page = await pdf.getPage(i + 1);
-                    const scale = 3; 
-                    const viewport = page.getViewport({ scale });
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-
-                    canvas.width = viewport.width;
-                    canvas.height = viewport.height;
-
-                    const renderContext = {
-                        canvasContext: ctx,
-                        viewport: viewport
-                    };
-                    await page.render(renderContext).promise;
-
-                    if (renderId !== currentRenderId) return;
-
-                    // Apply dark mode effect
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const data = imageData.data;
-
-                    const bgR = theme.r;
-                    const bgG = theme.g;
-                    const bgB = theme.b;
-
-                    for (let j = 0; j < data.length; j += 4) {
-                        const r = data[j];
-                        const g = data[j + 1];
-                        const b = data[j + 2];
-
-                        // Calculate brightness (0-255)
-                        const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
-
-                        // Map white (255) to background color, black (0) to white
-                        const factor = 1 - (brightness / 255);
-
-                        data[j] = bgR + (255 - bgR) * factor;         // Red
-                        data[j + 1] = bgG + (255 - bgG) * factor;     // Green
-                        data[j + 2] = bgB + (255 - bgB) * factor;     // Blue
-                    }
-                    ctx.putImageData(imageData, 0, 0);
-
-                    if (renderId !== currentRenderId) return;
-                    
-                    // Display preview for the first 20 pages only
-                    if (i < 20) {
-                        canvas.style.maxWidth = '100%';
-                        canvas.style.height = 'auto';
-                        pdfContainer.appendChild(canvas);
-                    }
-
-                    // Convert modified canvas to PNG and add to PDF
-                    if (renderId !== currentRenderId) return;
-                    
-                    const imgBytes = await new Promise(resolve => canvas.toBlob(blob => blob.arrayBuffer().then(resolve), 'image/png'));
-                    
-                    if (renderId !== currentRenderId) return;
-                    
-                    const jpgImage = await chunkDoc.embedPng(imgBytes);
-                    const newPage = chunkDoc.addPage([viewport.width, viewport.height]);
-                    newPage.drawImage(jpgImage, {
-                        x: 0,
-                        y: 0,
-                        width: viewport.width,
-                        height: viewport.height
-                    });
-
-                    // Explicitly clear canvas references to help GC
-                    // Only clear if we are NOT showing this canvas in the preview
-                    if (i >= 20) {
-                        canvas.width = 1;
-                        canvas.height = 1;
-                        ctx.clearRect(0, 0, 1, 1);
-                    }
-                    
-                    // Release page resources
-                    page.cleanup();
+                    const result = pageResults[i];
+                    if (!result) continue;
+                    const image = await chunkDoc.embedJpg(result.bytes);
+                    const page = chunkDoc.addPage([result.width, result.height]);
+                    page.drawImage(image, { x: 0, y: 0, width: result.width, height: result.height });
+                    pageResults[i] = null; // free memory as we go
                 }
 
-                // Save chunk to bytes and release chunkDoc
-                if (renderId !== currentRenderId) return;
-                const chunkBytes = await chunkDoc.save();
-                chunks.push(chunkBytes);
-                
-                // Optional: small delay to allow UI update and GC
+                chunks.push(await chunkDoc.save());
                 await new Promise(resolve => setTimeout(resolve, 10));
             }
 
             if (renderId !== currentRenderId) return;
 
-            progressText.innerText = "Merging PDF chunks... This may take a moment.";
-            
-            // Merge all chunks into final document
-            const finalPdfDoc = await PDFLib.PDFDocument.create();
-            for (let i = 0; i < chunks.length; i++) {
-                if (renderId !== currentRenderId) return;
-                const chunkBytes = chunks[i];
-                const chunkDoc = await PDFLib.PDFDocument.load(chunkBytes);
-                const copiedPages = await finalPdfDoc.copyPages(chunkDoc, chunkDoc.getPageIndices());
-                copiedPages.forEach(page => finalPdfDoc.addPage(page));
-                
-                // Release chunk memory
-                chunks[i] = null;
+            if (chunks.length === 1) {
+                modifiedPdfBytes = chunks[0];
+            } else {
+                progressText.innerText = 'Merging PDF chunks...';
+                const finalPdf = await PDFLib.PDFDocument.create();
+                for (let i = 0; i < chunks.length; i++) {
+                    if (renderId !== currentRenderId) return;
+                    const chunkDoc = await PDFLib.PDFDocument.load(chunks[i]);
+                    const copiedPages = await finalPdf.copyPages(chunkDoc, chunkDoc.getPageIndices());
+                    copiedPages.forEach(p => finalPdf.addPage(p));
+                    chunks[i] = null;
+                }
+                modifiedPdfBytes = await finalPdf.save();
             }
 
-            progressText.innerText = "Finalizing...";
-            modifiedPdfBytes = await finalPdfDoc.save();
-            
             if (renderId !== currentRenderId) return;
-            
-            progressContainer.style.display = 'none';
+
+            const totalTime = ((performance.now() - startTime) / 1000).toFixed(1);
+            progressText.innerText = `Done in ${totalTime}s`;
+            setTimeout(() => { progressContainer.style.display = 'none'; }, 2000);
             triggerDownload();
         }
 
