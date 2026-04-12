@@ -14,7 +14,7 @@ PDF Dark Mode Converter is a tool that allows you to convert your PDF files to d
 - **Improved UI**
 
 ## Instructions
-1. Click on the [GitHub Pages link](https://bratuka.github.io/pdf-dark-mode-converter/) to open the tool.
+1. Click on the [GitHub Pages link](https://bratuka.dev/pdf-dark-mode-converter/) to open the tool.
 2. Click on the "Choose PDF File" button or drag & drop a PDF onto the page.
 3. Optionally adjust the theme, resolution, and quality sliders.
 4. Conversion runs automatically. Watch the progress bar with a live time estimate.
