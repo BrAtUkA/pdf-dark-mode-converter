@@ -512,27 +512,21 @@
             height: auto;
         }
         @media (max-width: 768px) {
-            .github-ribbon {
-                top: auto;
-                bottom: 10px;
-                right: 10px;
-                left: auto;
-            }
             .github-ribbon img {
-                width: 100px;
+                width: 110px;
                 height: auto;
             }
             .bratuka-logo {
                 top: auto;
-                bottom: 70px;
-                right: 10px;
+                bottom: 16px;
+                right: 16px;
             }
             .bratuka-logo img {
-                height: 36px;
+                height: 32px;
             }
             .notice {
                 font-size: 12px;
-                margin-top: 50px;
+                margin-top: 10px;
             }
             .controls {
                 flex-direction: column;
@@ -543,6 +537,14 @@
             }
             .slider-group {
                 min-width: 160px;
+            }
+        }
+        @media (max-width: 480px) {
+            .github-ribbon img {
+                width: 90px;
+            }
+            .bratuka-logo img {
+                height: 28px;
             }
         }
     </style>
