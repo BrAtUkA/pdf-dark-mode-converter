@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="img/og-image.png" alt="PDF Dark Mode Converter" width="800">
+</p>
+
 # PDF Dark Mode Converter
 
 > Originally created by [Chizkiyahu](https://github.com/Chizkiyahu/pdf-dark-mode-converter) · Made up to 10x faster by [BrAtUkA](https://github.com/BrAtUkA)
@@ -22,3 +26,11 @@ PDF Dark Mode Converter is a tool that allows you to convert your PDF files to d
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+<br/>
+
+<p align="center">
+  <a href="https://github.com/BrAtUkA">
+    <img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA" height="30"/>
+  </a>
+</p>
