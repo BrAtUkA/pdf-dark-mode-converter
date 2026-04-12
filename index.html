@@ -389,6 +389,49 @@
         .color-panel-hex input:focus {
             border-color: rgba(255,255,255,0.3);
         }
+        .mode-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 11px;
+            user-select: none;
+        }
+        .mode-toggle span {
+            color: rgba(255,255,255,0.35);
+            transition: color 0.2s;
+        }
+        .mode-toggle span.active {
+            color: #fff;
+            font-weight: 600;
+        }
+        .mode-toggle-track {
+            width: 32px;
+            height: 16px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.15);
+            position: relative;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .mode-toggle-track .knob {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fff;
+            transition: left 0.2s;
+        }
+        .mode-toggle-track.light-active .knob {
+            left: 18px;
+        }
+        body.light-mode .mode-toggle span { color: rgba(0,0,0,0.35); }
+        body.light-mode .mode-toggle span.active { color: #000; }
+        body.light-mode .mode-toggle-track { background: rgba(0,0,0,0.15); }
+        body.light-mode .mode-toggle-track .knob { background: #333; }
         @media (max-width: 768px) {
             .color-panel {
                 left: 50%;
@@ -675,6 +718,11 @@
                 </div>
                 <div class="dropdown-menu" role="listbox"></div>
                 <div class="color-panel" id="colorPanel">
+                    <div class="mode-toggle">
+                        <span class="active" id="modeDarkLabel">Dark</span>
+                        <div class="mode-toggle-track" id="modeToggleTrack"><div class="knob"></div></div>
+                        <span id="modeLightLabel">Light</span>
+                    </div>
                     <div class="color-panel-grid" id="colorPanelGrid"></div>
                     <div class="color-panel-hex">
                         <input type="text" id="hexInput" maxlength="7" placeholder="#1e1e1e" spellcheck="false" autocomplete="off">
@@ -734,7 +782,7 @@
             tokyonight: { r: 26, g: 27, b: 38, name: 'Tokyo Night' },
             rosepine: { r: 35, g: 33, b: 54, name: 'Rosé Pine' },
             cobalt: { r: 0, g: 28, b: 53, name: 'Cobalt' },
-            custom: { r: 30, g: 30, b: 30, name: 'Custom' }
+            custom: { r: 30, g: 30, b: 30, name: 'Custom', lightMode: false }
         };
 
         const pdfJsSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js";
@@ -842,18 +890,31 @@
         }
 
         // Update SVG feColorMatrix to match current theme (GPU-accelerated color transform)
-        // Math: for each channel c, output = 1 - (1 - bg_c/255) * luminance(input)
-        // This maps white→background color and black→white, matching the pixel algorithm exactly.
+        // Dark mode: white→bg color, black→white (inverts and tints)
+        // Light mode: white→bg color, black→black (tints bg only, keeps dark text)
         function updateSvgFilter(theme) {
             const bR = theme.r / 255;
             const bG = theme.g / 255;
             const bB = theme.b / 255;
-            const values = [
-                -(1 - bR) * 0.299, -(1 - bR) * 0.587, -(1 - bR) * 0.114, 0, 1,
-                -(1 - bG) * 0.299, -(1 - bG) * 0.587, -(1 - bG) * 0.114, 0, 1,
-                -(1 - bB) * 0.299, -(1 - bB) * 0.587, -(1 - bB) * 0.114, 0, 1,
-                0, 0, 0, 1, 0
-            ].join(' ');
+            let values;
+            if (theme.lightMode) {
+                // Light: output_c = bg_c * luminance(input)
+                // white(1,1,1)→bg, black(0,0,0)→black
+                values = [
+                    bR * 0.299, bR * 0.587, bR * 0.114, 0, 0,
+                    bG * 0.299, bG * 0.587, bG * 0.114, 0, 0,
+                    bB * 0.299, bB * 0.587, bB * 0.114, 0, 0,
+                    0, 0, 0, 1, 0
+                ].join(' ');
+            } else {
+                // Dark: output_c = 1 - (1-bg_c) * luminance(input)
+                values = [
+                    -(1 - bR) * 0.299, -(1 - bR) * 0.587, -(1 - bR) * 0.114, 0, 1,
+                    -(1 - bG) * 0.299, -(1 - bG) * 0.587, -(1 - bG) * 0.114, 0, 1,
+                    -(1 - bB) * 0.299, -(1 - bB) * 0.587, -(1 - bB) * 0.114, 0, 1,
+                    0, 0, 0, 1, 0
+                ].join(' ');
+            }
             document.getElementById('darkModeMatrix').setAttribute('values', values);
         }
 
@@ -873,12 +934,23 @@
             const imageData = ctx.getImageData(0, 0, sourceCanvas.width, sourceCanvas.height);
             const data = imageData.data;
             const bgR = theme.r, bgG = theme.g, bgB = theme.b;
-            for (let j = 0; j < data.length; j += 4) {
-                const brightness = 0.299 * data[j] + 0.587 * data[j + 1] + 0.114 * data[j + 2];
-                const factor = 1 - brightness / 255;
-                data[j]     = bgR + (255 - bgR) * factor;
-                data[j + 1] = bgG + (255 - bgG) * factor;
-                data[j + 2] = bgB + (255 - bgB) * factor;
+            if (theme.lightMode) {
+                // Light mode: white→bg, black stays black
+                for (let j = 0; j < data.length; j += 4) {
+                    const brightness = 0.299 * data[j] + 0.587 * data[j + 1] + 0.114 * data[j + 2];
+                    const factor = brightness / 255;
+                    data[j]     = bgR * factor;
+                    data[j + 1] = bgG * factor;
+                    data[j + 2] = bgB * factor;
+                }
+            } else {
+                for (let j = 0; j < data.length; j += 4) {
+                    const brightness = 0.299 * data[j] + 0.587 * data[j + 1] + 0.114 * data[j + 2];
+                    const factor = 1 - brightness / 255;
+                    data[j]     = bgR + (255 - bgR) * factor;
+                    data[j + 1] = bgG + (255 - bgG) * factor;
+                    data[j + 2] = bgB + (255 - bgB) * factor;
+                }
             }
             ctx.putImageData(imageData, 0, 0);
             return sourceCanvas;
@@ -1010,8 +1082,27 @@
             const panelGrid = document.getElementById('colorPanelGrid');
             const hexInput = document.getElementById('hexInput');
             const panel = document.getElementById('colorPanel');
+            const modeTrack = document.getElementById('modeToggleTrack');
+            const modeDarkLabel = document.getElementById('modeDarkLabel');
+            const modeLightLabel = document.getElementById('modeLightLabel');
+            let customDirty = false; // track if custom color changed while panel open
 
-            function applyCustomColor(hex) {
+            function updateModeToggleUI() {
+                const isLight = themes.custom.lightMode;
+                modeTrack.classList.toggle('light-active', isLight);
+                modeDarkLabel.classList.toggle('active', !isLight);
+                modeLightLabel.classList.toggle('active', isLight);
+            }
+
+            function autoDetectMode() {
+                const t = themes.custom;
+                const lum = 0.299 * t.r + 0.587 * t.g + 0.114 * t.b;
+                themes.custom.lightMode = lum > 150;
+                updateModeToggleUI();
+            }
+
+            // Preview custom color: update theme data + site bg only, no PDF reprocessing
+            function previewCustomColor(hex) {
                 const clean = hex.replace('#', '');
                 if (!/^[0-9a-f]{6}$/i.test(clean)) return;
                 const r = parseInt(clean.slice(0,2), 16);
@@ -1020,8 +1111,8 @@
                 themes.custom.r = r;
                 themes.custom.g = g;
                 themes.custom.b = b;
+                autoDetectMode();
                 select.value = 'custom';
-                select.dispatchEvent(new Event('change'));
                 label.textContent = 'Custom';
                 menu.querySelectorAll('.dropdown-item').forEach(el => {
                     el.classList.toggle('active', el.dataset.value === 'custom');
@@ -1030,29 +1121,49 @@
                 panelGrid.querySelectorAll('.color-panel-swatch').forEach(s => {
                     s.classList.toggle('selected', s.dataset.color === '#' + clean);
                 });
+                applyThemeBackground(themes.custom);
+                customDirty = true;
             }
+
+            // Commit custom color: trigger PDF reprocessing
+            function commitCustomColor() {
+                if (!customDirty) return;
+                customDirty = false;
+                select.value = 'custom';
+                select.dispatchEvent(new Event('change'));
+            }
+
+            modeTrack.addEventListener('click', () => {
+                themes.custom.lightMode = !themes.custom.lightMode;
+                updateModeToggleUI();
+                applyThemeBackground(themes.custom);
+                customDirty = true;
+            });
 
             panelColors.forEach(c => {
                 const sw = document.createElement('div');
                 sw.className = 'color-panel-swatch';
                 sw.style.background = c;
                 sw.dataset.color = c;
-                sw.addEventListener('click', () => applyCustomColor(c));
+                sw.addEventListener('click', () => previewCustomColor(c));
                 panelGrid.appendChild(sw);
             });
 
             hexInput.addEventListener('input', () => {
                 const val = hexInput.value.replace('#', '');
-                if (val.length === 6) applyCustomColor(val);
+                if (val.length === 6) previewCustomColor(val);
             });
             hexInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') { e.preventDefault(); applyCustomColor(hexInput.value); }
+                if (e.key === 'Enter') { e.preventDefault(); previewCustomColor(hexInput.value); }
             });
 
-            // Close panel on outside click
+            // Close panel on outside click — commit and reprocess
             document.addEventListener('click', (e) => {
                 if (!panel.contains(e.target) && !e.target.closest('.dropdown-item[data-value="custom"]')) {
-                    panel.classList.remove('visible');
+                    if (panel.classList.contains('visible')) {
+                        panel.classList.remove('visible');
+                        commitCustomColor();
+                    }
                 }
             });
 
