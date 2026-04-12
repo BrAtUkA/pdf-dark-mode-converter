@@ -24,7 +24,7 @@
 - Single HTML file, no build step, no dependencies to install
 
 ## URL
-https://bratuka.github.io/pdf-dark-mode-converter/
+https://bratuka.dev/pdf-dark-mode-converter/
 
 ## Source
 https://github.com/BrAtUkA/pdf-dark-mode-converter
