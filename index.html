@@ -52,7 +52,6 @@
             text-align: center;
             background-color: #121212;
             color: white;
-            padding: 20px;
         }
         html, body {
             margin: 0;
@@ -201,6 +200,22 @@
         #pdfContainer {
             width: 70%;
             margin: 0 auto;
+        }
+        #cancelBtn {
+            margin-top: 10px;
+            padding: 5px 16px;
+            background: transparent;
+            color: rgba(255,255,255,0.45);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            display: none;
+            transition: color 0.15s, border-color 0.15s;
+        }
+        #cancelBtn:hover {
+            color: rgba(255,255,255,0.7);
+            border-color: rgba(255,255,255,0.25);
         }
         #progressContainer {
             width: 90%;
@@ -549,6 +564,9 @@
             .slider-group {
                 min-width: 160px;
             }
+            #pdfContainer {
+                width: 95%;
+            }
         }
         @media (max-width: 480px) {
             .github-ribbon img {
@@ -570,13 +588,13 @@
     <a href="https://github.com/BrAtUkA/pdf-dark-mode-converter" class="github-ribbon">
         <picture>
             <source srcset="./img/forkme_left_red_aa0000.webp 1x, ./img/forkme_left_red_aa0000@2x.webp 2x" type="image/webp">
-            <img decoding="async" fetchpriority="high" width="149" height="149" src="./img/forkme_left_red_aa0000.png" srcset="./img/forkme_left_red_aa0000.png 1x, ./img/forkme_left_red_aa0000@2x.png 2x" alt="View Source Code on GitHub">
+            <img decoding="async" loading="lazy" width="149" height="149" src="./img/forkme_left_red_aa0000.png" srcset="./img/forkme_left_red_aa0000.png 1x, ./img/forkme_left_red_aa0000@2x.png 2x" alt="View Source Code on GitHub">
         </picture>
     </a>
     <a href="https://github.com/BrAtUkA" class="bratuka-logo" aria-label="BrAtUkA on GitHub">
         <img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">
     </a>
-    <main class="container" id="mainContent" role="main">
+    <main id="mainContent">
         <noscript>
             <p style="color:#ccc;text-align:center;padding:40px 20px;font-size:18px;">JavaScript is required to convert PDFs to dark mode. Please enable JavaScript in your browser settings to use this tool.</p>
         </noscript>
@@ -609,7 +627,7 @@
             </select>
             <input type="color" id="customColorPicker" value="#1e1e1e" class="color-picker-hidden">
             <div class="custom-dropdown" id="customDropdown">
-                <div class="dropdown-toggle" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox">
+                <div class="dropdown-toggle" tabindex="0" role="combobox" aria-label="Theme" aria-expanded="false" aria-haspopup="listbox">
                     <span class="dropdown-label">Claude Warm</span>
                     <svg class="arrow" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
@@ -646,6 +664,7 @@
         <div id="progressContainer" aria-live="polite">
             <div id="progressTrack"><div id="progressBar"></div></div>
             <div id="progressText">0/0</div>
+            <button id="cancelBtn" type="button">Cancel</button>
         </div>
         <button id="downloadBtn">Download failed? Click here</button>
         <div id="pdfContainer"></div>
@@ -846,7 +865,11 @@
                 ensurePdfLibraries().then(() => {
                     document.getElementById('progressContainer').style.display = 'block';
                     document.getElementById('downloadBtn').style.display = 'none';
-                    renderPDF(originalPdfData);
+                    renderPDF(originalPdfData).catch(err => {
+                        console.error('Render failed:', err);
+                        document.getElementById('progressText').innerText = 'Error processing PDF';
+                        document.getElementById('cancelBtn').style.display = 'none';
+                    });
                 });
             }
         }
@@ -1001,13 +1024,20 @@
                 originalPdfData = fileData;
                 document.getElementById('progressContainer').style.display = 'block';
                 document.getElementById('downloadBtn').style.display = 'none';
-                await renderPDF(fileData);
+                try {
+                    await renderPDF(fileData);
+                } catch (err) {
+                    console.error('Render failed:', err);
+                    document.getElementById('progressText').innerText = 'Error processing PDF';
+                    document.getElementById('cancelBtn').style.display = 'none';
+                }
             };
             fileReader.readAsArrayBuffer(file);
         }
 
         document.getElementById('fileInput').addEventListener('change', function(event) {
             if (event.target.files.length > 0) handleFile(event.target.files[0]);
+            this.value = '';
         });
 
         document.body.addEventListener('dragover', function(event) {
@@ -1026,7 +1056,13 @@
                 await ensurePdfLibraries();
                 document.getElementById('progressContainer').style.display = 'block';
                 document.getElementById('downloadBtn').style.display = 'none';
-                await renderPDF(originalPdfData);
+                try {
+                    await renderPDF(originalPdfData);
+                } catch (err) {
+                    console.error('Render failed:', err);
+                    document.getElementById('progressText').innerText = 'Error processing PDF';
+                    document.getElementById('cancelBtn').style.display = 'none';
+                }
             }
         });
 
@@ -1056,6 +1092,7 @@
             modifiedPdfBytes = null;
             progressBar.style.width = '0';
             progressText.innerText = `0/${totalPages}`;
+            document.getElementById('cancelBtn').style.display = 'inline-block';
 
             // Clean up previous preview blob URLs to avoid memory leaks
             pdfContainer.querySelectorAll('img').forEach(img => {
@@ -1174,6 +1211,7 @@
 
             const totalTime = ((performance.now() - startTime) / 1000).toFixed(1);
             progressText.innerText = `Done in ${totalTime}s`;
+            document.getElementById('cancelBtn').style.display = 'none';
             setTimeout(() => { progressContainer.style.display = 'none'; }, 2000);
             triggerDownload();
         }
@@ -1189,10 +1227,18 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
 
                 document.getElementById('downloadBtn').style.display = 'block';
             }
         }
+
+        document.getElementById('cancelBtn').addEventListener('click', function() {
+            currentRenderId++;
+            this.style.display = 'none';
+            document.getElementById('progressText').innerText = 'Cancelled';
+            setTimeout(() => { document.getElementById('progressContainer').style.display = 'none'; }, 1200);
+        });
 
         document.getElementById('downloadBtn').addEventListener('click', triggerDownload);
     </script>
