@@ -576,6 +576,48 @@
                 height: 28px;
             }
         }
+        /* Light-mode overrides: applied via JS when theme luminance is high */
+        body.light-mode { color: #1a1a1a; }
+        body.light-mode .notice { color: #333; background: rgba(0,0,0,0.06) !important; border-color: rgba(0,0,0,0.15) !important; }
+        body.light-mode .notice-icon { color: rgba(0,0,0,0.45) !important; }
+        body.light-mode .custom-file-upload { color: #fff; border-color: rgba(0,0,0,0.08); }
+        body.light-mode .custom-file-upload:hover { filter: brightness(0.85); }
+        body.light-mode .dropdown-toggle { background: rgba(0,0,0,0.06); color: #333; border-color: rgba(0,0,0,0.15); }
+        body.light-mode .dropdown-toggle:hover { border-color: rgba(0,0,0,0.3); }
+        body.light-mode .dropdown-menu { background: #f0f0f0; border-color: rgba(0,0,0,0.12); }
+        body.light-mode .dropdown-item { color: #333; }
+        body.light-mode .dropdown-item:hover { background: rgba(0,0,0,0.08); color: #000; }
+        body.light-mode .dropdown-item.active { color: #000; }
+        body.light-mode .dropdown-item .swatch { border-color: rgba(0,0,0,0.2); }
+        body.light-mode .dropdown-item .swatch.custom-swatch { border-color: rgba(0,0,0,0.3) !important; }
+        body.light-mode .dropdown-item .swatch.custom-swatch svg { stroke: rgba(0,0,0,0.5); }
+        body.light-mode #cancelBtn { color: rgba(0,0,0,0.45); border-color: rgba(0,0,0,0.15); }
+        body.light-mode #cancelBtn:hover { color: rgba(0,0,0,0.7); border-color: rgba(0,0,0,0.3); }
+        body.light-mode #progressContainer { background-color: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); }
+        body.light-mode #progressTrack { background: rgba(0,0,0,0.1); }
+        body.light-mode #progressText { color: rgba(0,0,0,0.55); }
+        body.light-mode #downloadBtn { border-color: rgba(0,0,0,0.08); color: #fff; }
+        body.light-mode #downloadBtn:hover { filter: brightness(0.85); }
+        body.light-mode .credit { color: #555; }
+        body.light-mode .credit a { color: #0056d2; }
+        body.light-mode .tool-desc { color: rgba(0,0,0,0.45); }
+        body.light-mode .settings-toggle-btn { color: rgba(0,0,0,0.45); }
+        body.light-mode .settings-toggle-btn:hover { color: rgba(0,0,0,0.7); }
+        body.light-mode .settings-panel { background-color: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); }
+        body.light-mode .slider-group label { color: #555; }
+        body.light-mode .slider-group label span { color: #111; }
+        body.light-mode .slider-group input[type="range"] { background: rgba(0,0,0,0.12); }
+        body.light-mode .slider-group input[type="range"]::-webkit-slider-thumb { background: #333; box-shadow: 0 0 0 2px rgba(0,0,0,0.15); }
+        body.light-mode .slider-group input[type="range"]::-moz-range-thumb { background: #333; box-shadow: 0 0 0 2px rgba(0,0,0,0.15); }
+        body.light-mode .slider-group input[type="range"]::-moz-range-track { background: rgba(0,0,0,0.12); }
+        body.light-mode .slider-labels { color: rgba(0,0,0,0.35); }
+        body.light-mode .preview-slot img, body.light-mode canvas { border-color: rgba(0,0,0,0.15); }
+        body.light-mode .color-panel { background: #f0f0f0; border-color: rgba(0,0,0,0.12); }
+        body.light-mode .color-panel-swatch:hover { border-color: rgba(0,0,0,0.4); }
+        body.light-mode .color-panel-swatch.selected { border-color: #000; }
+        body.light-mode .color-panel-hex input { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.15); color: #222; }
+        body.light-mode .color-panel-hex input:focus { border-color: rgba(0,0,0,0.35); }
+        body.light-mode .bratuka-logo img { filter: invert(1); }
     </style>
 </head>
 <body>
@@ -647,8 +689,8 @@
             <div class="settings-collapsible">
                 <div class="settings-panel">
                     <div class="slider-group">
-                        <label for="resolutionSlider">Resolution: <span id="resolutionValue">3x</span></label>
-                        <input type="range" id="resolutionSlider" min="1" max="3" step="0.5" value="3">
+                        <label for="resolutionSlider">Resolution: <span id="resolutionValue">2x</span></label>
+                        <input type="range" id="resolutionSlider" min="1" max="3" step="0.5" value="2">
                         <span class="slider-labels"><span>Faster</span><span>Sharper</span></span>
                     </div>
                     <div class="slider-group">
@@ -743,29 +785,60 @@
         function applyThemeBackground(theme) {
             document.body.style.backgroundColor = `rgb(${theme.r}, ${theme.g}, ${theme.b})`;
 
+            const luminance = 0.299 * theme.r + 0.587 * theme.g + 0.114 * theme.b;
+            const isLight = luminance > 150;
+            document.body.classList.toggle('light-mode', isLight);
+
             // Tint the notice to subtly follow the theme
             const notice = document.querySelector('.notice');
             const icon = document.querySelector('.notice-icon');
             if (notice) {
-                const tintR = Math.min(theme.r + 80, 255);
-                const tintG = Math.min(theme.g + 80, 255);
-                const tintB = Math.min(theme.b + 80, 255);
-                notice.style.borderColor = `rgba(${tintR}, ${tintG}, ${tintB}, 0.25)`;
-                notice.style.background = `rgba(${tintR}, ${tintG}, ${tintB}, 0.07)`;
-                if (icon) icon.style.color = `rgba(${tintR}, ${tintG}, ${tintB}, 0.7)`;
+                if (isLight) {
+                    const factor = Math.max(0.3, 0.6 - (luminance - 150) * 0.003);
+                    const tintR = Math.round(theme.r * factor);
+                    const tintG = Math.round(theme.g * factor);
+                    const tintB = Math.round(theme.b * factor);
+                    notice.style.borderColor = `rgba(${tintR}, ${tintG}, ${tintB}, 0.35)`;
+                    notice.style.background = `rgba(${tintR}, ${tintG}, ${tintB}, 0.08)`;
+                    if (icon) icon.style.color = `rgba(${tintR}, ${tintG}, ${tintB}, 0.7)`;
+                } else {
+                    const tintR = Math.min(theme.r + 80, 255);
+                    const tintG = Math.min(theme.g + 80, 255);
+                    const tintB = Math.min(theme.b + 80, 255);
+                    notice.style.borderColor = `rgba(${tintR}, ${tintG}, ${tintB}, 0.25)`;
+                    notice.style.background = `rgba(${tintR}, ${tintG}, ${tintB}, 0.07)`;
+                    if (icon) icon.style.color = `rgba(${tintR}, ${tintG}, ${tintB}, 0.7)`;
+                }
             }
 
-            // Tint buttons: solid mid-tone tinted with theme (visible but readable)
-            const btnR = Math.min(theme.r + 60, 255);
-            const btnG = Math.min(theme.g + 60, 255);
-            const btnB = Math.min(theme.b + 60, 255);
-            document.documentElement.style.setProperty('--btn-bg', `rgb(${btnR}, ${btnG}, ${btnB})`);
+            // Tint buttons — ensure high contrast against background
+            if (isLight) {
+                // Darken significantly: at luminance 255 we want ~80, at 150 we want ~110
+                const factor = Math.max(0.25, 0.55 - (luminance - 150) * 0.003);
+                const btnR = Math.round(theme.r * factor);
+                const btnG = Math.round(theme.g * factor);
+                const btnB = Math.round(theme.b * factor);
+                document.documentElement.style.setProperty('--btn-bg', `rgb(${btnR}, ${btnG}, ${btnB})`);
+            } else {
+                const btnR = Math.min(theme.r + 60, 255);
+                const btnG = Math.min(theme.g + 60, 255);
+                const btnB = Math.min(theme.b + 60, 255);
+                document.documentElement.style.setProperty('--btn-bg', `rgb(${btnR}, ${btnG}, ${btnB})`);
+            }
 
-            // Tint progress bar: bright enough to read against the container
-            const barR = Math.min(theme.r + 140, 255);
-            const barG = Math.min(theme.g + 140, 255);
-            const barB = Math.min(theme.b + 140, 255);
-            document.documentElement.style.setProperty('--bar-color', `rgb(${barR}, ${barG}, ${barB})`);
+            // Tint progress bar
+            if (isLight) {
+                const factor = Math.max(0.2, 0.45 - (luminance - 150) * 0.003);
+                const barR = Math.round(theme.r * factor);
+                const barG = Math.round(theme.g * factor);
+                const barB = Math.round(theme.b * factor);
+                document.documentElement.style.setProperty('--bar-color', `rgb(${barR}, ${barG}, ${barB})`);
+            } else {
+                const barR = Math.min(theme.r + 140, 255);
+                const barG = Math.min(theme.g + 140, 255);
+                const barB = Math.min(theme.b + 140, 255);
+                document.documentElement.style.setProperty('--bar-color', `rgb(${barR}, ${barG}, ${barB})`);
+            }
         }
 
         // Update SVG feColorMatrix to match current theme (GPU-accelerated color transform)
