@@ -1404,10 +1404,11 @@
             if (modifiedPdfBytes) {
                 const selectedTheme = document.getElementById('themeSelector').value;
                 const themeName = themes[selectedTheme].name.toLowerCase().replace(/\s+/g, '_');
+                const modeSuffix = themes[selectedTheme].lightMode ? 'light' : 'dark';
                 const blob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
-                link.download = `${originalFileName}_${themeName}_dark.pdf`;
+                link.download = `${originalFileName}_${themeName}_${modeSuffix}.pdf`;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
