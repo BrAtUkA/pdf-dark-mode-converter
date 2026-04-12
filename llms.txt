@@ -1,0 +1,33 @@
+# PDF Dark Mode Converter
+
+> A free, open-source tool that converts any PDF to dark mode instantly in your browser. No uploads, no server, fully offline and private.
+
+## What it does
+- Converts PDF files to dark mode for easier reading at night
+- Runs entirely client-side in the browser using JavaScript
+- No data ever leaves the user's device
+- Up to 10x faster than similar tools using GPU-accelerated color transforms
+
+## Features
+- 15+ built-in dark themes: Classic, Slate, Claude Warm, ChatGPT Cool, Sepia, Midnight Blue, Forest Green, Solarized, Nord, Dracula, Gruvbox, Monokai, Tokyo Night, Rosé Pine, Cobalt
+- Custom theme with hex color picker
+- Adjustable resolution (1x-3x) and JPEG quality (60-100%)
+- Drag and drop or file picker
+- Automatic download of converted PDF
+- Works offline after first load
+
+## Technical details
+- Uses pdf.js for rendering and pdf-lib for PDF assembly
+- GPU-accelerated via SVG feColorMatrix filter
+- JPEG encoding for fast page processing
+- Concurrent page processing (2-6 parallel workers)
+- Single HTML file, no build step, no dependencies to install
+
+## URL
+https://bratuka.github.io/pdf-dark-mode-converter/
+
+## Source
+https://github.com/BrAtUkA/pdf-dark-mode-converter
+
+## License
+MIT
