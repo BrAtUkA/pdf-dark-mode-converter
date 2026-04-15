@@ -22,26 +22,30 @@
   var home = depth + langPrefix + 'index.html';
   var blog = depth + langPrefix + 'blog/index.html';
 
-  var footer = document.createElement('footer');
-  footer.className = s.getAttribute('data-class') || 'site-footer';
-  footer.innerHTML =
-    '<a href="https://github.com/BrAtUkA" class="footer-logo" aria-label="BrAtUkA on GitHub">' +
-      '<img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">' +
-    '</a>' +
-    '<nav class="footer-links" aria-label="Footer">' +
-      '<a href="' + home + '">' + t.home + '</a>' +
-      '<a href="' + blog + '">' + t.blog + '</a>' +
-      '<a href="' + depth + langPrefix + 'about/index.html">' + t.about + '</a>' +
-      '<a href="' + depth + langPrefix + 'privacy/index.html">' + t.privacy + '</a>' +
-      '<a href="' + depth + langPrefix + 'terms/index.html">' + t.terms + '</a>' +
-      '<a href="' + depth + langPrefix + 'contact/index.html">' + t.contact + '</a>' +
-      '<a href="' + depth + langPrefix + 'changelog/index.html">' + t.changelog + '</a>' +
-      '<a href="https://github.com/BrAtUkA/pdf-dark-mode-converter">GitHub</a>' +
-    '</nav>' +
-    '<p class="footer-copy">\u00a9 ' + new Date().getFullYear() + ' BrAtUkA \u00b7 ' + t.copy + '</p>' +
-    '<p class="footer-credit">' + t.creditOriginal + ' <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter">Chizkiyahu</a> \u00b7 ' + t.creditSupercharged + ' <a href="https://github.com/BrAtUkA">BrAtUkA</a></p>';
+  // Skip DOM footer creation if a baked (pre-rendered) footer already exists
+  var prev = s.previousElementSibling;
+  if (!(prev && prev.tagName === 'FOOTER')) {
+    var footer = document.createElement('footer');
+    footer.className = s.getAttribute('data-class') || 'site-footer';
+    footer.innerHTML =
+      '<a href="https://github.com/BrAtUkA" class="footer-logo" aria-label="BrAtUkA on GitHub">' +
+        '<img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">' +
+      '</a>' +
+      '<nav class="footer-links" aria-label="Footer">' +
+        '<a href="' + home + '">' + t.home + '</a>' +
+        '<a href="' + blog + '">' + t.blog + '</a>' +
+        '<a href="' + depth + langPrefix + 'about/index.html">' + t.about + '</a>' +
+        '<a href="' + depth + langPrefix + 'privacy/index.html">' + t.privacy + '</a>' +
+        '<a href="' + depth + langPrefix + 'terms/index.html">' + t.terms + '</a>' +
+        '<a href="' + depth + langPrefix + 'contact/index.html">' + t.contact + '</a>' +
+        '<a href="' + depth + langPrefix + 'changelog/index.html">' + t.changelog + '</a>' +
+        '<a href="https://github.com/BrAtUkA/pdf-dark-mode-converter">GitHub</a>' +
+      '</nav>' +
+      '<p class="footer-copy">\u00a9 ' + new Date().getFullYear() + ' BrAtUkA \u00b7 ' + t.copy + '</p>' +
+      '<p class="footer-credit">' + t.creditOriginal + ' <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter">Chizkiyahu</a> \u00b7 ' + t.creditSupercharged + ' <a href="https://github.com/BrAtUkA">BrAtUkA</a></p>';
 
-  s.parentNode.insertBefore(footer, s);
+    s.parentNode.insertBefore(footer, s);
+  }
 
   // --- Language switcher (loaded once via footer.js so all pages get it) ---
   if (!window.__lang_switcher_loaded) {
