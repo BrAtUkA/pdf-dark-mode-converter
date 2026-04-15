@@ -1,3 +1,5 @@
 User-agent: *
 Disallow:
 Allow: /
+
+Sitemap: https://bratuka.dev/pdf-dark-mode-converter/sitemap.xml

@@ -1,0 +1,80 @@
+/* Shared blog styles */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#121212;color:rgba(255,255,255,0.82);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:#7fb3ff;text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Nav */
+.blog-nav{max-width:740px;margin:0 auto;padding:24px 20px 0;display:flex;align-items:center;font-size:14px;gap:16px}
+.blog-nav a{color:rgba(255,255,255,0.5)}
+.blog-nav a:hover{color:#fff;text-decoration:none}
+.blog-nav .site-name{font-weight:600;color:rgba(255,255,255,0.7);margin-right:auto}
+
+/* Language switcher — styles in css/lang.css, loaded by lang-switcher.js */
+
+/* Article */
+.blog-article{max-width:740px;margin:0 auto;padding:40px 20px 80px}
+.blog-article h1{font-size:28px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:8px}
+.blog-article .meta{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:36px}
+.blog-article h2{font-size:20px;font-weight:600;color:rgba(255,255,255,0.9);margin:36px 0 12px}
+.blog-article h3{font-size:16px;font-weight:600;color:rgba(255,255,255,0.85);margin:24px 0 8px}
+.blog-article p{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:16px}
+.blog-article ul,.blog-article ol{padding-left:24px;margin-bottom:16px}
+.blog-article li{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:6px}
+.blog-article strong{color:rgba(255,255,255,0.82)}
+.blog-article .cta-box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:20px 24px;margin:28px 0}
+.blog-article .cta-box p{margin-bottom:0}
+
+/* Blog index */
+.blog-index{max-width:740px;margin:0 auto;padding:40px 20px 80px}
+.blog-index h1{font-size:28px;font-weight:700;color:#fff;margin-bottom:8px}
+.blog-index .subtitle{font-size:15px;color:rgba(255,255,255,0.4);margin-bottom:36px}
+.post-list{list-style:none;padding:0}
+.post-list li{border-bottom:1px solid rgba(255,255,255,0.06);padding:20px 0}
+.post-list li:last-child{border-bottom:none}
+.post-list a{display:block}
+.post-list a:hover{text-decoration:none}
+.post-list .post-title{font-size:17px;font-weight:600;color:rgba(255,255,255,0.88);margin-bottom:4px;transition:color 0.15s}
+.post-list a:hover .post-title{color:#fff}
+.post-list .post-desc{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.5}
+.post-list .post-date{font-size:12px;color:rgba(255,255,255,0.25);margin-top:6px}
+
+/* Footer */
+.blog-footer{width:100%;box-sizing:border-box;padding:30px 20px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.4);border-top:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)}
+.footer-logo{display:inline-block;margin-bottom:10px}
+.footer-logo img{height:32px;width:auto;opacity:0.7;transition:opacity 0.2s}
+.footer-logo img:hover{opacity:1}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.85);text-decoration:none}
+.footer-copy{margin:0;line-height:1.6}
+.footer-credit{margin:4px 0 0;font-size:11px;color:rgba(255,255,255,0.25);line-height:1.4}
+.footer-credit a{color:rgba(255,255,255,0.35);text-decoration:none}
+.footer-credit a:hover{color:rgba(255,255,255,0.6)}
+
+/* FAQ */
+.blog-article .faq{margin:36px 0 28px}
+.blog-article .faq h2{margin-bottom:16px}
+.blog-article .faq-item{border-bottom:1px solid rgba(255,255,255,0.06);padding:14px 0}
+.blog-article .faq-item:last-child{border-bottom:none}
+.blog-article .faq-q{font-size:15px;font-weight:600;color:rgba(255,255,255,0.85);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.blog-article .faq-q::after{content:'+';font-size:18px;color:rgba(255,255,255,0.3);transition:transform 0.2s;flex-shrink:0}
+.blog-article .faq-item.open .faq-q::after{content:'\2212'}
+.blog-article .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+.blog-article .faq-item.open .faq-a{max-height:500px}
+.blog-article .faq-a p{margin-top:10px;font-size:14px;color:rgba(255,255,255,0.5)}
+
+@media(max-width:600px){
+    .blog-article h1{font-size:22px}
+    .blog-article h2{font-size:18px}
+}
+
+/* Blog images */
+.blog-article figure{margin:24px 0 28px;text-align:center}
+.blog-article figure img{max-width:100%;height:auto;border-radius:8px;border:1px solid rgba(255,255,255,0.08)}
+.blog-article figure figcaption{font-size:12px;color:rgba(255,255,255,0.3);margin-top:8px;line-height:1.4}
+.blog-article figure.wide{margin-left:-20px;margin-right:-20px}
+.blog-article figure.wide img{border-radius:0;border-left:none;border-right:none}
+@media(max-width:600px){
+    .blog-article figure.wide{margin-left:-20px;margin-right:-20px}
+}

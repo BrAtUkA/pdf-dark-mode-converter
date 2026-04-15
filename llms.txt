@@ -4,24 +4,42 @@
 
 ## What it does
 - Converts PDF files to dark mode for easier reading at night
+- Inverts PDF colors (separate tool at /invert-pdf-colors/)
 - Runs entirely client-side in the browser using JavaScript
 - No data ever leaves the user's device
 - Up to 10x faster than similar tools using GPU-accelerated color transforms
 
 ## Features
-- 15+ built-in dark themes: Classic, Slate, Claude Warm, ChatGPT Cool, Sepia, Midnight Blue, Forest Green, Solarized, Nord, Dracula, Gruvbox, Monokai, Tokyo Night, Rosé Pine, Cobalt
-- Custom theme with hex color picker
-- Adjustable resolution (1x-3x) and JPEG quality (60-100%)
+- 16 built-in dark themes: Classic, Slate, Claude Warm, ChatGPT Cool, Sepia, Midnight Blue, Forest Green, Solarized, Nord, Dracula, Gruvbox, Monokai, Tokyo Night, Rosé Pine, Cobalt, plus Invert (Negative)
+- Custom theme with hex color picker and preset swatches
+- Dark and light mode output (light-to-dark and dark-to-light)
+- Adjustable resolution (0.5x–4x) and JPEG quality (50–100%)
+- Selectable text layer preserved in converted PDFs
+- Image preservation toggle (keeps photos intact)
+- Batch conversion (multiple PDFs at once)
 - Drag and drop or file picker
 - Automatic download of converted PDF
 - Works offline after first load
+
+## Pages
+- Main converter: /
+- Invert PDF Colors tool: /invert-pdf-colors/
+- Blog with 14 guides: /blog/
+- About: /about/
+- Changelog: /changelog/
+- Privacy Policy: /privacy/
+- Terms of Service: /terms/
+- Contact: /contact/
+
+## Languages
+Available in 10 languages: English, Spanish, French, German, Italian, Portuguese, Chinese, Korean, Japanese, Russian
 
 ## Technical details
 - Uses pdf.js for rendering and pdf-lib for PDF assembly
 - GPU-accelerated via SVG feColorMatrix filter
 - JPEG encoding for fast page processing
-- Concurrent page processing (2-6 parallel workers)
-- Single HTML file, no build step, no dependencies to install
+- Concurrent page processing with parallel workers
+- Static site hosted on GitHub Pages, no server-side code
 
 ## URL
 https://bratuka.dev/pdf-dark-mode-converter/
@@ -30,4 +48,4 @@ https://bratuka.dev/pdf-dark-mode-converter/
 https://github.com/BrAtUkA/pdf-dark-mode-converter
 
 ## License
-MIT
+PolyForm Noncommercial 1.0.0 (free for personal use, no commercial use)
