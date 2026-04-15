@@ -172,6 +172,19 @@
         }
     });
 
+    // Sync dropdown label and highlight to match the actual selected theme on load
+    function syncDropdownToSelectedTheme() {
+        const selected = select.value;
+        // Update label
+        const opt = select.options[select.selectedIndex];
+        if (opt) label.textContent = opt.textContent;
+        // Update highlight
+        menu.querySelectorAll('.dropdown-item').forEach(el => {
+            el.classList.toggle('active', el.dataset.value === selected);
+        });
+    }
+    syncDropdownToSelectedTheme();
+
     // Sync dropdown visual state with URL theme param (already set by converter.js)
     const params = new URLSearchParams(window.location.search);
     const themeParam = params.get('theme');
