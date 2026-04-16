@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="ru"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выделяемый текст в PDF в тёмном режиме: почему большинство инструментов его ломают | Конвертер PDF в тёмный режим</title>
+    <meta name="description" content="Большинство инструментов тёмного режима для PDF уничтожают выделяемый текст. Узнайте, как работают текстовые слои, почему растеризация ломает копирование, и как конвертировать PDF в тёмный режим с сохранением поискового текста.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="BrAtUkA">
+    <meta name="theme-color" content="#2a2522">
+    <link rel="canonical" href="https://bratuka.dev/pdf-dark-mode-converter/ru/blog/selectable-text-dark-mode-pdf/">
+    <link rel="stylesheet" href="../../../blog/blog.css">
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <meta property="og:title" content="Выделяемый текст в PDF в тёмном режиме: почему большинство инструментов его ломают | Конвертер PDF в тёмный режим">
+    <meta property="og:description" content="Большинство инструментов тёмного режима для PDF уничтожают выделяемый текст. Узнайте, как конвертировать PDF в тёмный режим с сохранением поискового и копируемого текста.">
+    <meta property="og:site_name" content="PDF Dark Mode Converter">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bratuka.dev/pdf-dark-mode-converter/ru/blog/selectable-text-dark-mode-pdf/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="ja_JP">
+
+<meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta name="twitter:title" content="Выделяемый текст в PDF в тёмном режиме: почему большинство инструментов его ломают | Конвертер PDF в тёмный режим">
+    <meta name="twitter:description" content="Большинство инструментов тёмного режима для PDF уничтожают выделяемый текст. Узнайте, как конвертировать PDF в тёмный режим с сохранением поискового и копируемого текста.">
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Выделяемый текст в PDF в тёмном режиме: почему большинство инструментов его ломают",
+      "datePublished": "2026-04-15",
+      "dateModified": "2026-04-15",
+      "image": "https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png",
+      "author": {
+            "@type": "Person",
+            "name": "BrAtUkA"
+      },
+      "publisher": {
+            "@type": "Organization",
+            "name": "PDF Dark Mode Converter",
+            "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://bratuka.dev/pdf-dark-mode-converter/favicon.ico"
+            }
+      },
+      "inLanguage": "ru"
+}</script>
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+            {
+                  "@type": "Question",
+                  "name": "Можно ли выделять и копировать текст из PDF в тёмном режиме?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Да, если конвертер сохраняет текстовый слой. Конвертер PDF в тёмный режим встраивает невидимый текстовый слой под тёмными изображениями каждой страницы, что позволяет выделять, копировать, искать и аннотировать текст в любой программе для чтения PDF."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Почему я не могу выделить текст после конвертации PDF в тёмный режим?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Большинство инструментов тёмного режима растеризуют каждую страницу в плоское изображение, уничтожая исходные текстовые данные. В результате получается фотография текста, а не настоящий текст. Инструменты, сохраняющие скрытый текстовый слой, позволяют избежать этой проблемы."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Работает ли текстовый слой со сканированными PDF?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Сканированные PDF уже являются изображениями без встроенных текстовых данных. Конвертер не может создать текст из изображения. Если в вашем исходном PDF нет выделяемого текста, его не будет и в конвертированной версии. Сначала потребуется использовать программу OCR."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Работают ли программы чтения экрана с PDF в тёмном режиме, имеющим текстовый слой?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Да. Скрытый текстовый слой полностью доступен для программ чтения экрана, как и в исходном PDF. Визуальная трансформация тёмного режима не влияет на базовую структуру текста."
+                  }
+            }
+      ],
+      "inLanguage": "ru"
+}</script>
+
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+            {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Конвертер PDF в тёмный режим",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/ru/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Блог",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/ru/blog/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Выделяемый текст в PDF в тёмном режиме",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/ru/blog/selectable-text-dark-mode-pdf/"
+            }
+      ],
+      "inLanguage": "ru"
+}</script>
+
+<link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="es" href="https://bratuka.dev/pdf-dark-mode-converter/es/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="fr" href="https://bratuka.dev/pdf-dark-mode-converter/fr/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="de" href="https://bratuka.dev/pdf-dark-mode-converter/de/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="it" href="https://bratuka.dev/pdf-dark-mode-converter/it/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="pt" href="https://bratuka.dev/pdf-dark-mode-converter/pt/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="zh" href="https://bratuka.dev/pdf-dark-mode-converter/zh/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ko" href="https://bratuka.dev/pdf-dark-mode-converter/ko/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ja" href="https://bratuka.dev/pdf-dark-mode-converter/ja/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ru" href="https://bratuka.dev/pdf-dark-mode-converter/ru/blog/selectable-text-dark-mode-pdf/">
+</head>
+
+<body>
+    <nav class="blog-nav">
+        <a href="../../index.html" class="site-name">PDF Dark Mode Converter</a>
+        <a href="../index.html">← Блог</a>
+    </nav>
+    <article class="blog-article">
+        <h1>Выделяемый текст в PDF в тёмном режиме: почему большинство инструментов его ломают</h1>
+        <p class="meta">15 апреля 2026</p>
+
+        <p>Вы конвертируете PDF в тёмный режим, открываете результат и пытаетесь скопировать абзац. Ничего не происходит. Пытаетесь найти слово. Результатов нет. Текст прямо на странице, но ваша программа для чтения PDF обращается с ним как с картинкой. Это одна из самых распространённых и неприятных проблем инструментов тёмного режима для PDF, и большинство пользователей не замечают её, пока им не понадобится реально использовать текст.</p>
+
+        <h2>Почему большинство инструментов тёмного режима уничтожают ваш текст</h2>
+        <p>Чтобы понять проблему, нужно знать, как стандартный PDF хранит содержимое. Типичный PDF — это не простое изображение. Он содержит структурированные текстовые данные: отдельные символы с информацией о шрифте, позициях и кодировке. Именно это позволяет выделять слово, копировать предложение или искать по 200-страничному документу за секунды.</p>
+        <p>Когда большинство инструментов тёмного режима обрабатывают ваш PDF, они выполняют так называемую <strong>растеризацию</strong>. Они рендерят каждую страницу как плоское изображение (подобно скриншоту), применяют цветовую трансформацию к этому изображению, а затем оборачивают результат в новый PDF. Результат выглядит тёмным, но структурированные текстовые данные утрачены. Каждая страница теперь представляет собой фотографию текста, а не настоящий текст.</p>
+        <p>Это означает:</p>
+        <ul>
+            <li><strong>Нельзя выделить текст</strong> — невозможно подчеркнуть предложение или абзац</li>
+            <li><strong>Нельзя скопировать</strong> — невозможно извлечь цитату или ссылку</li>
+            <li><strong>Нельзя искать</strong> — Ctrl+F / Cmd+F ничего не находит</li>
+            <li><strong>Нет доступности</strong> — программы чтения экрана не могут прочитать документ</li>
+            <li><strong>Нельзя аннотировать</strong> — текстовые инструменты разметки перестают работать</li>
+            <li><strong>Больший размер файла</strong> — изображения занимают больше места, чем структурированный текст</li>
+        </ul>
+        <p>Для одностраничного буклета это может не иметь значения. Для 50-страничной научной статьи или учебника, к которому вы регулярно обращаетесь, потеря поискового текста — серьёзная проблема.</p>
+
+        <h2>Как текстовые слои решают эту проблему</h2>
+        <p>Решение — технология под названием <strong>скрытый текстовый слой</strong>. Вместо того чтобы отбрасывать исходные текстовые данные, конвертер сохраняет их и невидимо размещает поверх каждого изображения страницы. Результат — PDF с двумя слоями:</p>
+        <ol>
+            <li><strong>Визуальный слой</strong> — изображение страницы с тёмной темой, которое вы видите на экране</li>
+            <li><strong>Текстовый слой</strong> — невидимый, идеально выровненный текст, с которым ваша программа для чтения PDF может взаимодействовать</li>
+        </ol>
+        <p>Когда вы выделяете текст в конвертированном PDF, вы фактически выделяете из скрытого текстового слоя. Когда ищете, ваша программа просматривает текстовый слой. Когда программа чтения экрана обрабатывает документ, она читает текстовый слой. Визуально всё тёмное, но функциональный текст под ним полностью сохранён.</p>
+        <p>Именно так работает <a href="../../index.html">Конвертер PDF в тёмный режим</a>. Каждая конвертированная страница включает синхронизированный текстовый слой, чтобы вы сохраняли полную функциональность текста в результате.</p>
+
+        <figure class="wide">
+            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
+            <figcaption>Текст можно выделять, копировать и искать в конвертированном PDF в тёмном режиме — скрытый текстовый слой делает это возможным.</figcaption>
+        </figure>
+
+        <h2>Что можно делать с сохранённым текстом</h2>
+        <p>PDF в тёмном режиме с сохранённым текстовым слоем ведёт себя точно так же, как обычный PDF, за исключением визуальных цветов:</p>
+
+        <h3>Поиск по документу</h3>
+        <p>Нажмите Ctrl+F (или Cmd+F на Mac) и найдите любое слово или фразу. Это критически важно для учебников, технической документации и юридических договоров, где нужно быстро найти конкретные разделы. Без текстового слоя пришлось бы пролистывать каждую страницу вручную.</p>
+
+        <h3>Копирование и вставка текста</h3>
+        <p>Выделите любой фрагмент и скопируйте в свои заметки, электронную почту или текстовый редактор. Студенты, работающие с <a href="../convert-pdf-to-dark-mode-online/index.html">учебниками, конвертированными в тёмный режим</a>, по-прежнему могут извлекать цитаты для рефератов. Исследователи могут получать ссылки без необходимости перепечатывать.</p>
+
+        <h3>Аннотации и выделение</h3>
+        <p>Текстовые аннотации в программах для чтения PDF зависят от текстового слоя. Вы можете выделять предложения, добавлять встроенные комментарии и создавать закладки, привязанные к тексту. Эти функции полностью перестают работать в PDF в тёмном режиме, состоящих только из изображений.</p>
+
+        <h3>Доступность и программы чтения экрана</h3>
+        <p>Программы чтения экрана вроде JAWS, NVDA и VoiceOver используют текстовый слой PDF для озвучивания содержимого. PDF в тёмном режиме, состоящий только из изображений, полностью непрозрачен для вспомогательных технологий. Сохранение текстового слоя означает, что ваши PDF в тёмном режиме остаются доступными для слабовидящих пользователей — тёмная тема помогает зрячим пользователям, а текстовый слой служит всем.</p>
+
+        <h3>Размер файла</h3>
+        <p>PDF с текстовыми слоями могут быть более эффективными по размеру по сравнению с чисто растровыми конвертациями высокого разрешения. Сами текстовые данные компактны. Изображения страниц могут использовать умеренное сжатие JPEG, в то время как текстовый слой гарантирует, что содержимое не теряет точности.</p>
+
+        <h2>Когда сохранение текста имеет ограничения</h2>
+        <p>Текстовый слой восстанавливается из текстовых данных, существующих в исходном PDF. Это идеально работает для большинства документов, но есть случаи, когда следует скорректировать ожидания:</p>
+
+        <h3>Сканированные PDF</h3>
+        <p>Если ваш PDF — скан печатной страницы (часто встречается у старых научных статей, государственных форм и архивных документов), текстовых данных для сохранения нет. Оригинал уже является изображением. Конвертер тёмного режима его затемнит, но текстового слоя для переноса нет, потому что его никогда не существовало. Если вам нужен выделяемый текст из сканированного документа, сначала обработайте его программой OCR (оптического распознавания символов), а затем конвертируйте в тёмный режим.</p>
+
+        <h3>Сложные макеты</h3>
+        <p>Документы с необычным расположением текста — перекрывающиеся элементы, повёрнутый текст или нестандартные шрифты — могут иметь незначительные расхождения в выравнивании между видимым текстом и выделяемым текстовым слоем. Для стандартных документов — научных статей, учебников, отчётов и публикаций — выравнивание практически идеальное.</p>
+
+        <h3>Текст справа налево и вертикальный текст</h3>
+        <p>Арабский, иврит и вертикальный CJK-текст (китайский/японский/корейский) создают дополнительные сложности в вёрстке. Текстовый слой обычно корректно сохраняет символы, но поведение выделения может варьироваться в зависимости от поддержки вашей программой для чтения PDF этих систем письма.</p>
+
+        <h2>Как проверить, есть ли в вашем PDF в тёмном режиме выделяемый текст</h2>
+        <p>После конвертации PDF в тёмный режим вы можете проверить текстовый слой за считанные секунды:</p>
+        <ol>
+            <li>Откройте конвертированный PDF в любой программе для чтения (Adobe Acrobat, Chrome, Firefox, Preview и т.д.)</li>
+            <li>Попробуйте выделить текст, кликнув и протянув курсор по абзацу</li>
+            <li>Если текст подсвечивается синим (или цветом выделения вашей программы), текстовый слой работает</li>
+            <li>Нажмите Ctrl+F и поищите слово, видимое на странице — если оно найдено, текстовый поиск работает</li>
+        </ol>
+        <p>Если ни выделение, ни поиск не работают, инструмент, конвертировавший ваш PDF, растеризовал его в плоские изображения.</p>
+
+        <h2>Сравнение методов</h2>
+        <p>Не все способы получения PDF в тёмном режиме одинаково обращаются с текстом:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Метод</th>
+                    <th>Сохраняет выделяемый текст?</th>
+                    <th>Примечания</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Конвертер PDF в тёмный режим</td>
+                    <td>✅ Yes</td>
+                    <td>Скрытый текстовый слой сохраняется автоматически</td>
+                </tr>
+                <tr>
+                    <td>Инверсия цветов на уровне ОС</td>
+                    <td>✅ Yes</td>
+                    <td>Только отображение; исходный PDF не меняется</td>
+                </tr>
+                <tr>
+                    <td>Расширения браузера (Dark Reader и др.)</td>
+                    <td>⚠️ Varies</td>
+                    <td>Часто не работает с canvas-элементами PDF</td>
+                </tr>
+                <tr>
+                    <td>Конвертеры на основе скриншотов</td>
+                    <td>❌ No</td>
+                    <td>Растеризует в плоские изображения, текст потерян</td>
+                </tr>
+                <tr>
+                    <td>Простые конвертеры PDF на основе изображений</td>
+                    <td>❌ No</td>
+                    <td>Каждая страница становится отдельным изображением</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Для более подробного сравнения тёмного режима и инверсии цветов смотрите <a href="../pdf-dark-mode-vs-invert-colors/index.html">PDF тёмный режим vs. инверсия цветов: в чём разница?</a>.</p>
+
+        <div class="cta-box">
+            <p><strong>Сохраните текст, уберите блики.</strong> <a href="../../index.html">Конвертер PDF в тёмный режим</a> сохраняет выделяемый текст при каждой конвертации. Более 16 тем, ускорение на GPU, бесплатно, без регистрации, конфиденциально.</p>
+        </div>
+
+        <div class="faq">
+            <h2>Часто задаваемые вопросы</h2>
+            <div class="faq-item">
+                <div class="faq-q">Можно ли выделять и копировать текст из PDF в тёмном режиме?</div>
+                <div class="faq-a">
+                    <p>Да, если конвертер сохраняет текстовый слой. Конвертер PDF в тёмный режим встраивает невидимый текстовый слой под тёмными изображениями каждой страницы, что позволяет выделять, копировать, искать и аннотировать текст в любой программе для чтения PDF.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Почему я не могу выделить текст после конвертации PDF в тёмный режим?</div>
+                <div class="faq-a">
+                    <p>Большинство инструментов тёмного режима растеризуют каждую страницу в плоское изображение, уничтожая исходные текстовые данные. В результате получается фотография текста, а не настоящий текст. Инструменты, сохраняющие скрытый текстовый слой, позволяют избежать этой проблемы.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Работает ли текстовый слой со сканированными PDF?</div>
+                <div class="faq-a">
+                    <p>Сканированные PDF уже являются изображениями без встроенных текстовых данных. Конвертер не может создать текст из изображения. Если в вашем исходном PDF нет выделяемого текста, его не будет и в конвертированной версии. Сначала потребуется использовать программу OCR.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Работают ли программы чтения экрана с PDF в тёмном режиме, имеющим текстовый слой?</div>
+                <div class="faq-a">
+                    <p>Да. Скрытый текстовый слой полностью доступен для программ чтения экрана, как и в исходном PDF. Визуальная трансформация тёмного режима не влияет на базовую структуру текста.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script src="../../../blog/blog.js"></script>
+<!-- BAKED-FOOTER-START -->
+    <footer class="blog-footer">
+      <a href="https://github.com/BrAtUkA" class="footer-logo" aria-label="BrAtUkA on GitHub">
+        <img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">
+      </a>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="../../../ru/index.html">Главная</a>
+        <a href="../../../ru/blog/index.html">Блог</a>
+        <a href="../../../ru/about/index.html">О проекте</a>
+        <a href="../../../ru/privacy/index.html">Конфиденциальность</a>
+        <a href="../../../ru/terms/index.html">Условия</a>
+        <a href="../../../ru/contact/index.html">Контакты</a>
+        <a href="../../../ru/changelog/index.html">Изменения</a>
+        <a href="https://github.com/BrAtUkA/pdf-dark-mode-converter">GitHub</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 BrAtUkA &middot; Бесплатно и с открытым кодом</p>
+      <p class="footer-credit">Создано <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter">Chizkiyahu</a> &middot; Улучшено <a href="https://github.com/BrAtUkA">BrAtUkA</a></p>
+    </footer>
+    <!-- BAKED-FOOTER-END -->
+    <script src="../../../footer.js" data-depth="../../../" data-class="blog-footer"></script>
+
+</body></html>

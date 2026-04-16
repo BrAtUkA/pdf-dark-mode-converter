@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다크 모드 PDF에서 선택 가능한 텍스트: 대부분의 도구가 이를 깨뜨리는 이유 | PDF 다크 모드 변환기</title>
+    <meta name="description" content="대부분의 PDF 다크 모드 도구는 선택 가능한 텍스트를 파괴합니다. 텍스트 레이어의 작동 원리, 래스터화가 복사 붙여넣기를 깨뜨리는 이유, 그리고 텍스트를 검색 가능하게 유지하면서 PDF를 다크 모드로 변환하는 방법을 알아보세요.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="BrAtUkA">
+    <meta name="theme-color" content="#2a2522">
+    <link rel="canonical" href="https://bratuka.dev/pdf-dark-mode-converter/ko/blog/selectable-text-dark-mode-pdf/">
+    <link rel="stylesheet" href="../../../blog/blog.css">
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <meta property="og:title" content="다크 모드 PDF에서 선택 가능한 텍스트: 대부분의 도구가 이를 깨뜨리는 이유 | PDF 다크 모드 변환기">
+    <meta property="og:description" content="대부분의 PDF 다크 모드 도구는 선택 가능한 텍스트를 파괴합니다. 텍스트를 검색 가능하고 복사 가능하게 유지하면서 PDF를 다크 모드로 변환하는 방법을 알아보세요.">
+    <meta property="og:site_name" content="PDF Dark Mode Converter">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bratuka.dev/pdf-dark-mode-converter/ko/blog/selectable-text-dark-mode-pdf/">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale:alternate" content="ru_RU">
+
+<meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta name="twitter:title" content="다크 모드 PDF에서 선택 가능한 텍스트: 대부분의 도구가 이를 깨뜨리는 이유 | PDF 다크 모드 변환기">
+    <meta name="twitter:description" content="대부분의 PDF 다크 모드 도구는 선택 가능한 텍스트를 파괴합니다. 텍스트를 검색 가능하고 복사 가능하게 유지하면서 PDF를 다크 모드로 변환하는 방법을 알아보세요.">
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "다크 모드 PDF에서 선택 가능한 텍스트: 대부분의 도구가 이를 깨뜨리는 이유",
+      "datePublished": "2026-04-15",
+      "dateModified": "2026-04-15",
+      "image": "https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png",
+      "author": {
+            "@type": "Person",
+            "name": "BrAtUkA"
+      },
+      "publisher": {
+            "@type": "Organization",
+            "name": "PDF Dark Mode Converter",
+            "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://bratuka.dev/pdf-dark-mode-converter/favicon.ico"
+            }
+      },
+      "inLanguage": "ko"
+}</script>
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+            {
+                  "@type": "Question",
+                  "name": "다크 모드 PDF에서 텍스트를 선택하고 복사할 수 있나요?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "네, 변환기가 텍스트 레이어를 보존한다면 가능합니다. PDF 다크 모드 변환기는 각 페이지의 어두운 이미지 아래에 보이지 않는 텍스트 레이어를 삽입하므로, 어떤 PDF 리더에서든 텍스트를 정상적으로 선택, 복사, 검색 및 주석 처리할 수 있습니다."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "PDF를 다크 모드로 변환한 후 텍스트를 선택할 수 없는 이유는 무엇인가요?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "대부분의 다크 모드 도구는 각 페이지를 평면 이미지로 래스터화하여 원본 텍스트 데이터를 파괴합니다. 그 결과는 실제 텍스트가 아닌 텍스트 사진입니다. 숨겨진 텍스트 레이어를 보존하는 도구는 이 문제를 피할 수 있습니다."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "텍스트 레이어가 스캔된 PDF에서도 작동하나요?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "스캔된 PDF는 이미 텍스트 데이터가 없는 이미지입니다. 변환기는 이미지에서 텍스트를 생성할 수 없습니다. 원본 PDF에 선택 가능한 텍스트가 없다면 변환된 버전에도 없습니다. 먼저 OCR 소프트웨어를 사용해야 합니다."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "텍스트 레이어가 있는 다크 모드 PDF에서 화면 낭독기가 작동하나요?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "네. 숨겨진 텍스트 레이어는 원본 PDF에서와 마찬가지로 화면 낭독기가 완전히 접근할 수 있습니다. 다크 모드의 시각적 변환은 기본 텍스트 구조에 영향을 미치지 않습니다."
+                  }
+            }
+      ],
+      "inLanguage": "ko"
+}</script>
+
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+            {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "PDF 다크 모드 변환기",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/ko/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "블로그",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/ko/blog/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "다크 모드 PDF에서 선택 가능한 텍스트",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/ko/blog/selectable-text-dark-mode-pdf/"
+            }
+      ],
+      "inLanguage": "ko"
+}</script>
+
+<link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="es" href="https://bratuka.dev/pdf-dark-mode-converter/es/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="fr" href="https://bratuka.dev/pdf-dark-mode-converter/fr/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="de" href="https://bratuka.dev/pdf-dark-mode-converter/de/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="it" href="https://bratuka.dev/pdf-dark-mode-converter/it/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="pt" href="https://bratuka.dev/pdf-dark-mode-converter/pt/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="zh" href="https://bratuka.dev/pdf-dark-mode-converter/zh/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ko" href="https://bratuka.dev/pdf-dark-mode-converter/ko/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ja" href="https://bratuka.dev/pdf-dark-mode-converter/ja/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ru" href="https://bratuka.dev/pdf-dark-mode-converter/ru/blog/selectable-text-dark-mode-pdf/">
+</head>
+
+<body>
+    <nav class="blog-nav">
+        <a href="../../index.html" class="site-name">PDF 다크 모드 변환기</a>
+        <a href="../index.html">← 블로그</a>
+    </nav>
+    <article class="blog-article">
+        <h1>다크 모드 PDF에서 선택 가능한 텍스트: 대부분의 도구가 이를 깨뜨리는 이유</h1>
+        <p class="meta">2026년 4월 15일</p>
+
+        <p>PDF를 다크 모드로 변환하고 결과를 열어 문단을 복사하려 합니다. 아무 일도 일어나지 않습니다. 단어를 검색해 봅니다. 결과가 없습니다. 텍스트는 페이지에 분명히 있는데, PDF 리더가 이를 이미지로 취급합니다. 이것은 PDF 다크 모드 도구의 가장 흔하고 짜증나는 문제 중 하나이며, 대부분의 사용자는 실제로 텍스트를 사용해야 할 때까지 이 문제를 인식하지 못합니다.</p>
+
+        <h2>대부분의 다크 모드 도구가 텍스트를 파괴하는 이유</h2>
+        <p>문제를 이해하려면 표준 PDF가 콘텐츠를 어떻게 저장하는지 알아야 합니다. 일반적인 PDF는 단순한 이미지가 아닙니다. 글꼴 정보, 위치, 인코딩을 가진 개별 문자인 구조화된 텍스트 데이터를 포함합니다. 이것이 바로 단어를 선택하고, 문장을 복사하고, 200페이지 문서를 몇 초 만에 검색할 수 있게 해주는 것입니다.</p>
+        <p>대부분의 다크 모드 도구가 PDF를 처리할 때, <strong>래스터화</strong>라는 작업을 수행합니다. 각 페이지를 평면 이미지(스크린샷처럼)로 렌더링하고, 해당 이미지에 색상 변환을 적용한 다음, 결과를 새 PDF로 감쌉니다. 출력은 어둡게 보이지만 구조화된 텍스트 데이터는 사라졌습니다. 이제 각 페이지는 실제 텍스트가 아닌 텍스트 사진입니다.</p>
+        <p>이것은 다음을 의미합니다:</p>
+        <ul>
+            <li><strong>텍스트 선택 불가</strong> — 문장이나 문단을 하이라이트할 수 없습니다</li>
+            <li><strong>복사 붙여넣기 불가</strong> — 인용문이나 참고 자료를 추출할 수 없습니다</li>
+            <li><strong>검색 불가</strong> — Ctrl+F / Cmd+F가 아무것도 찾지 못합니다</li>
+            <li><strong>접근성 상실</strong> — 화면 낭독기가 문서를 읽을 수 없습니다</li>
+            <li><strong>주석 불가</strong> — 텍스트 기반 마크업 도구가 작동하지 않습니다</li>
+            <li><strong>더 큰 파일 크기</strong> — 이미지가 구조화된 텍스트보다 더 많은 공간을 차지합니다</li>
+        </ul>
+        <p>한 페이지짜리 전단지라면 상관없을 수 있습니다. 하지만 50페이지 연구 논문이나 정기적으로 참조하는 교과서의 경우, 검색 가능한 텍스트를 잃는 것은 심각한 문제입니다.</p>
+
+        <h2>텍스트 레이어가 이 문제를 해결하는 방법</h2>
+        <p>해결책은 <strong>숨겨진 텍스트 레이어</strong>라는 기술입니다. 원본 텍스트 데이터를 버리는 대신, 변환기가 이를 보존하고 각 페이지 이미지 위에 보이지 않게 배치합니다. 결과는 두 개의 레이어를 가진 PDF입니다:</p>
+        <ol>
+            <li><strong>시각적 레이어</strong> — 화면에서 볼 수 있는 다크 테마 페이지 이미지</li>
+            <li><strong>텍스트 레이어</strong> — 보이지 않지만 완벽하게 정렬된 텍스트로, PDF 리더가 상호작용할 수 있습니다</li>
+        </ol>
+        <p>변환된 PDF에서 텍스트를 선택할 때, 실제로는 숨겨진 텍스트 레이어에서 선택하는 것입니다. 검색할 때 리더가 스캔하는 것은 텍스트 레이어입니다. 화면 낭독기가 문서를 처리할 때 읽는 것은 텍스트 레이어입니다. 시각적 외관은 어둡지만, 아래의 기능적 텍스트는 완전히 온전합니다.</p>
+        <p>이것이 바로 <a href="../../index.html">PDF 다크 모드 변환기</a>의 작동 방식입니다. 변환된 각 페이지에는 동기화된 텍스트 레이어가 포함되어 있어 출력에서 전체 텍스트 기능을 유지합니다.</p>
+
+        <figure class="wide">
+            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
+            <figcaption>변환된 다크 모드 PDF에서 텍스트를 선택, 복사, 검색할 수 있습니다 — 숨겨진 텍스트 레이어가 이를 가능하게 합니다.</figcaption>
+        </figure>
+
+        <h2>보존된 텍스트로 할 수 있는 것들</h2>
+        <p>텍스트 레이어가 온전한 다크 모드 PDF는 시각적 색상을 제외한 모든 면에서 일반 PDF와 동일하게 작동합니다:</p>
+
+        <h3>문서 내 검색</h3>
+        <p>Ctrl+F(Mac에서는 Cmd+F)를 눌러 원하는 단어나 구문을 검색하세요. 이는 특정 섹션을 빠르게 찾아야 하는 교과서, 기술 문서, 법적 계약서에 필수적입니다. 텍스트 레이어가 없으면 모든 페이지를 수동으로 스크롤해야 합니다.</p>
+
+        <h3>텍스트 복사 및 붙여넣기</h3>
+        <p>원하는 구절을 선택하여 노트, 이메일, 워드프로세서에 복사하세요. <a href="../convert-pdf-to-dark-mode-online/index.html">다크 모드로 변환한 교과서</a>로 공부하는 학생들은 여전히 에세이를 위한 인용문을 추출할 수 있습니다. 연구자들은 다시 타이핑하지 않고도 참고 자료를 가져올 수 있습니다.</p>
+
+        <h3>주석 및 하이라이트</h3>
+        <p>PDF 리더의 텍스트 기반 주석은 텍스트 레이어에 의존합니다. 문장을 하이라이트하고, 인라인 코멘트를 추가하고, 텍스트에 연결된 북마크를 만들 수 있습니다. 이러한 기능은 이미지로만 구성된 다크 모드 PDF에서는 완전히 작동하지 않습니다.</p>
+
+        <h3>접근성과 화면 낭독기</h3>
+        <p>JAWS, NVDA, VoiceOver 같은 화면 낭독기는 PDF 텍스트 레이어에 의존하여 콘텐츠를 소리내어 읽습니다. 이미지로만 구성된 다크 모드 PDF는 보조 기술에 완전히 불투명합니다. 텍스트 레이어를 보존한다는 것은 다크 모드 PDF가 시각 장애 사용자에게도 접근 가능하게 유지된다는 의미입니다 — 다크 테마는 시력이 있는 사용자를 돕고, 텍스트 레이어는 모든 사람에게 서비스합니다.</p>
+
+        <h3>파일 크기</h3>
+        <p>텍스트 레이어가 있는 PDF는 고해상도의 순수 이미지 기반 변환과 비교하여 크기가 더 효율적일 수 있습니다. 텍스트 데이터 자체는 컴팩트합니다. 페이지 이미지는 적절한 JPEG 압축을 사용할 수 있으며, 텍스트 레이어는 콘텐츠 충실도 면에서 아무것도 손실되지 않도록 보장합니다.</p>
+
+        <h2>텍스트 보존의 한계</h2>
+        <p>텍스트 레이어는 원본 PDF에 존재하는 텍스트 데이터로부터 재구성됩니다. 이는 대부분의 문서에서 완벽하게 작동하지만, 기대치를 조정해야 하는 경우가 있습니다:</p>
+
+        <h3>스캔된 PDF</h3>
+        <p>PDF가 인쇄된 페이지의 스캔본(오래된 학술 논문, 정부 서식, 보관 문서에서 흔함)이라면, 보존할 텍스트 데이터가 없습니다. 원본이 이미 이미지입니다. 다크 모드 변환기가 어둡게 만들어 주지만, 텍스트 레이어가 존재한 적이 없으므로 전달할 것이 없습니다. 스캔된 문서에서 선택 가능한 텍스트가 필요하다면, 먼저 OCR(광학 문자 인식) 소프트웨어로 처리한 다음 다크 모드로 변환하세요.</p>
+
+        <h3>복잡한 레이아웃</h3>
+        <p>비정상적인 텍스트 배치를 가진 문서 — 겹치는 요소, 회전된 텍스트, 비표준 글꼴 — 는 보이는 텍스트와 선택 가능한 텍스트 레이어 사이에 약간의 정렬 차이가 있을 수 있습니다. 연구 논문, 교과서, 보고서, 기사와 같은 표준 문서의 경우 정렬은 사실상 완벽합니다.</p>
+
+        <h3>오른쪽에서 왼쪽 방향 및 세로 텍스트</h3>
+        <p>아랍어, 히브리어, 세로 CJK(중국어/일본어/한국어) 텍스트는 추가적인 레이아웃 과제를 제시합니다. 텍스트 레이어는 일반적으로 문자를 올바르게 보존하지만, 선택 동작은 PDF 리더의 해당 문자 체계 지원 정도에 따라 다를 수 있습니다.</p>
+
+        <h2>다크 모드 PDF에 선택 가능한 텍스트가 있는지 확인하는 방법</h2>
+        <p>PDF를 다크 모드로 변환한 후, 몇 초 안에 텍스트 레이어를 확인할 수 있습니다:</p>
+        <ol>
+            <li>변환된 PDF를 아무 PDF 리더에서 열기(Adobe Acrobat, Chrome, Firefox, 미리보기 등)</li>
+            <li>문단 위에서 클릭하고 드래그하여 텍스트를 선택해 보기</li>
+            <li>텍스트가 파란색(또는 리더의 선택 색상)으로 하이라이트되면 텍스트 레이어가 작동하는 것입니다</li>
+            <li>Ctrl+F를 눌러 페이지에 보이는 단어를 검색해 보세요 — 찾으면 텍스트 검색이 작동하는 것입니다</li>
+        </ol>
+        <p>선택도 검색도 되지 않는다면, PDF를 변환한 도구가 평면 이미지로 래스터화한 것입니다.</p>
+
+        <h2>방법 비교</h2>
+        <p>다크 모드 PDF를 얻는 모든 방법이 텍스트를 동일하게 처리하지는 않습니다:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>방법</th>
+                    <th>텍스트 선택 가능 유지?</th>
+                    <th>참고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PDF 다크 모드 변환기</td>
+                    <td>✅ Yes</td>
+                    <td>숨겨진 텍스트 레이어 자동 보존</td>
+                </tr>
+                <tr>
+                    <td>OS 수준 색상 반전</td>
+                    <td>✅ Yes</td>
+                    <td>화면 표시만 변경; 원본 PDF 변경 없음</td>
+                </tr>
+                <tr>
+                    <td>브라우저 확장 프로그램 (Dark Reader 등)</td>
+                    <td>⚠️ Varies</td>
+                    <td>PDF canvas 요소에서 자주 실패</td>
+                </tr>
+                <tr>
+                    <td>스크린샷 기반 변환기</td>
+                    <td>❌ No</td>
+                    <td>평면 이미지로 래스터화, 텍스트 손실</td>
+                </tr>
+                <tr>
+                    <td>간단한 이미지 기반 PDF 변환기</td>
+                    <td>❌ No</td>
+                    <td>각 페이지가 단일 이미지로 변환</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>다크 모드와 색상 반전의 더 자세한 비교는 <a href="../pdf-dark-mode-vs-invert-colors/index.html">PDF 다크 모드 vs. 색상 반전: 차이점은 무엇인가?</a>를 참조하세요.</p>
+
+        <div class="cta-box">
+            <p><strong>텍스트는 유지하고, 눈부심은 제거하세요.</strong> <a href="../../index.html">PDF 다크 모드 변환기</a>는 매번 변환할 때마다 선택 가능한 텍스트를 보존합니다. 16가지 이상의 테마, GPU 가속, 무료, 프라이빗, 계정 불필요.</p>
+        </div>
+
+        <div class="faq">
+            <h2>자주 묻는 질문</h2>
+            <div class="faq-item">
+                <div class="faq-q">다크 모드 PDF에서 텍스트를 선택하고 복사할 수 있나요?</div>
+                <div class="faq-a">
+                    <p>네, 변환기가 텍스트 레이어를 보존한다면 가능합니다. PDF 다크 모드 변환기는 각 페이지의 어두운 이미지 아래에 보이지 않는 텍스트 레이어를 삽입하므로, 어떤 PDF 리더에서든 텍스트를 정상적으로 선택, 복사, 검색 및 주석 처리할 수 있습니다.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">PDF를 다크 모드로 변환한 후 텍스트를 선택할 수 없는 이유는 무엇인가요?</div>
+                <div class="faq-a">
+                    <p>대부분의 다크 모드 도구는 각 페이지를 평면 이미지로 래스터화하여 원본 텍스트 데이터를 파괴합니다. 그 결과는 실제 텍스트가 아닌 텍스트 사진입니다. 숨겨진 텍스트 레이어를 보존하는 도구는 이 문제를 피할 수 있습니다.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">텍스트 레이어가 스캔된 PDF에서도 작동하나요?</div>
+                <div class="faq-a">
+                    <p>스캔된 PDF는 이미 텍스트 데이터가 없는 이미지입니다. 변환기는 이미지에서 텍스트를 생성할 수 없습니다. 원본 PDF에 선택 가능한 텍스트가 없다면 변환된 버전에도 없습니다. 먼저 OCR 소프트웨어를 사용해야 합니다.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">텍스트 레이어가 있는 다크 모드 PDF에서 화면 낭독기가 작동하나요?</div>
+                <div class="faq-a">
+                    <p>네. 숨겨진 텍스트 레이어는 원본 PDF에서와 마찬가지로 화면 낭독기가 완전히 접근할 수 있습니다. 다크 모드의 시각적 변환은 기본 텍스트 구조에 영향을 미치지 않습니다.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script src="../../../blog/blog.js"></script>
+<!-- BAKED-FOOTER-START -->
+    <footer class="blog-footer">
+      <a href="https://github.com/BrAtUkA" class="footer-logo" aria-label="BrAtUkA on GitHub">
+        <img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">
+      </a>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="../../../ko/index.html">홈</a>
+        <a href="../../../ko/blog/index.html">블로그</a>
+        <a href="../../../ko/about/index.html">소개</a>
+        <a href="../../../ko/privacy/index.html">개인정보</a>
+        <a href="../../../ko/terms/index.html">이용약관</a>
+        <a href="../../../ko/contact/index.html">문의</a>
+        <a href="../../../ko/changelog/index.html">변경 이력</a>
+        <a href="https://github.com/BrAtUkA/pdf-dark-mode-converter">GitHub</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 BrAtUkA &middot; 무료 오픈소스</p>
+      <p class="footer-credit">원작 <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter">Chizkiyahu</a> &middot; 강화 <a href="https://github.com/BrAtUkA">BrAtUkA</a></p>
+    </footer>
+    <!-- BAKED-FOOTER-END -->
+    <script src="../../../footer.js" data-depth="../../../" data-class="blog-footer"></script>
+
+</body></html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="de"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auswählbarer Text in Dunkelmodus-PDFs: Warum die Meisten Tools Ihn Zerstören | PDF Dunkelmodus Konverter</title>
+    <meta name="description" content="Die meisten PDF-Dunkelmodus-Tools zerstören auswählbaren Text. Erfahren Sie, wie Textebenen funktionieren, warum Rasterung das Kopieren verhindert, und wie Sie PDFs in den Dunkelmodus konvertieren und dabei den Text durchsuchbar halten.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="BrAtUkA">
+    <meta name="theme-color" content="#2a2522">
+    <link rel="canonical" href="https://bratuka.dev/pdf-dark-mode-converter/de/blog/selectable-text-dark-mode-pdf/">
+    <link rel="stylesheet" href="../../../blog/blog.css">
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <meta property="og:title" content="Auswählbarer Text in Dunkelmodus-PDFs: Warum die Meisten Tools Ihn Zerstören | PDF Dunkelmodus Konverter">
+    <meta property="og:description" content="Die meisten PDF-Dunkelmodus-Tools zerstören auswählbaren Text. Erfahren Sie, wie Sie PDFs in den Dunkelmodus konvertieren und dabei den Text durchsuchbar halten.">
+    <meta property="og:site_name" content="PDF Dark Mode Converter">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bratuka.dev/pdf-dark-mode-converter/de/blog/selectable-text-dark-mode-pdf/">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale:alternate" content="ru_RU">
+
+<meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta name="twitter:title" content="Auswählbarer Text in Dunkelmodus-PDFs: Warum die Meisten Tools Ihn Zerstören | PDF Dunkelmodus Konverter">
+    <meta name="twitter:description" content="Die meisten PDF-Dunkelmodus-Tools zerstören auswählbaren Text. Erfahren Sie, wie Sie PDFs in den Dunkelmodus konvertieren und dabei den Text durchsuchbar halten.">
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Auswählbarer Text in Dunkelmodus-PDFs: Warum die Meisten Tools Ihn Zerstören",
+      "datePublished": "2026-04-15",
+      "dateModified": "2026-04-15",
+      "image": "https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png",
+      "author": {
+            "@type": "Person",
+            "name": "BrAtUkA"
+      },
+      "publisher": {
+            "@type": "Organization",
+            "name": "PDF Dark Mode Converter",
+            "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://bratuka.dev/pdf-dark-mode-converter/favicon.ico"
+            }
+      },
+      "inLanguage": "de"
+}</script>
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+            {
+                  "@type": "Question",
+                  "name": "Kann ich Text aus einem Dunkelmodus-PDF auswählen und kopieren?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ja, wenn der Konverter die Textebene beibehält. Der PDF Dunkelmodus Konverter bettet eine unsichtbare Textebene unter den dunklen Seitenbildern ein, sodass Sie Text in jedem PDF-Reader normal auswählen, kopieren, durchsuchen und kommentieren können."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Warum kann ich nach der Konvertierung meines PDFs in den Dunkelmodus keinen Text auswählen?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Die meisten Dunkelmodus-Tools rastern jede Seite zu einem flachen Bild und zerstören dabei die ursprünglichen Textdaten. Das Ergebnis ist ein Foto des Textes statt echtem Text. Tools, die eine versteckte Textebene beibehalten, vermeiden dieses Problem."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Funktioniert die Textebene mit gescannten PDFs?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Gescannte PDFs sind bereits Bilder ohne eingebettete Textdaten. Der Konverter kann keinen Text aus einem Bild erzeugen. Wenn Ihr Original-PDF keinen auswählbaren Text hat, wird die konvertierte Version ihn auch nicht haben. Sie benötigen zunächst eine OCR-Software."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Funktionieren Screenreader mit einem Dunkelmodus-PDF, das eine Textebene hat?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ja. Die versteckte Textebene ist für Screenreader vollständig zugänglich, genau wie im Original-PDF. Die visuelle Dunkelmodus-Transformation beeinflusst die zugrunde liegende Textstruktur nicht."
+                  }
+            }
+      ],
+      "inLanguage": "de"
+}</script>
+
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+            {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "PDF Dunkelmodus Konverter",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/de/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/de/blog/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Auswählbarer Text in Dunkelmodus-PDFs",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/de/blog/selectable-text-dark-mode-pdf/"
+            }
+      ],
+      "inLanguage": "de"
+}</script>
+
+<link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="es" href="https://bratuka.dev/pdf-dark-mode-converter/es/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="fr" href="https://bratuka.dev/pdf-dark-mode-converter/fr/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="de" href="https://bratuka.dev/pdf-dark-mode-converter/de/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="it" href="https://bratuka.dev/pdf-dark-mode-converter/it/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="pt" href="https://bratuka.dev/pdf-dark-mode-converter/pt/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="zh" href="https://bratuka.dev/pdf-dark-mode-converter/zh/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ko" href="https://bratuka.dev/pdf-dark-mode-converter/ko/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ja" href="https://bratuka.dev/pdf-dark-mode-converter/ja/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ru" href="https://bratuka.dev/pdf-dark-mode-converter/ru/blog/selectable-text-dark-mode-pdf/">
+</head>
+
+<body>
+    <nav class="blog-nav">
+        <a href="../../index.html" class="site-name">PDF Dunkelmodus Konverter</a>
+        <a href="../index.html">← Blog</a>
+    </nav>
+    <article class="blog-article">
+        <h1>Auswählbarer Text in Dunkelmodus-PDFs: Warum die Meisten Tools Ihn Zerstören</h1>
+        <p class="meta">15. April 2026</p>
+
+        <p>Sie konvertieren ein PDF in den Dunkelmodus, öffnen das Ergebnis und versuchen, einen Absatz zu kopieren. Nichts passiert. Sie versuchen, ein Wort zu suchen. Keine Ergebnisse. Der Text ist direkt auf der Seite, aber Ihr PDF-Reader behandelt ihn wie ein Bild. Dies ist eines der häufigsten und frustrierendsten Probleme mit PDF-Dunkelmodus-Tools, und die meisten Benutzer bemerken es erst, wenn sie den Text tatsächlich verwenden müssen.</p>
+
+        <h2>Warum die meisten Dunkelmodus-Tools Ihren Text zerstören</h2>
+        <p>Um das Problem zu verstehen, müssen Sie wissen, wie ein Standard-PDF Inhalte speichert. Ein typisches PDF ist kein einfaches Bild. Es enthält strukturierte Textdaten: einzelne Zeichen mit Schriftinformationen, Positionen und Kodierung. Das ermöglicht es Ihnen, ein Wort auszuwählen, einen Satz zu kopieren oder ein 200-seitiges Dokument in Sekunden zu durchsuchen.</p>
+        <p>Wenn die meisten Dunkelmodus-Tools Ihr PDF verarbeiten, führen sie eine sogenannte <strong>Rasterung</strong> durch. Sie rendern jede Seite als flaches Bild (wie einen Screenshot), wenden die Farbtransformation auf dieses Bild an und packen das Ergebnis dann in ein neues PDF. Das Ergebnis sieht dunkel aus, aber die strukturierten Textdaten sind verloren. Jede Seite ist nun ein Foto des Textes statt echtem Text.</p>
+        <p>Das bedeutet:</p>
+        <ul>
+            <li><strong>Keine Textauswahl</strong> — Sie können keinen Satz oder Absatz markieren</li>
+            <li><strong>Kein Kopieren und Einfügen</strong> — Sie können kein Zitat oder keine Referenz extrahieren</li>
+            <li><strong>Keine Suche</strong> — Strg+F / Cmd+F findet nichts</li>
+            <li><strong>Keine Barrierefreiheit</strong> — Screenreader können das Dokument nicht lesen</li>
+            <li><strong>Keine Anmerkungen</strong> — textbasierte Markup-Tools funktionieren nicht mehr</li>
+            <li><strong>Größere Dateien</strong> — Bilder benötigen mehr Speicherplatz als strukturierter Text</li>
+        </ul>
+        <p>Für einen einseitigen Flyer mag das keine Rolle spielen. Für eine 50-seitige Forschungsarbeit oder ein Lehrbuch, das Sie regelmäßig nachschlagen, ist der Verlust von durchsuchbarem Text ein ernstes Problem.</p>
+
+        <h2>Wie Textebenen dieses Problem lösen</h2>
+        <p>Die Lösung ist eine Technik namens <strong>versteckte Textebene</strong>. Statt die ursprünglichen Textdaten wegzuwerfen, behält der Konverter sie bei und positioniert sie unsichtbar über jedem Seitenbild. Das Ergebnis ist ein PDF mit zwei Ebenen:</p>
+        <ol>
+            <li><strong>Visuelle Ebene</strong> — das dunkel gestaltete Seitenbild, das Sie auf dem Bildschirm sehen</li>
+            <li><strong>Textebene</strong> — unsichtbarer, perfekt ausgerichteter Text, mit dem Ihr PDF-Reader interagieren kann</li>
+        </ol>
+        <p>Wenn Sie Text im konvertierten PDF auswählen, wählen Sie tatsächlich aus der versteckten Textebene. Wenn Sie suchen, durchsucht Ihr Reader die Textebene. Wenn ein Screenreader das Dokument verarbeitet, liest er die Textebene. Das visuelle Erscheinungsbild ist dunkel; der funktionale Text darunter ist vollständig intakt.</p>
+        <p>Genau so funktioniert der <a href="../../index.html">PDF Dunkelmodus Konverter</a>. Jede konvertierte Seite enthält eine synchronisierte Textebene, damit Sie die volle Textfunktionalität im Ergebnis behalten.</p>
+
+        <figure class="wide">
+            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
+            <figcaption>Text kann im konvertierten Dunkelmodus-PDF ausgewählt, kopiert und durchsucht werden — die versteckte Textebene macht dies möglich.</figcaption>
+        </figure>
+
+        <h2>Was Sie mit erhaltenem Text tun können</h2>
+        <p>Ein Dunkelmodus-PDF mit intakter Textebene verhält sich in jeder Hinsicht genau wie ein normales PDF, außer bei den visuellen Farben:</p>
+
+        <h3>Im Dokument suchen</h3>
+        <p>Drücken Sie Strg+F (oder Cmd+F auf Mac) und suchen Sie nach jedem Wort oder Ausdruck. Das ist entscheidend für Lehrbücher, technische Dokumentation und Verträge, bei denen Sie bestimmte Abschnitte schnell finden müssen. Ohne Textebene müssten Sie jede Seite manuell durchblättern.</p>
+
+        <h3>Text kopieren und einfügen</h3>
+        <p>Wählen Sie einen beliebigen Abschnitt aus und kopieren Sie ihn in Ihre Notizen, E-Mail oder Textverarbeitung. Studierende, die mit <a href="../convert-pdf-to-dark-mode-online/index.html">Dunkelmodus-konvertierten Lehrbüchern</a> arbeiten, können weiterhin Zitate für ihre Arbeiten extrahieren. Forscher können Referenzen abrufen, ohne sie abtippen zu müssen.</p>
+
+        <h3>Anmerkungen und Hervorhebungen</h3>
+        <p>Textbasierte Anmerkungen in PDF-Readern hängen von der Textebene ab. Sie können Sätze hervorheben, Inline-Kommentare hinzufügen und textverknüpfte Lesezeichen erstellen. Diese Funktionen fallen bei reinen Bild-Dunkelmodus-PDFs komplett aus.</p>
+
+        <h3>Barrierefreiheit und Screenreader</h3>
+        <p>Screenreader wie JAWS, NVDA und VoiceOver stützen sich auf die PDF-Textebene, um Inhalte vorzulesen. Ein reines Bild-Dunkelmodus-PDF ist für Hilfstechnologie völlig undurchsichtig. Die Beibehaltung der Textebene bedeutet, dass Ihre Dunkelmodus-PDFs für sehbehinderte Benutzer zugänglich bleiben — das dunkle Design hilft sehenden Benutzern, während die Textebene allen dient.</p>
+
+        <h3>Dateigröße</h3>
+        <p>PDFs mit Textebenen können in der Größe effizienter sein als rein bildbasierte Konvertierungen bei hoher Auflösung. Die Textdaten selbst sind kompakt. Die Seitenbilder können moderate JPEG-Komprimierung verwenden, während die Textebene sicherstellt, dass in Bezug auf Inhaltstreue nichts verloren geht.</p>
+
+        <h2>Wann die Texterhaltung Grenzen hat</h2>
+        <p>Die Textebene wird aus den vorhandenen Textdaten im Original-PDF rekonstruiert. Das funktioniert für die meisten Dokumente perfekt, aber es gibt Fälle, in denen Sie Ihre Erwartungen anpassen sollten:</p>
+
+        <h3>Gescannte PDFs</h3>
+        <p>Wenn Ihr PDF ein Scan einer gedruckten Seite ist (häufig bei älteren akademischen Arbeiten, Behördenformularen und archivierten Dokumenten), gibt es keine Textdaten zum Bewahren. Das Original ist bereits ein Bild. Der Dunkelmodus-Konverter wird es abdunkeln, aber es gibt keine Textebene zum Übertragen, weil nie eine existiert hat. Wenn Sie auswählbaren Text aus einem gescannten Dokument benötigen, verarbeiten Sie es zuerst mit OCR-Software (Optische Zeichenerkennung) und konvertieren Sie es dann in den Dunkelmodus.</p>
+
+        <h3>Komplexe Layouts</h3>
+        <p>Dokumente mit ungewöhnlicher Textpositionierung — überlappende Elemente, gedrehter Text oder nicht standardmäßige Schriftarten — können leichte Ausrichtungsunterschiede zwischen dem sichtbaren Text und der auswählbaren Textebene aufweisen. Für Standarddokumente wie Forschungsarbeiten, Lehrbücher, Berichte und Artikel ist die Ausrichtung praktisch perfekt.</p>
+
+        <h3>Rechts-nach-links und vertikaler Text</h3>
+        <p>Arabischer, hebräischer und vertikaler CJK-Text (Chinesisch/Japanisch/Koreanisch) stellen zusätzliche Layout-Herausforderungen dar. Die Textebene bewahrt die Zeichen in der Regel korrekt, aber das Auswahlverhalten kann je nach Unterstützung Ihres PDF-Readers für diese Schriftsysteme variieren.</p>
+
+        <h2>So prüfen Sie, ob Ihr Dunkelmodus-PDF auswählbaren Text hat</h2>
+        <p>Nach der Konvertierung eines PDFs in den Dunkelmodus können Sie die Textebene in Sekunden überprüfen:</p>
+        <ol>
+            <li>Öffnen Sie das konvertierte PDF in einem beliebigen PDF-Reader (Adobe Acrobat, Chrome, Firefox, Vorschau usw.)</li>
+            <li>Versuchen Sie, Text auszuwählen, indem Sie über einen Absatz klicken und ziehen</li>
+            <li>Wenn der Text sich blau markiert (oder in der Auswahlfarbe Ihres Readers), funktioniert die Textebene</li>
+            <li>Drücken Sie Strg+F und suchen Sie nach einem Wort, das auf der Seite sichtbar ist — wenn es gefunden wird, funktioniert die Textsuche</li>
+        </ol>
+        <p>Wenn weder Auswahl noch Suche funktionieren, hat das Tool, das Ihr PDF konvertiert hat, es in flache Bilder gerastert.</p>
+
+        <h2>Vergleich der Methoden</h2>
+        <p>Nicht alle Methoden zum Erhalten von Dunkelmodus-PDFs behandeln Text gleich:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Methode</th>
+                    <th>Behält Text auswählbar?</th>
+                    <th>Hinweise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PDF Dunkelmodus Konverter</td>
+                    <td>✅ Yes</td>
+                    <td>Versteckte Textebene wird automatisch beibehalten</td>
+                </tr>
+                <tr>
+                    <td>Farbumkehr auf Systemebene</td>
+                    <td>✅ Yes</td>
+                    <td>Nur Anzeige; das Original-PDF bleibt unverändert</td>
+                </tr>
+                <tr>
+                    <td>Browser-Erweiterungen (Dark Reader usw.)</td>
+                    <td>⚠️ Varies</td>
+                    <td>Versagt oft bei PDF-Canvas-Elementen</td>
+                </tr>
+                <tr>
+                    <td>Screenshot-basierte Konverter</td>
+                    <td>❌ No</td>
+                    <td>Rastert zu flachen Bildern, Text geht verloren</td>
+                </tr>
+                <tr>
+                    <td>Einfache bildbasierte PDF-Konverter</td>
+                    <td>❌ No</td>
+                    <td>Jede Seite wird zu einem einzelnen Bild</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Für einen tiefergehenden Vergleich zwischen Dunkelmodus und Farbumkehr, siehe <a href="../pdf-dark-mode-vs-invert-colors/index.html">Dunkelmodus vs. Farbumkehr bei PDFs: Was Ist der Unterschied?</a>.</p>
+
+        <div class="cta-box">
+            <p><strong>Behalten Sie Ihren Text, beseitigen Sie die Blendung.</strong> Der <a href="../../index.html">PDF Dunkelmodus Konverter</a> behält auswählbaren Text bei jeder Konvertierung bei. Über 16 Designs, GPU-beschleunigt, kostenlos, privat, ohne Konto.</p>
+        </div>
+
+        <div class="faq">
+            <h2>Häufig Gestellte Fragen</h2>
+            <div class="faq-item">
+                <div class="faq-q">Kann ich Text aus einem Dunkelmodus-PDF auswählen und kopieren?</div>
+                <div class="faq-a">
+                    <p>Ja, wenn der Konverter die Textebene beibehält. Der PDF Dunkelmodus Konverter bettet eine unsichtbare Textebene unter den dunklen Seitenbildern ein, sodass Sie Text in jedem PDF-Reader normal auswählen, kopieren, durchsuchen und kommentieren können.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Warum kann ich nach der Konvertierung meines PDFs in den Dunkelmodus keinen Text auswählen?</div>
+                <div class="faq-a">
+                    <p>Die meisten Dunkelmodus-Tools rastern jede Seite zu einem flachen Bild und zerstören dabei die ursprünglichen Textdaten. Das Ergebnis ist ein Foto des Textes statt echtem Text. Tools, die eine versteckte Textebene beibehalten, vermeiden dieses Problem.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Funktioniert die Textebene mit gescannten PDFs?</div>
+                <div class="faq-a">
+                    <p>Gescannte PDFs sind bereits Bilder ohne eingebettete Textdaten. Der Konverter kann keinen Text aus einem Bild erzeugen. Wenn Ihr Original-PDF keinen auswählbaren Text hat, wird die konvertierte Version ihn auch nicht haben. Sie benötigen zunächst eine OCR-Software.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Funktionieren Screenreader mit einem Dunkelmodus-PDF, das eine Textebene hat?</div>
+                <div class="faq-a">
+                    <p>Ja. Die versteckte Textebene ist für Screenreader vollständig zugänglich, genau wie im Original-PDF. Die visuelle Dunkelmodus-Transformation beeinflusst die zugrunde liegende Textstruktur nicht.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script src="../../../blog/blog.js"></script>
+<!-- BAKED-FOOTER-START -->
+    <footer class="blog-footer">
+      <a href="https://github.com/BrAtUkA" class="footer-logo" aria-label="BrAtUkA on GitHub">
+        <img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">
+      </a>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="../../../de/index.html">Startseite</a>
+        <a href="../../../de/blog/index.html">Blog</a>
+        <a href="../../../de/about/index.html">Über uns</a>
+        <a href="../../../de/privacy/index.html">Datenschutz</a>
+        <a href="../../../de/terms/index.html">Nutzungsbedingungen</a>
+        <a href="../../../de/contact/index.html">Kontakt</a>
+        <a href="../../../de/changelog/index.html">Änderungsprotokoll</a>
+        <a href="https://github.com/BrAtUkA/pdf-dark-mode-converter">GitHub</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 BrAtUkA &middot; Kostenlos & Open-Source</p>
+      <p class="footer-credit">Ursprünglich von <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter">Chizkiyahu</a> &middot; Weiterentwickelt von <a href="https://github.com/BrAtUkA">BrAtUkA</a></p>
+    </footer>
+    <!-- BAKED-FOOTER-END -->
+    <script src="../../../footer.js" data-depth="../../../" data-class="blog-footer"></script>
+
+</body></html>

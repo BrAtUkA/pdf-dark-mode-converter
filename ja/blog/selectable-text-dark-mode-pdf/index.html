@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダークモードPDFの選択可能テキスト：ほとんどのツールが破壊する理由 | PDFダークモードコンバーター</title>
+    <meta name="description" content="ほとんどのPDFダークモードツールは選択可能なテキストを破壊します。テキストレイヤーの仕組み、ラスタライズがコピー&amp;ペーストを壊す理由、そしてテキストを検索可能に保ったままPDFをダークモードに変換する方法をご紹介します。">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="BrAtUkA">
+    <meta name="theme-color" content="#2a2522">
+    <link rel="canonical" href="https://bratuka.dev/pdf-dark-mode-converter/ja/blog/selectable-text-dark-mode-pdf/">
+    <link rel="stylesheet" href="../../../blog/blog.css">
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <meta property="og:title" content="ダークモードPDFの選択可能テキスト：ほとんどのツールが破壊する理由 | PDFダークモードコンバーター">
+    <meta property="og:description" content="ほとんどのPDFダークモードツールは選択可能なテキストを破壊します。テキストを検索・コピー可能に保ったままPDFをダークモードに変換する方法をご紹介します。">
+    <meta property="og:site_name" content="PDF Dark Mode Converter">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bratuka.dev/pdf-dark-mode-converter/ja/blog/selectable-text-dark-mode-pdf/">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="ru_RU">
+
+<meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta name="twitter:title" content="ダークモードPDFの選択可能テキスト：ほとんどのツールが破壊する理由 | PDFダークモードコンバーター">
+    <meta name="twitter:description" content="ほとんどのPDFダークモードツールは選択可能なテキストを破壊します。テキストを検索・コピー可能に保ったままPDFをダークモードに変換する方法をご紹介します。">
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "ダークモードPDFの選択可能テキスト：ほとんどのツールが破壊する理由",
+      "datePublished": "2026-04-15",
+      "dateModified": "2026-04-15",
+      "image": "https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png",
+      "author": {
+            "@type": "Person",
+            "name": "BrAtUkA"
+      },
+      "publisher": {
+            "@type": "Organization",
+            "name": "PDF Dark Mode Converter",
+            "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://bratuka.dev/pdf-dark-mode-converter/favicon.ico"
+            }
+      },
+      "inLanguage": "ja"
+}</script>
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+            {
+                  "@type": "Question",
+                  "name": "ダークモードのPDFでテキストを選択してコピーできますか？",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "はい、コンバーターがテキストレイヤーを保持していれば可能です。PDFダークモードコンバーターは各ページのダーク画像の下に不可視のテキストレイヤーを埋め込むため、どのPDFリーダーでもテキストの選択、コピー、検索、注釈が通常通り行えます。"
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "PDFをダークモードに変換した後、テキストが選択できないのはなぜですか？",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "ほとんどのダークモードツールは各ページをフラットな画像にラスタライズし、元のテキストデータを破壊します。結果として、実際のテキストではなくテキストの写真になります。隠しテキストレイヤーを保持するツールはこの問題を回避できます。"
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "テキストレイヤーはスキャンされたPDFでも機能しますか？",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "スキャンされたPDFはすでにテキストデータが埋め込まれていない画像です。コンバーターは画像からテキストを作成することはできません。元のPDFに選択可能なテキストがなければ、変換されたバージョンにもありません。まずOCRソフトウェアを使用する必要があります。"
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "テキストレイヤーのあるダークモードPDFでスクリーンリーダーは機能しますか？",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "はい。隠しテキストレイヤーは、元のPDFと同様にスクリーンリーダーから完全にアクセス可能です。ダークモードの視覚的変換は、基盤となるテキスト構造に影響しません。"
+                  }
+            }
+      ],
+      "inLanguage": "ja"
+}</script>
+
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+            {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "PDFダークモードコンバーター",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/ja/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "ブログ",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/ja/blog/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "ダークモードPDFの選択可能テキスト",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/ja/blog/selectable-text-dark-mode-pdf/"
+            }
+      ],
+      "inLanguage": "ja"
+}</script>
+
+<link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="es" href="https://bratuka.dev/pdf-dark-mode-converter/es/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="fr" href="https://bratuka.dev/pdf-dark-mode-converter/fr/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="de" href="https://bratuka.dev/pdf-dark-mode-converter/de/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="it" href="https://bratuka.dev/pdf-dark-mode-converter/it/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="pt" href="https://bratuka.dev/pdf-dark-mode-converter/pt/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="zh" href="https://bratuka.dev/pdf-dark-mode-converter/zh/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ko" href="https://bratuka.dev/pdf-dark-mode-converter/ko/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ja" href="https://bratuka.dev/pdf-dark-mode-converter/ja/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ru" href="https://bratuka.dev/pdf-dark-mode-converter/ru/blog/selectable-text-dark-mode-pdf/">
+</head>
+
+<body>
+    <nav class="blog-nav">
+        <a href="../../index.html" class="site-name">PDFダークモード変換ツール</a>
+        <a href="../index.html">← ブログ</a>
+    </nav>
+    <article class="blog-article">
+        <h1>ダークモードPDFの選択可能テキスト：ほとんどのツールが破壊する理由</h1>
+        <p class="meta">2026年4月15日</p>
+
+        <p>PDFをダークモードに変換し、結果を開いて段落をコピーしようとします。何も起こりません。単語を検索してみます。結果なし。テキストはページ上にあるのに、PDFリーダーはそれを画像として扱っています。これはPDFダークモードツールの最も一般的で苛立たしい問題の一つであり、ほとんどのユーザーは実際にテキストを使う必要が出るまでこの問題に気づきません。</p>
+
+        <h2>ほとんどのダークモードツールがテキストを破壊する理由</h2>
+        <p>問題を理解するには、標準的なPDFがどのようにコンテンツを保存するかを知る必要があります。一般的なPDFは単純な画像ではありません。フォント情報、位置、エンコーディングを持つ個々の文字という、構造化されたテキストデータを含んでいます。これにより、単語を選択したり、文をコピーしたり、200ページの文書を数秒で検索したりできるのです。</p>
+        <p>ほとんどのダークモードツールがPDFを処理する際、<strong>ラスタライズ</strong>と呼ばれる処理を行います。各ページをフラットな画像（スクリーンショットのように）としてレンダリングし、その画像に色変換を適用し、結果を新しいPDFに包みます。出力はダークに見えますが、構造化されたテキストデータは失われています。各ページは実際のテキストではなく、テキストの写真になっているのです。</p>
+        <p>これは以下を意味します：</p>
+        <ul>
+            <li><strong>テキスト選択不可</strong> — 文や段落をハイライトできません</li>
+            <li><strong>コピー&amp;ペースト不可</strong> — 引用や参考文献を抽出できません</li>
+            <li><strong>検索不可</strong> — Ctrl+F / Cmd+F で何も見つかりません</li>
+            <li><strong>アクセシビリティ喪失</strong> — スクリーンリーダーが文書を読めません</li>
+            <li><strong>注釈不可</strong> — テキストベースのマークアップツールが機能しなくなります</li>
+            <li><strong>ファイルサイズ増大</strong> — 画像は構造化テキストより多くのスペースを占めます</li>
+        </ul>
+        <p>1ページのチラシなら問題ないかもしれません。しかし50ページの研究論文や定期的に参照する教科書の場合、検索可能なテキストを失うことは深刻な問題です。</p>
+
+        <h2>テキストレイヤーがこの問題を解決する仕組み</h2>
+        <p>解決策は<strong>隠しテキストレイヤー</strong>と呼ばれる技術です。元のテキストデータを破棄する代わりに、コンバーターがそれを保持し、各ページ画像の上に不可視で配置します。結果は2つのレイヤーを持つPDFになります：</p>
+        <ol>
+            <li><strong>ビジュアルレイヤー</strong> — 画面に表示されるダークテーマのページ画像</li>
+            <li><strong>テキストレイヤー</strong> — 不可視で完全に整列されたテキスト。PDFリーダーが操作可能</li>
+        </ol>
+        <p>変換されたPDFでテキストを選択する際、実際には隠しテキストレイヤーから選択しています。検索する際、リーダーがスキャンするのはテキストレイヤーです。スクリーンリーダーが文書を処理する際、読み上げるのはテキストレイヤーです。見た目はダークですが、その下の機能的なテキストは完全に無傷です。</p>
+        <p>これはまさに<a href="../../index.html">PDFダークモードコンバーター</a>の仕組みです。変換された各ページには同期されたテキストレイヤーが含まれており、出力でテキスト機能を完全に維持できます。</p>
+
+        <figure class="wide">
+            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
+            <figcaption>変換されたダークモードPDFでテキストを選択、コピー、検索できます — 隠しテキストレイヤーがこれを可能にします。</figcaption>
+        </figure>
+
+        <h2>保持されたテキストでできること</h2>
+        <p>テキストレイヤーが無傷のダークモードPDFは、視覚的な色以外のすべての面で通常のPDFと同じように動作します：</p>
+
+        <h3>文書内検索</h3>
+        <p>Ctrl+F（Macの場合はCmd+F）を押して任意の単語やフレーズを検索します。これは特定のセクションをすばやく見つける必要がある教科書、技術文書、法的契約書に不可欠です。テキストレイヤーがなければ、すべてのページを手動でスクロールする必要があります。</p>
+
+        <h3>テキストのコピー＆ペースト</h3>
+        <p>任意の文章を選択してノート、メール、ワープロにコピーします。<a href="../convert-pdf-to-dark-mode-online/index.html">ダークモードに変換した教科書</a>で勉強する学生は、レポートの引用文を抽出することがまだできます。研究者は再入力せずに参考文献を取得できます。</p>
+
+        <h3>注釈とハイライト</h3>
+        <p>PDFリーダーのテキストベースの注釈はテキストレイヤーに依存しています。文をハイライトしたり、インラインコメントを追加したり、テキストにリンクしたブックマークを作成したりできます。これらの機能は、画像のみのダークモードPDFでは完全に機能しなくなります。</p>
+
+        <h3>アクセシビリティとスクリーンリーダー</h3>
+        <p>JAWS、NVDA、VoiceOverなどのスクリーンリーダーは、コンテンツを音声で読み上げるためにPDFテキストレイヤーに依存しています。画像のみのダークモードPDFは、支援技術にとって完全に不透明です。テキストレイヤーを保持することは、ダークモードPDFが視覚障害のあるユーザーにもアクセス可能であり続けることを意味します — ダークテーマは目の見えるユーザーを助け、テキストレイヤーはすべての人に役立ちます。</p>
+
+        <h3>ファイルサイズ</h3>
+        <p>テキストレイヤーのあるPDFは、高解像度の純粋な画像ベースの変換と比較して、サイズ効率が高くなる場合があります。テキストデータ自体はコンパクトです。ページ画像は適度なJPEG圧縮を使用でき、テキストレイヤーはコンテンツの忠実度が失われないことを保証します。</p>
+
+        <h2>テキスト保持の限界</h2>
+        <p>テキストレイヤーは元のPDFに存在するテキストデータから再構築されます。これはほとんどの文書で完璧に機能しますが、期待を調整すべきケースもあります：</p>
+
+        <h3>スキャンされたPDF</h3>
+        <p>PDFが印刷ページのスキャン（古い学術論文、政府書類、アーカイブ文書に多い）である場合、保持すべきテキストデータがありません。原本がすでに画像です。ダークモードコンバーターは暗くしますが、テキストレイヤーが存在したことがないため、転送するものがありません。スキャンされた文書から選択可能なテキストが必要な場合は、まずOCR（光学文字認識）ソフトウェアで処理してから、ダークモードに変換してください。</p>
+
+        <h3>複雑なレイアウト</h3>
+        <p>テキスト配置が通常と異なる文書 — 重なり合う要素、回転したテキスト、非標準フォント — は、表示されるテキストと選択可能なテキストレイヤーの間にわずかな位置ずれがある場合があります。研究論文、教科書、レポート、記事などの標準的な文書の場合、整列はほぼ完璧です。</p>
+
+        <h3>右から左および縦書きテキスト</h3>
+        <p>アラビア語、ヘブライ語、縦書きCJK（中国語/日本語/韓国語）テキストは、追加のレイアウト上の課題があります。テキストレイヤーは一般的に文字を正しく保持しますが、選択の挙動はPDFリーダーのこれらの書記体系のサポート状況によって異なる場合があります。</p>
+
+        <h2>ダークモードPDFに選択可能なテキストがあるか確認する方法</h2>
+        <p>PDFをダークモードに変換した後、数秒でテキストレイヤーを確認できます：</p>
+        <ol>
+            <li>変換されたPDFを任意のPDFリーダーで開く（Adobe Acrobat、Chrome、Firefox、プレビューなど）</li>
+            <li>段落の上でクリック＆ドラッグしてテキストを選択してみる</li>
+            <li>テキストが青色（またはリーダーの選択色）でハイライトされれば、テキストレイヤーは機能しています</li>
+            <li>Ctrl+Fを押してページに見える単語を検索してみてください — 見つかれば、テキスト検索は機能しています</li>
+        </ol>
+        <p>選択も検索もできない場合、PDFを変換したツールがフラットな画像にラスタライズしたことを意味します。</p>
+
+        <h2>方法の比較</h2>
+        <p>ダークモードPDFを取得するすべての方法が、テキストを同じように扱うわけではありません：</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>方法</th>
+                    <th>テキスト選択可能を維持？</th>
+                    <th>備考</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PDFダークモードコンバーター</td>
+                    <td>✅ Yes</td>
+                    <td>隠しテキストレイヤーを自動的に保持</td>
+                </tr>
+                <tr>
+                    <td>OS レベルの色反転</td>
+                    <td>✅ Yes</td>
+                    <td>表示のみ変更；元のPDFは変更なし</td>
+                </tr>
+                <tr>
+                    <td>ブラウザ拡張機能（Dark Readerなど）</td>
+                    <td>⚠️ Varies</td>
+                    <td>PDFのcanvas要素でしばしば失敗</td>
+                </tr>
+                <tr>
+                    <td>スクリーンショットベースのコンバーター</td>
+                    <td>❌ No</td>
+                    <td>フラット画像にラスタライズ、テキスト喪失</td>
+                </tr>
+                <tr>
+                    <td>シンプルな画像ベースのPDFコンバーター</td>
+                    <td>❌ No</td>
+                    <td>各ページが1枚の画像になる</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>ダークモードと色反転のさらに詳しい比較については、<a href="../pdf-dark-mode-vs-invert-colors/index.html">PDFダークモード vs. 色反転：違いは何か？</a>をご覧ください。</p>
+
+        <div class="cta-box">
+            <p><strong>テキストはそのまま、まぶしさだけ除去。</strong><a href="../../index.html">PDFダークモードコンバーター</a>は毎回の変換で選択可能なテキストを保持します。16以上のテーマ、GPU高速化、無料、プライバシー保護、アカウント不要。</p>
+        </div>
+
+        <div class="faq">
+            <h2>よくある質問</h2>
+            <div class="faq-item">
+                <div class="faq-q">ダークモードのPDFでテキストを選択してコピーできますか？</div>
+                <div class="faq-a">
+                    <p>はい、コンバーターがテキストレイヤーを保持していれば可能です。PDFダークモードコンバーターは各ページのダーク画像の下に不可視のテキストレイヤーを埋め込むため、どのPDFリーダーでもテキストの選択、コピー、検索、注釈が通常通り行えます。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">PDFをダークモードに変換した後、テキストが選択できないのはなぜですか？</div>
+                <div class="faq-a">
+                    <p>ほとんどのダークモードツールは各ページをフラットな画像にラスタライズし、元のテキストデータを破壊します。結果として、実際のテキストではなくテキストの写真になります。隠しテキストレイヤーを保持するツールはこの問題を回避できます。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">テキストレイヤーはスキャンされたPDFでも機能しますか？</div>
+                <div class="faq-a">
+                    <p>スキャンされたPDFはすでにテキストデータが埋め込まれていない画像です。コンバーターは画像からテキストを作成することはできません。元のPDFに選択可能なテキストがなければ、変換されたバージョンにもありません。まずOCRソフトウェアを使用する必要があります。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">テキストレイヤーのあるダークモードPDFでスクリーンリーダーは機能しますか？</div>
+                <div class="faq-a">
+                    <p>はい。隠しテキストレイヤーは、元のPDFと同様にスクリーンリーダーから完全にアクセス可能です。ダークモードの視覚的変換は、基盤となるテキスト構造に影響しません。</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script src="../../../blog/blog.js"></script>
+<!-- BAKED-FOOTER-START -->
+    <footer class="blog-footer">
+      <a href="https://github.com/BrAtUkA" class="footer-logo" aria-label="BrAtUkA on GitHub">
+        <img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">
+      </a>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="../../../ja/index.html">ホーム</a>
+        <a href="../../../ja/blog/index.html">ブログ</a>
+        <a href="../../../ja/about/index.html">概要</a>
+        <a href="../../../ja/privacy/index.html">プライバシー</a>
+        <a href="../../../ja/terms/index.html">利用規約</a>
+        <a href="../../../ja/contact/index.html">お問い合わせ</a>
+        <a href="../../../ja/changelog/index.html">変更履歴</a>
+        <a href="https://github.com/BrAtUkA/pdf-dark-mode-converter">GitHub</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 BrAtUkA &middot; 無料オープンソース</p>
+      <p class="footer-credit">オリジナル <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter">Chizkiyahu</a> &middot; 強化 <a href="https://github.com/BrAtUkA">BrAtUkA</a></p>
+    </footer>
+    <!-- BAKED-FOOTER-END -->
+    <script src="../../../footer.js" data-depth="../../../" data-class="blog-footer"></script>
+
+</body></html>
