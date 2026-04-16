@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深色模式 PDF 中的可选择文本：为什么大多数工具会破坏它 | PDF 深色模式转换器</title>
+    <meta name="description" content="大多数 PDF 深色模式工具会破坏可选择文本。了解文本层的工作原理、为什么光栅化会破坏复制粘贴，以及如何将 PDF 转换为深色模式并保持文本可搜索。">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="BrAtUkA">
+    <meta name="theme-color" content="#2a2522">
+    <link rel="canonical" href="https://bratuka.dev/pdf-dark-mode-converter/zh/blog/selectable-text-dark-mode-pdf/">
+    <link rel="stylesheet" href="../../../blog/blog.css">
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <meta property="og:title" content="深色模式 PDF 中的可选择文本：为什么大多数工具会破坏它 | PDF 深色模式转换器">
+    <meta property="og:description" content="大多数 PDF 深色模式工具会破坏可选择文本。了解如何将 PDF 转换为深色模式并保持文本可搜索、可复制。">
+    <meta property="og:site_name" content="PDF Dark Mode Converter">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bratuka.dev/pdf-dark-mode-converter/zh/blog/selectable-text-dark-mode-pdf/">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale:alternate" content="ru_RU">
+
+<meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta name="twitter:title" content="深色模式 PDF 中的可选择文本：为什么大多数工具会破坏它 | PDF 深色模式转换器">
+    <meta name="twitter:description" content="大多数 PDF 深色模式工具会破坏可选择文本。了解如何将 PDF 转换为深色模式并保持文本可搜索、可复制。">
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "深色模式 PDF 中的可选择文本：为什么大多数工具会破坏它",
+      "datePublished": "2026-04-15",
+      "dateModified": "2026-04-15",
+      "image": "https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png",
+      "author": {
+            "@type": "Person",
+            "name": "BrAtUkA"
+      },
+      "publisher": {
+            "@type": "Organization",
+            "name": "PDF Dark Mode Converter",
+            "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://bratuka.dev/pdf-dark-mode-converter/favicon.ico"
+            }
+      },
+      "inLanguage": "zh"
+}</script>
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+            {
+                  "@type": "Question",
+                  "name": "我能在深色模式的 PDF 中选择和复制文本吗？",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "可以，前提是转换器保留了文本层。PDF 深色模式转换器在每页的深色图像下方嵌入一个不可见的文本层，这样您就可以在任何 PDF 阅读器中正常选择、复制、搜索和标注文本。"
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "为什么我将 PDF 转换为深色模式后无法选择文本？",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "大多数深色模式工具会将每一页光栅化为平面图像，从而破坏原始文本数据。结果就是文本的照片而非真正的文本。保留隐藏文本层的工具可以避免这个问题。"
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "文本层对扫描的 PDF 有效吗？",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "扫描的 PDF 本身就是没有嵌入文本数据的图像。转换器无法从图像中创建文本。如果您的原始 PDF 没有可选择的文本，转换后的版本也不会有。您需要先使用 OCR 软件。"
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "屏幕阅读器可以使用带有文本层的深色模式 PDF 吗？",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "可以。隐藏的文本层完全可供屏幕阅读器访问，就像在原始 PDF 中一样。深色模式的视觉变换不会影响底层的文本结构。"
+                  }
+            }
+      ],
+      "inLanguage": "zh"
+}</script>
+
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+            {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "PDF 深色模式转换器",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/zh/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "博客",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/zh/blog/"
+            },
+            {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "深色模式 PDF 中的可选择文本",
+                  "item": "https://bratuka.dev/pdf-dark-mode-converter/zh/blog/selectable-text-dark-mode-pdf/"
+            }
+      ],
+      "inLanguage": "zh"
+}</script>
+
+<link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="es" href="https://bratuka.dev/pdf-dark-mode-converter/es/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="fr" href="https://bratuka.dev/pdf-dark-mode-converter/fr/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="de" href="https://bratuka.dev/pdf-dark-mode-converter/de/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="it" href="https://bratuka.dev/pdf-dark-mode-converter/it/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="pt" href="https://bratuka.dev/pdf-dark-mode-converter/pt/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="zh" href="https://bratuka.dev/pdf-dark-mode-converter/zh/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ko" href="https://bratuka.dev/pdf-dark-mode-converter/ko/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ja" href="https://bratuka.dev/pdf-dark-mode-converter/ja/blog/selectable-text-dark-mode-pdf/">
+    <link rel="alternate" hreflang="ru" href="https://bratuka.dev/pdf-dark-mode-converter/ru/blog/selectable-text-dark-mode-pdf/">
+</head>
+
+<body>
+    <nav class="blog-nav">
+        <a href="../../index.html" class="site-name">PDF深色模式转换器</a>
+        <a href="../index.html">← 博客</a>
+    </nav>
+    <article class="blog-article">
+        <h1>深色模式 PDF 中的可选择文本：为什么大多数工具会破坏它</h1>
+        <p class="meta">2026年4月15日</p>
+
+        <p>你将一个 PDF 转换为深色模式，打开结果，试图复制一个段落。什么也没发生。你试图搜索一个词。没有结果。文本就在页面上，但你的 PDF 阅读器把它当作图片处理。这是 PDF 深色模式工具最常见、最令人沮丧的问题之一，大多数用户直到真正需要使用文本时才意识到这个问题。</p>
+
+        <h2>为什么大多数深色模式工具会破坏你的文本</h2>
+        <p>要理解这个问题，你需要知道标准 PDF 是如何存储内容的。典型的 PDF 不是简单的图像。它包含结构化的文本数据：带有字体信息、位置和编码的单个字符。这就是你能选择一个词、复制一句话或在几秒钟内搜索一个 200 页文档的原因。</p>
+        <p>当大多数深色模式工具处理你的 PDF 时，它们会执行一种叫做<strong>光栅化</strong>的操作。它们将每一页渲染为一张平面图像（就像截图），将颜色变换应用到该图像上，然后将结果包装成一个新的 PDF。输出看起来是暗色的，但结构化的文本数据已经消失了。每一页现在是文本的照片而不是真正的文本。</p>
+        <p>这意味着：</p>
+        <ul>
+            <li><strong>无法选择文本</strong> — 你不能高亮一个句子或段落</li>
+            <li><strong>无法复制粘贴</strong> — 你不能提取引文或参考资料</li>
+            <li><strong>无法搜索</strong> — Ctrl+F / Cmd+F 什么都找不到</li>
+            <li><strong>无障碍功能失效</strong> — 屏幕阅读器无法读取文档</li>
+            <li><strong>无法标注</strong> — 基于文本的标记工具停止工作</li>
+            <li><strong>文件更大</strong> — 图像比结构化文本占用更多空间</li>
+        </ul>
+        <p>对于一页的传单，这可能无关紧要。但对于一篇 50 页的研究论文或你经常查阅的教科书来说，失去可搜索的文本是一个严重的问题。</p>
+
+        <h2>文本层如何解决这个问题</h2>
+        <p>解决方案是一种叫做<strong>隐藏文本层</strong>的技术。转换器不会丢弃原始文本数据，而是将其保留并以不可见的方式定位在每个页面图像之上。结果是一个具有两个层的 PDF：</p>
+        <ol>
+            <li><strong>视觉层</strong> — 你在屏幕上看到的深色主题页面图像</li>
+            <li><strong>文本层</strong> — 不可见的、完美对齐的文本，你的 PDF 阅读器可以与之交互</li>
+        </ol>
+        <p>当你在转换后的 PDF 中选择文本时，你实际上是从隐藏的文本层中选择的。当你搜索时，你的阅读器扫描的是文本层。当屏幕阅读器处理文档时，它读取的是文本层。视觉外观是暗色的；下方的功能性文本完全完好。</p>
+        <p>这正是 <a href="../../index.html">PDF 深色模式转换器</a>的工作方式。每个转换后的页面都包含一个同步的文本层，因此你可以在输出中保持完整的文本功能。</p>
+
+        <figure class="wide">
+            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
+            <figcaption>在转换后的深色模式 PDF 中，文本可以被选择、复制和搜索 — 隐藏的文本层使这成为可能。</figcaption>
+        </figure>
+
+        <h2>保留文本后你可以做什么</h2>
+        <p>一个具有完整文本层的深色模式 PDF 在除视觉颜色之外的每个方面都与普通 PDF 一样：</p>
+
+        <h3>在文档内搜索</h3>
+        <p>按 Ctrl+F（Mac 上为 Cmd+F）搜索任何单词或短语。这对于教科书、技术文档和法律合同至关重要，因为你需要快速找到特定章节。没有文本层，你就不得不手动滚动每一页。</p>
+
+        <h3>复制和粘贴文本</h3>
+        <p>选择任何段落并复制到你的笔记、电子邮件或文字处理器中。使用<a href="../convert-pdf-to-dark-mode-online/index.html">深色模式转换后的教科书</a>的学生仍然可以提取论文引文。研究人员可以获取参考资料而无需重新输入。</p>
+
+        <h3>标注和高亮</h3>
+        <p>PDF 阅读器中基于文本的标注依赖于文本层。你可以高亮句子、添加行内评论以及创建与文本关联的书签。这些功能在纯图像的深色模式 PDF 中完全失效。</p>
+
+        <h3>无障碍功能和屏幕阅读器</h3>
+        <p>JAWS、NVDA 和 VoiceOver 等屏幕阅读器依赖 PDF 文本层来朗读内容。纯图像的深色模式 PDF 对辅助技术来说完全不透明。保留文本层意味着你的深色模式 PDF 仍然对视障用户可访问 — 深色主题帮助视力正常的用户，而文本层服务于所有人。</p>
+
+        <h3>文件大小</h3>
+        <p>具有文本层的 PDF 在大小方面可能比高分辨率的纯图像转换更高效。文本数据本身很紧凑。页面图像可以使用适度的 JPEG 压缩，而文本层确保内容保真度不会丢失。</p>
+
+        <h2>文本保留的局限性</h2>
+        <p>文本层是从原始 PDF 中现有的文本数据重建的。这对大多数文档都能完美工作，但有些情况你应该调整预期：</p>
+
+        <h3>扫描的 PDF</h3>
+        <p>如果你的 PDF 是打印页面的扫描件（在旧的学术论文、政府表格和存档文件中很常见），就没有可以保留的文本数据。原始文件本身就是图像。深色模式转换器会将其变暗，但没有文本层可以传递，因为从未存在过。如果你需要从扫描文档中获得可选择的文本，请先使用 OCR（光学字符识别）软件处理，然后再转换为深色模式。</p>
+
+        <h3>复杂的排版</h3>
+        <p>具有不寻常文本定位的文档 — 重叠元素、旋转文本或非标准字体 — 可能在可见文本和可选择文本层之间存在轻微的对齐差异。对于研究论文、教科书、报告和文章等标准文档，对齐效果基本完美。</p>
+
+        <h3>从右到左和竖排文本</h3>
+        <p>阿拉伯语、希伯来语和竖排 CJK（中文/日文/韩文）文本带来额外的排版挑战。文本层通常能正确保留字符，但选择行为可能因你的 PDF 阅读器对这些书写系统的支持程度而异。</p>
+
+        <h2>如何检查你的深色模式 PDF 是否有可选择的文本</h2>
+        <p>将 PDF 转换为深色模式后，你可以在几秒钟内验证文本层：</p>
+        <ol>
+            <li>在任何 PDF 阅读器中打开转换后的 PDF（Adobe Acrobat、Chrome、Firefox、预览等）</li>
+            <li>尝试通过在段落上点击并拖动来选择一些文本</li>
+            <li>如果文本以蓝色（或你的阅读器的选择颜色）高亮显示，文本层正在工作</li>
+            <li>按 Ctrl+F 搜索页面上你能看到的文字 — 如果找到了，文本搜索功能正常</li>
+        </ol>
+        <p>如果选择和搜索都不起作用，转换你 PDF 的工具将其光栅化成了平面图像。</p>
+
+        <h2>方法比较</h2>
+        <p>并非所有获取深色模式 PDF 的方法都以相同的方式处理文本：</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>方法</th>
+                    <th>保持文本可选择？</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PDF 深色模式转换器</td>
+                    <td>✅ Yes</td>
+                    <td>自动保留隐藏文本层</td>
+                </tr>
+                <tr>
+                    <td>系统级颜色反转</td>
+                    <td>✅ Yes</td>
+                    <td>仅显示效果；原始 PDF 不变</td>
+                </tr>
+                <tr>
+                    <td>浏览器扩展（Dark Reader 等）</td>
+                    <td>⚠️ Varies</td>
+                    <td>在 PDF canvas 元素上经常失效</td>
+                </tr>
+                <tr>
+                    <td>基于截图的转换器</td>
+                    <td>❌ No</td>
+                    <td>光栅化为平面图像，文本丢失</td>
+                </tr>
+                <tr>
+                    <td>基于图像的简单 PDF 转换器</td>
+                    <td>❌ No</td>
+                    <td>每页变成一张图像</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>如需更深入地比较深色模式与颜色反转，请参阅<a href="../pdf-dark-mode-vs-invert-colors/index.html">PDF 深色模式 vs. 颜色反转：有什么区别？</a>。</p>
+
+        <div class="cta-box">
+            <p><strong>保留你的文本，去掉刺眼的白光。</strong><a href="../../index.html">PDF 深色模式转换器</a>在每次转换中都保留可选择的文本。16 种以上主题，GPU 加速，免费、私密、无需注册。</p>
+        </div>
+
+        <div class="faq">
+            <h2>常见问题</h2>
+            <div class="faq-item">
+                <div class="faq-q">我能在深色模式的 PDF 中选择和复制文本吗？</div>
+                <div class="faq-a">
+                    <p>可以，前提是转换器保留了文本层。PDF 深色模式转换器在每页的深色图像下方嵌入一个不可见的文本层，这样您就可以在任何 PDF 阅读器中正常选择、复制、搜索和标注文本。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">为什么我将 PDF 转换为深色模式后无法选择文本？</div>
+                <div class="faq-a">
+                    <p>大多数深色模式工具会将每一页光栅化为平面图像，从而破坏原始文本数据。结果就是文本的照片而非真正的文本。保留隐藏文本层的工具可以避免这个问题。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">文本层对扫描的 PDF 有效吗？</div>
+                <div class="faq-a">
+                    <p>扫描的 PDF 本身就是没有嵌入文本数据的图像。转换器无法从图像中创建文本。如果您的原始 PDF 没有可选择的文本，转换后的版本也不会有。您需要先使用 OCR 软件。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">屏幕阅读器可以使用带有文本层的深色模式 PDF 吗？</div>
+                <div class="faq-a">
+                    <p>可以。隐藏的文本层完全可供屏幕阅读器访问，就像在原始 PDF 中一样。深色模式的视觉变换不会影响底层的文本结构。</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script src="../../../blog/blog.js"></script>
+<!-- BAKED-FOOTER-START -->
+    <footer class="blog-footer">
+      <a href="https://github.com/BrAtUkA" class="footer-logo" aria-label="BrAtUkA on GitHub">
+        <img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">
+      </a>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="../../../zh/index.html">首页</a>
+        <a href="../../../zh/blog/index.html">博客</a>
+        <a href="../../../zh/about/index.html">关于</a>
+        <a href="../../../zh/privacy/index.html">隐私</a>
+        <a href="../../../zh/terms/index.html">条款</a>
+        <a href="../../../zh/contact/index.html">联系</a>
+        <a href="../../../zh/changelog/index.html">更新日志</a>
+        <a href="https://github.com/BrAtUkA/pdf-dark-mode-converter">GitHub</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 BrAtUkA &middot; 免费开源</p>
+      <p class="footer-credit">最初由 <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter">Chizkiyahu</a> &middot; 强力升级 <a href="https://github.com/BrAtUkA">BrAtUkA</a></p>
+    </footer>
+    <!-- BAKED-FOOTER-END -->
+    <script src="../../../footer.js" data-depth="../../../" data-class="blog-footer"></script>
+
+</body></html>
