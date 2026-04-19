@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Dark Mode Converter - Secure, Local & Offline Tool</title>
+    <meta name="description" content="Convert any PDF to Dark Mode instantly. A free, secure, and private tool that runs 100% offline in your browser. Protect your eyes with themes like Midnight Blue and Sepia.">
+    <meta name="keywords" content="pdf dark mode, invert pdf colors, night mode pdf, dark theme pdf, free pdf converter, offline pdf tool, eye protection software">
+    <meta name="author" content="Chizkiyahu">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://chizkiyahu.github.io/pdf-dark-mode-converter/">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chizkiyahu.github.io/pdf-dark-mode-converter/">
+    <meta property="og:title" content="PDF Dark Mode Converter - Free & Secure">
+    <meta property="og:description" content="Read PDFs comfortably at night. Convert documents to Dark Mode securely in your browser without uploading files.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PDF Dark Mode Converter",
+      "operatingSystem": "Web Browser",
+      "applicationCategory": "UtilityApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "A secure, client-side tool to convert PDF files to dark mode for easier reading.",
+      "featureList": "Offline processing, Multiple dark themes, Privacy-focused"
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        :root {
+            --accent: #0056d2;
+            --accent-contrast: #ffffff;
+            --focus-glow: #7fb3ff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+            padding: 20px;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .notice {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px auto 20px auto;
+            font-size: 14px;
+            color: #bbb;
+            max-width: 80%;
+        }
+        .file-input {
+            display: none;
+        }
+        .custom-file-upload {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: var(--accent);
+            color: var(--accent-contrast);
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 0;
+            line-height: 1.2;
+            border: 1px solid var(--accent);
+        }
+        .custom-file-upload:focus-visible {
+            outline: 3px solid var(--focus-glow);
+            outline-offset: 2px;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .theme-selector {
+            padding: 10px 15px;
+            background-color: #2a2a2a;
+            color: white;
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .theme-selector:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        canvas {
+            border: 1px solid white;
+            margin-top: 10px;
+            width: 100%;
+        }
+        #pdfContainer {
+            width: 70%;
+            margin: 0 auto;
+        }
+        #progressContainer {
+            width: 80%;
+            max-width: 400px;
+            background-color: #222;
+            display: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        #progressBar {
+            height: 20px;
+            background-color: var(--accent);
+            width: 0;
+            text-align: center;
+            line-height: 20px;
+            color: var(--accent-contrast);
+            border-radius: 5px;
+            transition: width 0.3s ease-in-out;
+        }
+        #progressText {
+            margin-top: 5px;
+            color: white;
+            font-weight: bold;
+        }
+        #downloadBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--accent);
+            color: var(--accent-contrast);
+            border: none;
+            cursor: pointer;
+            display: none;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        #downloadBtn:focus-visible {
+            outline: 3px solid var(--focus-glow);
+            outline-offset: 2px;
+        }
+        .github-ribbon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .github-ribbon picture,
+        .github-ribbon img {
+            display: block;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        @media (max-width: 768px) {
+            .github-ribbon {
+                top: auto;
+                bottom: 20px;
+                right: 10px;
+                left: auto;
+            }
+            .github-ribbon img {
+                width: 100px;
+                height: auto;
+            }
+            .notice {
+                font-size: 12px;
+                margin-top: 50px;
+            }
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://github.com/Chizkiyahu/pdf-dark-mode-converter" class="github-ribbon">
+        <picture>
+            <source srcset="./img/forkme_left_red_aa0000.webp 1x, ./img/forkme_left_red_aa0000@2x.webp 2x" type="image/webp">
+            <img decoding="async" fetchpriority="high" width="149" height="149" src="./img/forkme_left_red_aa0000.png" srcset="./img/forkme_left_red_aa0000.png 1x, ./img/forkme_left_red_aa0000@2x.png 2x" alt="View Source Code on GitHub">
+        </picture>
+    </a>
+    <main class="container" id="mainContent" role="main">
+        <div class="notice">
+            🔒 This tool runs completely on your device. No data is uploaded or sent to any server. Your privacy is 100% protected.
+        </div>
+        <h1>PDF Dark Mode Converter</h1>
+        <div class="controls">
+            <label for="fileInput" class="custom-file-upload">Choose PDF File</label>
+            <label class="sr-only" for="themeSelector">Theme</label>
+            <select id="themeSelector" class="theme-selector">
+                <option value="classic">Classic Inversion</option>
+                <option value="claude" selected>Claude Warm</option>
+                <option value="chatgpt">ChatGPT Cool</option>
+                <option value="sepia">Sepia Dark</option>
+                <option value="midnight">Midnight Blue</option>
+                <option value="forest">Forest Green</option>
+            </select>
+        </div>
+        <input type="file" id="fileInput" class="file-input" accept="application/pdf">
+        <div id="progressContainer" aria-live="polite">
+            <div id="progressBar"></div>
+            <div id="progressText">0/0</div>
+        </div>
+        <button id="downloadBtn">Download failed? Click here</button>
+        <div id="pdfContainer"></div>
+    </main>
+
+    <script>
+        let modifiedPdfBytes;
+        let originalPdfData = null;
+        let originalFileName = "";
+        let currentRenderId = 0;
+        // Theme definitions
+
+        const themes = {
+            classic: { r: 0, g: 0, b: 0, name: 'Classic' },
+            claude: { r: 42, g: 37, b: 34, name: 'Claude Warm' },
+            chatgpt: { r: 52, g: 53, b: 65, name: 'ChatGPT Cool' },
+            sepia: { r: 40, g: 35, b: 25, name: 'Sepia' },
+            midnight: { r: 25, g: 30, b: 45, name: 'Midnight Blue' },
+            forest: { r: 25, g: 35, b: 30, name: 'Forest Green' }
+        };
+
+        const pdfJsSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js";
+        const pdfWorkerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+        const pdfLibSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.11.0/pdf-lib.min.js";
+        let pdfLibReadyPromise = null;
+
+        function loadPdfLibraries() {
+            if (pdfLibReadyPromise) return pdfLibReadyPromise;
+            pdfLibReadyPromise = new Promise((resolve, reject) => {
+                const pdfJsScript = document.createElement('script');
+                pdfJsScript.src = pdfJsSrc;
+                pdfJsScript.crossOrigin = 'anonymous';
+                pdfJsScript.referrerPolicy = 'no-referrer';
+                pdfJsScript.onload = () => {
+                    pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerSrc;
+                    const pdfLibScript = document.createElement('script');
+                    pdfLibScript.src = pdfLibSrc;
+                    pdfLibScript.crossOrigin = 'anonymous';
+                    pdfLibScript.referrerPolicy = 'no-referrer';
+                    pdfLibScript.onload = () => resolve();
+                    pdfLibScript.onerror = reject;
+                    document.head.appendChild(pdfLibScript);
+                };
+                pdfJsScript.onerror = reject;
+                document.head.appendChild(pdfJsScript);
+            });
+            return pdfLibReadyPromise;
+        }
+
+        async function ensurePdfLibraries() {
+            try {
+                await loadPdfLibraries();
+            } catch (e) {
+                alert("Unable to load PDF libraries. Please check your connection and try again.");
+                throw e;
+            }
+        }
+
+        function applyThemeBackground(theme) {
+            document.body.style.backgroundColor = `rgb(${theme.r}, ${theme.g}, ${theme.b})`;
+        }
+
+        applyThemeBackground(themes[document.getElementById('themeSelector').value]);
+
+        function handleFile(file) {
+            originalFileName = file.name.replace(/\.pdf$/i, '');
+            const fileReader = new FileReader();
+            fileReader.onload = async function() {
+                const fileData = new Uint8Array(this.result);
+                await ensurePdfLibraries();
+                originalPdfData = fileData;
+                const progressContainer = document.getElementById('progressContainer');
+                progressContainer.style.display = 'block';
+                document.getElementById('downloadBtn').style.display = 'none';
+                await renderPDF(fileData);
+            };
+            fileReader.readAsArrayBuffer(file);
+        }
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            if (event.target.files.length > 0) {
+                handleFile(event.target.files[0]);
+            }
+        });
+
+        document.body.addEventListener('dragover', function(event) {
+            event.preventDefault();
+        });
+
+        document.body.addEventListener('drop', function(event) {
+            event.preventDefault();
+            if (event.dataTransfer.files.length > 0) {
+                handleFile(event.dataTransfer.files[0]);
+            }
+        });
+
+        document.getElementById('themeSelector').addEventListener('change', async function() {
+            const selectedTheme = document.getElementById('themeSelector').value;
+            applyThemeBackground(themes[selectedTheme]);
+            if (originalPdfData) {
+                await ensurePdfLibraries();
+                const progressContainer = document.getElementById('progressContainer');
+                progressContainer.style.display = 'block';
+                document.getElementById('downloadBtn').style.display = 'none';
+                await renderPDF(originalPdfData);
+            }
+        });
+
+        document.querySelector('.custom-file-upload').addEventListener('click', () => {
+            loadPdfLibraries().catch(() => {});
+        });
+
+        async function renderPDF(pdfData) {
+            const renderId = ++currentRenderId;
+            const selectedTheme = document.getElementById('themeSelector').value;
+            const theme = themes[selectedTheme];
+            applyThemeBackground(theme);
+            
+            // Initialize PDF document later or in chunks
+            const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const pdfContainer = document.getElementById('pdfContainer');
+            const progressContainer = document.getElementById('progressContainer');
+            modifiedPdfBytes = null;
+            progressBar.style.width = '0';
+            progressText.innerText = `0/${pdf.numPages}`;
+            pdfContainer.innerHTML = '';
+
+            const CHUNK_SIZE = 50; // Process 50 pages at a time to save memory
+            const chunks = [];
+            const totalPages = pdf.numPages;
+
+            for (let chunkStart = 0; chunkStart < totalPages; chunkStart += CHUNK_SIZE) {
+                if (renderId !== currentRenderId) return;
+
+                // Create a temporary document for this chunk
+                const chunkDoc = await PDFLib.PDFDocument.create();
+                const chunkEnd = Math.min(chunkStart + CHUNK_SIZE, totalPages);
+
+                for (let i = chunkStart; i < chunkEnd; i++) {
+                    if (renderId !== currentRenderId) return;
+
+                    // Update progress
+                    const percent = ((i + 1) / totalPages) * 100;
+                    progressBar.style.width = `${percent}%`;
+                    progressText.innerText = `${i + 1}/${totalPages}`;
+
+                    const page = await pdf.getPage(i + 1);
+                    const scale = 3; 
+                    const viewport = page.getViewport({ scale });
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+
+                    const renderContext = {
+                        canvasContext: ctx,
+                        viewport: viewport
+                    };
+                    await page.render(renderContext).promise;
+
+                    if (renderId !== currentRenderId) return;
+
+                    // Apply dark mode effect
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+
+                    const bgR = theme.r;
+                    const bgG = theme.g;
+                    const bgB = theme.b;
+
+                    for (let j = 0; j < data.length; j += 4) {
+                        const r = data[j];
+                        const g = data[j + 1];
+                        const b = data[j + 2];
+
+                        // Calculate brightness (0-255)
+                        const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+
+                        // Map white (255) to background color, black (0) to white
+                        const factor = 1 - (brightness / 255);
+
+                        data[j] = bgR + (255 - bgR) * factor;         // Red
+                        data[j + 1] = bgG + (255 - bgG) * factor;     // Green
+                        data[j + 2] = bgB + (255 - bgB) * factor;     // Blue
+                    }
+                    ctx.putImageData(imageData, 0, 0);
+
+                    if (renderId !== currentRenderId) return;
+                    
+                    // Display preview for the first 20 pages only
+                    if (i < 20) {
+                        canvas.style.maxWidth = '100%';
+                        canvas.style.height = 'auto';
+                        pdfContainer.appendChild(canvas);
+                    }
+
+                    // Convert modified canvas to PNG and add to PDF
+                    if (renderId !== currentRenderId) return;
+                    
+                    const imgBytes = await new Promise(resolve => canvas.toBlob(blob => blob.arrayBuffer().then(resolve), 'image/png'));
+                    
+                    if (renderId !== currentRenderId) return;
+                    
+                    const jpgImage = await chunkDoc.embedPng(imgBytes);
+                    const newPage = chunkDoc.addPage([viewport.width, viewport.height]);
+                    newPage.drawImage(jpgImage, {
+                        x: 0,
+                        y: 0,
+                        width: viewport.width,
+                        height: viewport.height
+                    });
+
+                    // Explicitly clear canvas references to help GC
+                    // Only clear if we are NOT showing this canvas in the preview
+                    if (i >= 20) {
+                        canvas.width = 1;
+                        canvas.height = 1;
+                        ctx.clearRect(0, 0, 1, 1);
+                    }
+                    
+                    // Release page resources
+                    page.cleanup();
+                }
+
+                // Save chunk to bytes and release chunkDoc
+                if (renderId !== currentRenderId) return;
+                const chunkBytes = await chunkDoc.save();
+                chunks.push(chunkBytes);
+                
+                // Optional: small delay to allow UI update and GC
+                await new Promise(resolve => setTimeout(resolve, 10));
+            }
+
+            if (renderId !== currentRenderId) return;
+
+            progressText.innerText = "Merging PDF chunks... This may take a moment.";
+            
+            // Merge all chunks into final document
+            const finalPdfDoc = await PDFLib.PDFDocument.create();
+            for (let i = 0; i < chunks.length; i++) {
+                if (renderId !== currentRenderId) return;
+                const chunkBytes = chunks[i];
+                const chunkDoc = await PDFLib.PDFDocument.load(chunkBytes);
+                const copiedPages = await finalPdfDoc.copyPages(chunkDoc, chunkDoc.getPageIndices());
+                copiedPages.forEach(page => finalPdfDoc.addPage(page));
+                
+                // Release chunk memory
+                chunks[i] = null;
+            }
+
+            progressText.innerText = "Finalizing...";
+            modifiedPdfBytes = await finalPdfDoc.save();
+            
+            if (renderId !== currentRenderId) return;
+            
+            progressContainer.style.display = 'none';
+            triggerDownload();
+        }
+
+        function triggerDownload() {
+            if (modifiedPdfBytes) {
+                const selectedTheme = document.getElementById('themeSelector').value;
+                const themeName = themes[selectedTheme].name.toLowerCase().replace(/\s+/g, '_');
+                const blob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `${originalFileName}_${themeName}_dark.pdf`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                document.getElementById('downloadBtn').style.display = 'block';
+            }
+        }
+
+        document.getElementById('downloadBtn').addEventListener('click', triggerDownload);
+    </script>
+</body>
+</html>
