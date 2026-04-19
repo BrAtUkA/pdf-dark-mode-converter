@@ -908,9 +908,20 @@
         if (!isBatch) {
             const pdfContainer = document.getElementById('pdfContainer');
             pdfContainer.classList.add('has-previews');
-            const firstPage = await pdf.getPage(1);
-            const firstVp = firstPage.getViewport({ scale: 1 });
-            const slotRatio = firstVp.width + ' / ' + firstVp.height;
+            const showCount = Math.min(PREVIEW_LIMIT, totalPages);
+            const previewRatios = [];
+
+            await Promise.all(
+                Array.from({ length: showCount }, async (_, i) => {
+                    try {
+                        const p = await pdf.getPage(i + 1);
+                        const vp = p.getViewport({ scale: 1 });
+                        previewRatios[i] = `${vp.width} / ${vp.height}`;
+                    } catch (e) {
+                        previewRatios[i] = 'auto';
+                    }
+                })
+            );
 
             // Wrap pdfContainer if not already wrapped
             let wrap = pdfContainer.parentElement;
@@ -931,11 +942,10 @@
             }
             pill.textContent = 'Page 1';
 
-            const showCount = Math.min(PREVIEW_LIMIT, totalPages);
             for (let i = 0; i < showCount; i++) {
                 const slot = document.createElement('div');
                 slot.className = 'preview-slot';
-                slot.style.aspectRatio = slotRatio;
+                slot.style.aspectRatio = previewRatios[i];
                 slot.innerHTML = '<div class="preview-loader"><div class="spinner"></div>Loading preview…</div>';
                 pdfContainer.appendChild(slot);
                 previewSlots.push(slot);
