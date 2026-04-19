@@ -31,6 +31,7 @@
     const pdfJsSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js";
     const pdfWorkerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
     const pdfLibSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.11.0/pdf-lib.min.js";
+    const jszipSrc = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
     let pdfLibReadyPromise = null;
 
     // GPU-accelerated canvas filter support detection
@@ -714,12 +715,21 @@
         }
     }
 
+    function loadJsZip() {
+        if (typeof JSZip !== 'undefined') return Promise.resolve();
+        return new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = jszipSrc;
+            s.crossOrigin = 'anonymous';
+            s.referrerPolicy = 'no-referrer';
+            s.onload = resolve;
+            s.onerror = () => reject(new Error('Failed to load ZIP library'));
+            document.head.appendChild(s);
+        });
+    }
+
     async function handleBatch(files) {
-        await ensurePdfLibraries();
-        if (typeof JSZip === 'undefined') {
-            alert('ZIP library not loaded. Please refresh and try again.');
-            return;
-        }
+        await Promise.all([ensurePdfLibraries(), loadJsZip()]);
 
         const batchId = ++currentRenderId;
         const batchInfo = document.getElementById('batchInfo');

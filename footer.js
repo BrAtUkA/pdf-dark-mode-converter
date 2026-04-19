@@ -56,26 +56,36 @@
     document.body.appendChild(ls);
   }
 
-  // --- Analytics (injected once via footer.js so all pages are covered) ---
+  // --- Analytics (injected once via footer.js, deferred until idle) ---
   if (!window.__analytics_loaded) {
     window.__analytics_loaded = true;
 
-    // Google Analytics (gtag.js)
-    var ga = document.createElement('script');
-    ga.async = true;
-    ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-FZZB5QC242';
-    document.head.appendChild(ga);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag('js', new Date());
-    window.gtag('config', 'G-FZZB5QC242');
+    function loadAnalytics() {
+      // Google Analytics (gtag.js)
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-FZZB5QC242';
+      document.head.appendChild(ga);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-FZZB5QC242');
 
-    // Cloudflare Web Analytics
-    var cf = document.createElement('script');
-    cf.defer = true;
-    cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-    cf.setAttribute('data-cf-beacon', '{"token":"ddb264be776945ce8a8a6f4d9afc1350"}');
-    document.head.appendChild(cf);
+      // Cloudflare Web Analytics
+      var cf = document.createElement('script');
+      cf.defer = true;
+      cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+      cf.setAttribute('data-cf-beacon', '{"token":"ddb264be776945ce8a8a6f4d9afc1350"}');
+      document.head.appendChild(cf);
+    }
+
+    // Delay analytics until the browser is idle (or 3s, whichever comes first)
+    // This keeps gtag.js off the main thread during LCP and TBT measurement window.
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadAnalytics, { timeout: 3000 });
+    } else {
+      setTimeout(loadAnalytics, 3000);
+    }
   }
 
   // --- Star-on-GitHub banner (mobile only, shown after PDF conversion) ---
