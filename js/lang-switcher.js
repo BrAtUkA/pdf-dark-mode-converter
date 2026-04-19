@@ -181,7 +181,7 @@
     var lang = available[k];
     var url = buildRelativeUrl(lang);
     var active = lang === currentLang ? ' active' : '';
-    items += '<a class="lang-item' + active + '"' + (url ? ' href="' + url + '"' : '') + ' data-lang="' + lang + '">' +
+    items += '<a class="lang-item' + active + '" href="' + (url || '') + '" data-lang="' + lang + '">' +
       '<span class="lang-code">' + lang.toUpperCase() + '</span>' +
       '<span class="lang-name">' + LANGUAGES[lang].native + '</span>' +
     '</a>';
@@ -221,7 +221,10 @@
     wrapper.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
   });
-  dropdown.addEventListener('click', function (e) { e.stopPropagation(); });
+  dropdown.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (e.target.closest('.lang-item.active')) e.preventDefault();
+  });
 
   // Note: Language preference is only saved when the user clicks "Switch"
   // on the suggestion banner (intentional preference). Dropdown navigation
