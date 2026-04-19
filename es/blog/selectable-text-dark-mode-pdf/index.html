@@ -148,27 +148,27 @@
         <p>Cuando la mayoría de las herramientas de modo oscuro procesan tu PDF, hacen algo llamado <strong>rasterización</strong>. Renderizan cada página como una imagen plana (como una captura de pantalla), aplican la transformación de color a esa imagen y luego envuelven el resultado en un nuevo PDF. El resultado se ve oscuro, pero los datos de texto estructurados han desaparecido. Cada página es ahora una fotografía del texto en lugar de texto real.</p>
         <p>Esto significa:</p>
         <ul>
-            <li><strong>Sin selección de texto</strong> — no puedes resaltar una frase o párrafo</li>
-            <li><strong>Sin copiar y pegar</strong> — no puedes extraer una cita o referencia</li>
-            <li><strong>Sin búsqueda</strong> — Ctrl+F / Cmd+F no encuentra nada</li>
-            <li><strong>Sin accesibilidad</strong> — los lectores de pantalla no pueden leer el documento</li>
-            <li><strong>Sin anotaciones</strong> — las herramientas de marcado basadas en texto dejan de funcionar</li>
-            <li><strong>Archivos más grandes</strong> — las imágenes ocupan más espacio que el texto estructurado</li>
+            <li><strong>Sin selección de texto</strong> - no puedes resaltar una frase o párrafo</li>
+            <li><strong>Sin copiar y pegar</strong> - no puedes extraer una cita o referencia</li>
+            <li><strong>Sin búsqueda</strong> - Ctrl+F / Cmd+F no encuentra nada</li>
+            <li><strong>Sin accesibilidad</strong> - los lectores de pantalla no pueden leer el documento</li>
+            <li><strong>Sin anotaciones</strong> - las herramientas de marcado basadas en texto dejan de funcionar</li>
+            <li><strong>Archivos más grandes</strong> - las imágenes ocupan más espacio que el texto estructurado</li>
         </ul>
         <p>Para un folleto de una página, esto puede no importar. Para un artículo de investigación de 50 páginas o un libro de texto que consultas regularmente, perder el texto buscable es un problema serio.</p>
 
         <h2>Cómo las capas de texto resuelven esto</h2>
         <p>La solución es una técnica llamada <strong>capa de texto oculta</strong>. En lugar de desechar los datos de texto originales, el convertidor los conserva y los posiciona de forma invisible sobre cada imagen de página. El resultado es un PDF con dos capas:</p>
         <ol>
-            <li><strong>Capa visual</strong> — la imagen de la página con tema oscuro que ves en pantalla</li>
-            <li><strong>Capa de texto</strong> — texto invisible, perfectamente alineado, con el que tu lector de PDF puede interactuar</li>
+            <li><strong>Capa visual</strong> - la imagen de la página con tema oscuro que ves en pantalla</li>
+            <li><strong>Capa de texto</strong> - texto invisible, perfectamente alineado, con el que tu lector de PDF puede interactuar</li>
         </ol>
         <p>Cuando seleccionas texto en el PDF convertido, en realidad estás seleccionando de la capa de texto oculta. Cuando buscas, tu lector escanea la capa de texto. Cuando un lector de pantalla procesa el documento, lee la capa de texto. La apariencia visual es oscura; el texto funcional debajo está completamente intacto.</p>
         <p>Así es exactamente como funciona el <a href="../../index.html">Convertidor PDF Modo Oscuro</a>. Cada página convertida incluye una capa de texto sincronizada, para que mantengas toda la funcionalidad de texto en el resultado.</p>
 
         <figure class="wide">
-            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
-            <figcaption>El texto se puede seleccionar, copiar y buscar en el PDF convertido a modo oscuro — la capa de texto oculta hace esto posible.</figcaption>
+            <picture><source srcset="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.webp" type="image/webp"><img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" fetchpriority="high" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780"></picture>
+            <figcaption>El texto se puede seleccionar, copiar y buscar en el PDF convertido a modo oscuro - la capa de texto oculta hace esto posible.</figcaption>
         </figure>
 
         <h2>Qué puedes hacer con el texto preservado</h2>
@@ -184,7 +184,7 @@
         <p>Las anotaciones basadas en texto en los lectores de PDF dependen de la capa de texto. Puedes resaltar frases, añadir comentarios en línea y crear marcadores vinculados al texto. Estas funciones se rompen completamente en PDFs de modo oscuro que son solo imágenes.</p>
 
         <h3>Accesibilidad y lectores de pantalla</h3>
-        <p>Los lectores de pantalla como JAWS, NVDA y VoiceOver dependen de la capa de texto del PDF para leer el contenido en voz alta. Un PDF en modo oscuro que es solo imagen es completamente opaco para la tecnología de asistencia. Preservar la capa de texto significa que tus PDFs en modo oscuro siguen siendo accesibles para usuarios con discapacidad visual — el tema oscuro ayuda a los usuarios videntes mientras la capa de texto sirve a todos.</p>
+        <p>Los lectores de pantalla como JAWS, NVDA y VoiceOver dependen de la capa de texto del PDF para leer el contenido en voz alta. Un PDF en modo oscuro que es solo imagen es completamente opaco para la tecnología de asistencia. Preservar la capa de texto significa que tus PDFs en modo oscuro siguen siendo accesibles para usuarios con discapacidad visual - el tema oscuro ayuda a los usuarios videntes mientras la capa de texto sirve a todos.</p>
 
         <h3>Tamaño del archivo</h3>
         <p>Los PDFs con capas de texto pueden ser más eficientes en tamaño comparados con conversiones puramente basadas en imágenes a alta resolución. Los datos de texto en sí son compactos. Las imágenes de las páginas pueden usar compresión JPEG moderada mientras la capa de texto asegura que no se pierde nada en términos de fidelidad del contenido.</p>
@@ -196,7 +196,7 @@
         <p>Si tu PDF es un escaneo de una página impresa (común con artículos académicos antiguos, formularios gubernamentales y documentos archivados), no hay datos de texto que preservar. El original ya es una imagen. El convertidor de modo oscuro lo oscurecerá, pero no hay capa de texto que trasladar porque nunca existió una. Si necesitas texto seleccionable de un documento escaneado, pásalo primero por software OCR (Reconocimiento Óptico de Caracteres) y luego conviértelo a modo oscuro.</p>
 
         <h3>Diseños complejos</h3>
-        <p>Los documentos con posicionamiento de texto inusual — elementos superpuestos, texto rotado o fuentes no estándar — pueden tener ligeras diferencias de alineación entre el texto visible y la capa de texto seleccionable. Para documentos estándar como artículos de investigación, libros de texto, informes y artículos, la alineación es prácticamente perfecta.</p>
+        <p>Los documentos con posicionamiento de texto inusual - elementos superpuestos, texto rotado o fuentes no estándar - pueden tener ligeras diferencias de alineación entre el texto visible y la capa de texto seleccionable. Para documentos estándar como artículos de investigación, libros de texto, informes y artículos, la alineación es prácticamente perfecta.</p>
 
         <h3>Texto de derecha a izquierda y vertical</h3>
         <p>El texto en árabe, hebreo y CJK vertical (chino/japonés/coreano) presenta desafíos de diseño adicionales. La capa de texto generalmente preserva los caracteres correctamente, pero el comportamiento de selección puede variar según el soporte de tu lector de PDF para estos sistemas de escritura.</p>
@@ -207,7 +207,7 @@
             <li>Abre el PDF convertido en cualquier lector de PDF (Adobe Acrobat, Chrome, Firefox, Preview, etc.)</li>
             <li>Intenta seleccionar algo de texto haciendo clic y arrastrando sobre un párrafo</li>
             <li>Si el texto se resalta en azul (o el color de selección de tu lector), la capa de texto está funcionando</li>
-            <li>Presiona Ctrl+F y busca una palabra que puedas ver en la página — si la encuentra, la búsqueda de texto funciona</li>
+            <li>Presiona Ctrl+F y busca una palabra que puedas ver en la página - si la encuentra, la búsqueda de texto funciona</li>
         </ol>
         <p>Si ni la selección ni la búsqueda funcionan, la herramienta que convirtió tu PDF lo rasterizó en imágenes planas.</p>
 

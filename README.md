@@ -18,7 +18,7 @@ Convert any PDF to dark mode instantly in your browser. No uploads, no server, n
 - **Image preservation** - detects photos and graphics and keeps their original colors
 - **Batch conversion** - drop multiple PDFs at once
 - **Dark and light output** - convert light-to-dark or dark-to-light
-- **Adjustable resolution** (0.5x–4x) and **JPEG quality** (50–100%)
+- **Adjustable resolution** (0.5x-4x) and **JPEG quality** (50-100%)
 - **Invert PDF Colors** - separate tool at [`/invert-pdf-colors/`](https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/) for true RGB complement inversion
 - **100% private** - everything runs client-side, nothing is uploaded
 

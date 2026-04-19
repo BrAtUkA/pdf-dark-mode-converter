@@ -1,4 +1,4 @@
-// PDF Dark Mode Converter — Theme Picker
+// PDF Dark Mode Converter - Theme Picker
 // Custom dropdown, color panel, and URL theme parameter handling.
 // Only included on pages with a theme selector dropdown.
 (function() {
@@ -138,7 +138,7 @@
         if (e.key === 'Enter') { e.preventDefault(); previewCustomColor(hexInput.value); }
     });
 
-    // Close panel on outside click — commit and reprocess
+    // Close panel on outside click - commit and reprocess
     document.addEventListener('click', (e) => {
         if (!panel.contains(e.target) && !e.target.closest('.dropdown-item[data-value="custom"]')) {
             if (panel.classList.contains('visible')) {

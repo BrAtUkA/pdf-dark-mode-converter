@@ -127,6 +127,9 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2522'/%3E%3Cpath d='M21 6H13l-4 4v14a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2z' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cpath d='M13 6v4H9' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cline x1='12' y1='16' x2='20' y2='16' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3Cline x1='12' y1='20' x2='18' y2='20' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3C/svg%3E">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../css/converter.css">
+    <script>
+    (function(){var t={classic:[0,0,0],slate:[40,42,46],claude:[42,37,34],chatgpt:[52,53,65],sepia:[40,35,25],midnight:[25,30,45],forest:[25,35,30],solarized:[0,43,54],nord:[46,52,64],dracula:[40,42,54],gruvbox:[40,40,40],monokai:[39,40,34],tokyonight:[26,27,38],rosepine:[35,33,54],cobalt:[0,28,53]};var k;try{var s=JSON.parse(localStorage.getItem('pdfDM_settings'));if(s&&s.theme)k=s.theme}catch(e){}var p=new URLSearchParams(location.search).get('theme');if(p&&t[p])k=p;var c=t[k]||t.claude;document.documentElement.style.backgroundColor='rgb('+c[0]+','+c[1]+','+c[2]+')'})();
+    </script>
 
 <link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/">
     <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/">
@@ -213,10 +216,11 @@
                 </div>
             </div>
         </div>
-        <p class="tool-desc">Inversez les couleurs de n'importe quel PDF de façon permanente dans votre navigateur. Vraie inversion du complément RGB — les pages blanches deviennent noires, le texte noir devient blanc. Ajustez la résolution et la qualité, puis téléchargez. Aucun envoi, aucune inscription, entièrement hors ligne et privé.</p>
+        <p class="tool-desc">Inversez les couleurs de n'importe quel PDF de façon permanente dans votre navigateur. Vraie inversion du complément RGB - les pages blanches deviennent noires, le texte noir devient blanc. Ajustez la résolution et la qualité, puis téléchargez. Aucun envoi, aucune inscription, entièrement hors ligne et privé.</p>
         <input type="file" id="fileInput" class="file-input" accept="application/pdf" multiple="">
-        <p class="scanned-tip" id="imagesTip">Les images semblent incorrectes ? Essayez d'<a href="#" id="imagesTipLink">activer Préserver les images</a><span class="scanned-tip-tooltip">Préserver les images détecte les photos et graphiques et conserve leurs couleurs d'origine après l'inversion. Activez-le pour protéger les images de l'inversion.</span></p>
-        <p class="scanned-tip" id="scannedTip">Ça ne fonctionne pas ? Essayez de <a href="#" id="scannedTipLink">désactiver Préserver les images</a><span class="scanned-tip-tooltip">Les PDF scannés sont composés d'images, pas de texte. Quand Préserver les images est activé, le convertisseur laisse ces images intactes — la page reste claire. Désactivez-le pour tout inverser.</span></p>
+        <div class="converter-stage">
+<p class="scanned-tip" id="imagesTip">Les images semblent incorrectes ? Essayez d'<a href="#" id="imagesTipLink">activer Préserver les images</a><span class="scanned-tip-tooltip">Préserver les images détecte les photos et graphiques et conserve leurs couleurs d'origine après l'inversion. Activez-le pour protéger les images de l'inversion.</span></p>
+        <p class="scanned-tip" id="scannedTip">Ça ne fonctionne pas ? Essayez de <a href="#" id="scannedTipLink">désactiver Préserver les images</a><span class="scanned-tip-tooltip">Les PDF scannés sont composés d'images, pas de texte. Quand Préserver les images est activé, le convertisseur laisse ces images intactes - la page reste claire. Désactivez-le pour tout inverser.</span></p>
         <div id="dropZone" class="drop-zone">
             <div class="drop-zone-idle">
                 <svg class="drop-zone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
@@ -232,6 +236,7 @@
             <div id="progressText">0/0</div>
             <button id="cancelBtn" type="button">Annuler</button>
         </div>
+        </div>
         <div id="batchInfo">
             <div class="batch-label"></div>
             <div class="batch-file-current"></div>
@@ -244,7 +249,7 @@
             <div class="steps">
                 <div class="step">
                     <h3>Envoyez Votre PDF</h3>
-                    <p>Cliquez sur le bouton d'envoi ou glissez un PDF sur la page. Rien n'est envoyé — le fichier est lu localement dans votre navigateur.</p>
+                    <p>Cliquez sur le bouton d'envoi ou glissez un PDF sur la page. Rien n'est envoyé - le fichier est lu localement dans votre navigateur.</p>
                 </div>
                 <div class="step">
                     <h3>Les Couleurs Sont Inversées</h3>
@@ -258,13 +263,13 @@
 
             <h2>Qu'est-ce que l'Inversion des Couleurs d'un PDF ?</h2>
             <p>L'inversion des couleurs remplace chaque couleur d'un PDF par son complément RGB. Les fonds blancs deviennent noirs, le texte noir devient blanc et chaque autre couleur passe à son opposé dans le spectre. Le résultat est un vrai négatif photographique du document original.</p>
-            <p>Contrairement aux filtres d'accessibilité du système ou aux extensions de navigateur qui ne changent que l'affichage à l'écran, cet outil crée un <strong>nouveau fichier PDF</strong> avec les couleurs inversées intégrées de façon permanente. Partagez-le, imprimez-le, ouvrez-le sur un autre appareil — les couleurs restent inversées.</p>
+            <p>Contrairement aux filtres d'accessibilité du système ou aux extensions de navigateur qui ne changent que l'affichage à l'écran, cet outil crée un <strong>nouveau fichier PDF</strong> avec les couleurs inversées intégrées de façon permanente. Partagez-le, imprimez-le, ouvrez-le sur un autre appareil - les couleurs restent inversées.</p>
 
             <h2>Pourquoi Utiliser Cet Outil</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <h3>Inversion Permanente</h3>
-                    <p>Crée un vrai PDF avec les couleurs inversées. Ce n'est pas un filtre d'écran — le fichier lui-même est modifié.</p>
+                    <p>Crée un vrai PDF avec les couleurs inversées. Ce n'est pas un filtre d'écran - le fichier lui-même est modifié.</p>
                 </div>
                 <div class="feature-card">
                     <h3>Accéléré par GPU</h3>

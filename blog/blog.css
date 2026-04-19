@@ -10,7 +10,7 @@ a:hover{text-decoration:underline}
 .blog-nav a:hover{color:#fff;text-decoration:none}
 .blog-nav .site-name{font-weight:600;color:rgba(255,255,255,0.7);margin-right:auto}
 
-/* Language switcher — critical sizing (prevents CLS before async lang.css loads) */
+/* Language switcher - critical sizing (prevents CLS before async lang.css loads) */
 .lang-switcher{position:relative}
 .lang-toggle{display:flex;align-items:center;gap:4px;padding:3px 8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:5px;color:rgba(255,255,255,0.38);font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap}
 .lang-globe{width:13px;height:13px;flex-shrink:0}

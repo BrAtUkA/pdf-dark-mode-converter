@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="pt"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Converter PDF para Modo Escuro – Ferramenta Online Gratuita | Mais de 16 Temas</title>
+    <title>Converter PDF para Modo Escuro - Ferramenta Online Gratuita | Mais de 16 Temas</title>
     <meta name="description" content="Converta qualquer PDF para modo escuro diretamente no navegador. Ate 10 vezes mais rapido, mais de 16 temas (Dracula, Nord, Solarized), totalmente offline. Sem upload, sem cadastro, 100% privado.">
     <meta name="author" content="BrAtUkA">
     <meta name="robots" content="index, follow">
@@ -24,14 +24,14 @@
     <meta property="og:locale:alternate" content="ja_JP">
     <meta property="og:locale:alternate" content="ru_RU">
 
-<meta property="og:title" content="Converter PDF para Modo Escuro – Gratuito e Instantaneo">
+<meta property="og:title" content="Converter PDF para Modo Escuro - Gratuito e Instantaneo">
     <meta property="og:description" content="Converta qualquer PDF para modo escuro no navegador. 10 vezes mais rapido, mais de 16 temas, gratuito, offline, privado.">
     <meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/img/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Converter PDF para Modo Escuro – Gratuito e Instantaneo">
+    <meta name="twitter:title" content="Converter PDF para Modo Escuro - Gratuito e Instantaneo">
     <meta name="twitter:description" content="Converta qualquer PDF para modo escuro no navegador. 10 vezes mais rapido, mais de 16 temas, gratuito, offline, privado.">
     <meta name="twitter:image" content="https://bratuka.dev/pdf-dark-mode-converter/img/og-image.png">
 
@@ -135,6 +135,9 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2522'/%3E%3Cpath d='M21 6H13l-4 4v14a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2z' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cpath d='M13 6v4H9' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cline x1='12' y1='16' x2='20' y2='16' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3Cline x1='12' y1='20' x2='18' y2='20' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3C/svg%3E">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="../css/converter.css">
+    <script>
+    (function(){var t={classic:[0,0,0],slate:[40,42,46],claude:[42,37,34],chatgpt:[52,53,65],sepia:[40,35,25],midnight:[25,30,45],forest:[25,35,30],solarized:[0,43,54],nord:[46,52,64],dracula:[40,42,54],gruvbox:[40,40,40],monokai:[39,40,34],tokyonight:[26,27,38],rosepine:[35,33,54],cobalt:[0,28,53]};var k;try{var s=JSON.parse(localStorage.getItem('pdfDM_settings'));if(s&&s.theme)k=s.theme}catch(e){}var p=new URLSearchParams(location.search).get('theme');if(p&&t[p])k=p;var c=t[k]||t.claude;document.documentElement.style.backgroundColor='rgb('+c[0]+','+c[1]+','+c[2]+')'})();
+    </script>
 
 <link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/">
     <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/">
@@ -261,7 +264,8 @@
         </div>
         <p class="tool-desc">Converta qualquer PDF para modo escuro diretamente no navegador. Escolha entre mais de 16 temas como Dracula, Nord e Solarized, ajuste resolucao e qualidade, e baixe o resultado em segundos. Sem upload, sem cadastro, totalmente offline e privado.</p>
         <input type="file" id="fileInput" class="file-input" accept="application/pdf" multiple="">
-        <p class="scanned-tip" id="imagesTip">Imagens parecem estranhas? Tente <a href="#" id="imagesTipLink">ativar Preservar imagens</a><span class="scanned-tip-tooltip">Preservar imagens detecta fotos e graficos e mantem suas cores originais apos a transformacao para modo escuro. Ative para proteger as imagens do escurecimento.</span></p>
+        <div class="converter-stage">
+<p class="scanned-tip" id="imagesTip">Imagens parecem estranhas? Tente <a href="#" id="imagesTipLink">ativar Preservar imagens</a><span class="scanned-tip-tooltip">Preservar imagens detecta fotos e graficos e mantem suas cores originais apos a transformacao para modo escuro. Ative para proteger as imagens do escurecimento.</span></p>
         <p class="scanned-tip" id="scannedTip">Nao funcionou? Tente <a href="#" id="scannedTipLink">desativar Preservar imagens</a><span class="scanned-tip-tooltip">PDFs escaneados sao compostos por imagens, nao texto. Quando Preservar imagens esta ativo, o conversor deixa essas imagens inalteradas, mantendo a pagina clara. Desativa-lo permite que o conversor escureca tudo.</span></p>
         <div id="dropZone" class="drop-zone">
             <div class="drop-zone-idle">
@@ -277,6 +281,7 @@
             <div id="progressTrack"><div id="progressBar"></div></div>
             <div id="progressText">0/0</div>
             <button id="cancelBtn" type="button">Cancelar</button>
+        </div>
         </div>
         <div id="batchInfo">
             <div class="batch-label"></div>

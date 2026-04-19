@@ -127,6 +127,9 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2522'/%3E%3Cpath d='M21 6H13l-4 4v14a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2z' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cpath d='M13 6v4H9' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cline x1='12' y1='16' x2='20' y2='16' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3Cline x1='12' y1='20' x2='18' y2='20' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3C/svg%3E">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../css/converter.css">
+    <script>
+    (function(){var t={classic:[0,0,0],slate:[40,42,46],claude:[42,37,34],chatgpt:[52,53,65],sepia:[40,35,25],midnight:[25,30,45],forest:[25,35,30],solarized:[0,43,54],nord:[46,52,64],dracula:[40,42,54],gruvbox:[40,40,40],monokai:[39,40,34],tokyonight:[26,27,38],rosepine:[35,33,54],cobalt:[0,28,53]};var k;try{var s=JSON.parse(localStorage.getItem('pdfDM_settings'));if(s&&s.theme)k=s.theme}catch(e){}var p=new URLSearchParams(location.search).get('theme');if(p&&t[p])k=p;var c=t[k]||t.claude;document.documentElement.style.backgroundColor='rgb('+c[0]+','+c[1]+','+c[2]+')'})();
+    </script>
 
 <link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/">
     <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/">
@@ -213,9 +216,10 @@
                 </div>
             </div>
         </div>
-        <p class="tool-desc">Invierte los colores de cualquier PDF permanentemente en tu navegador. Inversión real de complemento RGB — las páginas blancas se vuelven negras, el texto negro se vuelve blanco. Ajusta la resolución y la calidad, luego descarga. Sin subidas, sin registro, totalmente offline y privado.</p>
+        <p class="tool-desc">Invierte los colores de cualquier PDF permanentemente en tu navegador. Inversión real de complemento RGB - las páginas blancas se vuelven negras, el texto negro se vuelve blanco. Ajusta la resolución y la calidad, luego descarga. Sin subidas, sin registro, totalmente offline y privado.</p>
         <input type="file" id="fileInput" class="file-input" accept="application/pdf" multiple="">
-        <p class="scanned-tip" id="imagesTip">¿Las imágenes se ven mal? Prueba <a href="#" id="imagesTipLink">activar Preservar imágenes</a><span class="scanned-tip-tooltip">Preservar imágenes detecta fotos y gráficos y mantiene sus colores originales tras la inversión. Actívalo para proteger las imágenes de ser invertidas.</span></p>
+        <div class="converter-stage">
+<p class="scanned-tip" id="imagesTip">¿Las imágenes se ven mal? Prueba <a href="#" id="imagesTipLink">activar Preservar imágenes</a><span class="scanned-tip-tooltip">Preservar imágenes detecta fotos y gráficos y mantiene sus colores originales tras la inversión. Actívalo para proteger las imágenes de ser invertidas.</span></p>
         <p class="scanned-tip" id="scannedTip">¿No funciona? Prueba <a href="#" id="scannedTipLink">desactivar Preservar imágenes</a><span class="scanned-tip-tooltip">Los PDF escaneados están hechos de imágenes, no texto. Con Preservar imágenes activado, el convertidor deja esas imágenes intactas y la página queda clara. Desactívalo para invertir todo.</span></p>
         <div id="dropZone" class="drop-zone">
             <div class="drop-zone-idle">
@@ -232,6 +236,7 @@
             <div id="progressText">0/0</div>
             <button id="cancelBtn" type="button">Cancelar</button>
         </div>
+        </div>
         <div id="batchInfo">
             <div class="batch-label"></div>
             <div class="batch-file-current"></div>
@@ -244,7 +249,7 @@
             <div class="steps">
                 <div class="step">
                     <h3>Sube Tu PDF</h3>
-                    <p>Haz clic en el botón de subida o arrastra un PDF a la página. No se sube nada — el archivo se lee localmente en tu navegador.</p>
+                    <p>Haz clic en el botón de subida o arrastra un PDF a la página. No se sube nada - el archivo se lee localmente en tu navegador.</p>
                 </div>
                 <div class="step">
                     <h3>Los Colores Se Invierten</h3>
@@ -258,13 +263,13 @@
 
             <h2>¿Qué Es la Inversión de Color en PDF?</h2>
             <p>La inversión de color reemplaza cada color en un PDF con su complemento RGB. Los fondos blancos se vuelven negros, el texto negro se vuelve blanco y cada otro color cambia a su opuesto en el espectro. El resultado es un verdadero negativo fotográfico del documento original.</p>
-            <p>A diferencia de los filtros de accesibilidad del sistema operativo o las extensiones de navegador que solo cambian lo que ves en pantalla, esta herramienta crea un <strong>nuevo archivo PDF</strong> con los colores invertidos integrados permanentemente. Compártelo, imprímelo, ábrelo en un dispositivo diferente — los colores se mantienen invertidos.</p>
+            <p>A diferencia de los filtros de accesibilidad del sistema operativo o las extensiones de navegador que solo cambian lo que ves en pantalla, esta herramienta crea un <strong>nuevo archivo PDF</strong> con los colores invertidos integrados permanentemente. Compártelo, imprímelo, ábrelo en un dispositivo diferente - los colores se mantienen invertidos.</p>
 
             <h2>Por Qué Usar Esta Herramienta</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <h3>Inversión Permanente</h3>
-                    <p>Crea un PDF real con colores invertidos. No es un filtro de pantalla — el archivo mismo se cambia.</p>
+                    <p>Crea un PDF real con colores invertidos. No es un filtro de pantalla - el archivo mismo se cambia.</p>
                 </div>
                 <div class="feature-card">
                     <h3>Acelerado por GPU</h3>

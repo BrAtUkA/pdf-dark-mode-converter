@@ -148,27 +148,27 @@
         <p>Wenn die meisten Dunkelmodus-Tools Ihr PDF verarbeiten, führen sie eine sogenannte <strong>Rasterung</strong> durch. Sie rendern jede Seite als flaches Bild (wie einen Screenshot), wenden die Farbtransformation auf dieses Bild an und packen das Ergebnis dann in ein neues PDF. Das Ergebnis sieht dunkel aus, aber die strukturierten Textdaten sind verloren. Jede Seite ist nun ein Foto des Textes statt echtem Text.</p>
         <p>Das bedeutet:</p>
         <ul>
-            <li><strong>Keine Textauswahl</strong> — Sie können keinen Satz oder Absatz markieren</li>
-            <li><strong>Kein Kopieren und Einfügen</strong> — Sie können kein Zitat oder keine Referenz extrahieren</li>
-            <li><strong>Keine Suche</strong> — Strg+F / Cmd+F findet nichts</li>
-            <li><strong>Keine Barrierefreiheit</strong> — Screenreader können das Dokument nicht lesen</li>
-            <li><strong>Keine Anmerkungen</strong> — textbasierte Markup-Tools funktionieren nicht mehr</li>
-            <li><strong>Größere Dateien</strong> — Bilder benötigen mehr Speicherplatz als strukturierter Text</li>
+            <li><strong>Keine Textauswahl</strong> - Sie können keinen Satz oder Absatz markieren</li>
+            <li><strong>Kein Kopieren und Einfügen</strong> - Sie können kein Zitat oder keine Referenz extrahieren</li>
+            <li><strong>Keine Suche</strong> - Strg+F / Cmd+F findet nichts</li>
+            <li><strong>Keine Barrierefreiheit</strong> - Screenreader können das Dokument nicht lesen</li>
+            <li><strong>Keine Anmerkungen</strong> - textbasierte Markup-Tools funktionieren nicht mehr</li>
+            <li><strong>Größere Dateien</strong> - Bilder benötigen mehr Speicherplatz als strukturierter Text</li>
         </ul>
         <p>Für einen einseitigen Flyer mag das keine Rolle spielen. Für eine 50-seitige Forschungsarbeit oder ein Lehrbuch, das Sie regelmäßig nachschlagen, ist der Verlust von durchsuchbarem Text ein ernstes Problem.</p>
 
         <h2>Wie Textebenen dieses Problem lösen</h2>
         <p>Die Lösung ist eine Technik namens <strong>versteckte Textebene</strong>. Statt die ursprünglichen Textdaten wegzuwerfen, behält der Konverter sie bei und positioniert sie unsichtbar über jedem Seitenbild. Das Ergebnis ist ein PDF mit zwei Ebenen:</p>
         <ol>
-            <li><strong>Visuelle Ebene</strong> — das dunkel gestaltete Seitenbild, das Sie auf dem Bildschirm sehen</li>
-            <li><strong>Textebene</strong> — unsichtbarer, perfekt ausgerichteter Text, mit dem Ihr PDF-Reader interagieren kann</li>
+            <li><strong>Visuelle Ebene</strong> - das dunkel gestaltete Seitenbild, das Sie auf dem Bildschirm sehen</li>
+            <li><strong>Textebene</strong> - unsichtbarer, perfekt ausgerichteter Text, mit dem Ihr PDF-Reader interagieren kann</li>
         </ol>
         <p>Wenn Sie Text im konvertierten PDF auswählen, wählen Sie tatsächlich aus der versteckten Textebene. Wenn Sie suchen, durchsucht Ihr Reader die Textebene. Wenn ein Screenreader das Dokument verarbeitet, liest er die Textebene. Das visuelle Erscheinungsbild ist dunkel; der funktionale Text darunter ist vollständig intakt.</p>
         <p>Genau so funktioniert der <a href="../../index.html">PDF Dunkelmodus Konverter</a>. Jede konvertierte Seite enthält eine synchronisierte Textebene, damit Sie die volle Textfunktionalität im Ergebnis behalten.</p>
 
         <figure class="wide">
-            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
-            <figcaption>Text kann im konvertierten Dunkelmodus-PDF ausgewählt, kopiert und durchsucht werden — die versteckte Textebene macht dies möglich.</figcaption>
+            <picture><source srcset="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.webp" type="image/webp"><img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" fetchpriority="high" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780"></picture>
+            <figcaption>Text kann im konvertierten Dunkelmodus-PDF ausgewählt, kopiert und durchsucht werden - die versteckte Textebene macht dies möglich.</figcaption>
         </figure>
 
         <h2>Was Sie mit erhaltenem Text tun können</h2>
@@ -184,7 +184,7 @@
         <p>Textbasierte Anmerkungen in PDF-Readern hängen von der Textebene ab. Sie können Sätze hervorheben, Inline-Kommentare hinzufügen und textverknüpfte Lesezeichen erstellen. Diese Funktionen fallen bei reinen Bild-Dunkelmodus-PDFs komplett aus.</p>
 
         <h3>Barrierefreiheit und Screenreader</h3>
-        <p>Screenreader wie JAWS, NVDA und VoiceOver stützen sich auf die PDF-Textebene, um Inhalte vorzulesen. Ein reines Bild-Dunkelmodus-PDF ist für Hilfstechnologie völlig undurchsichtig. Die Beibehaltung der Textebene bedeutet, dass Ihre Dunkelmodus-PDFs für sehbehinderte Benutzer zugänglich bleiben — das dunkle Design hilft sehenden Benutzern, während die Textebene allen dient.</p>
+        <p>Screenreader wie JAWS, NVDA und VoiceOver stützen sich auf die PDF-Textebene, um Inhalte vorzulesen. Ein reines Bild-Dunkelmodus-PDF ist für Hilfstechnologie völlig undurchsichtig. Die Beibehaltung der Textebene bedeutet, dass Ihre Dunkelmodus-PDFs für sehbehinderte Benutzer zugänglich bleiben - das dunkle Design hilft sehenden Benutzern, während die Textebene allen dient.</p>
 
         <h3>Dateigröße</h3>
         <p>PDFs mit Textebenen können in der Größe effizienter sein als rein bildbasierte Konvertierungen bei hoher Auflösung. Die Textdaten selbst sind kompakt. Die Seitenbilder können moderate JPEG-Komprimierung verwenden, während die Textebene sicherstellt, dass in Bezug auf Inhaltstreue nichts verloren geht.</p>
@@ -196,7 +196,7 @@
         <p>Wenn Ihr PDF ein Scan einer gedruckten Seite ist (häufig bei älteren akademischen Arbeiten, Behördenformularen und archivierten Dokumenten), gibt es keine Textdaten zum Bewahren. Das Original ist bereits ein Bild. Der Dunkelmodus-Konverter wird es abdunkeln, aber es gibt keine Textebene zum Übertragen, weil nie eine existiert hat. Wenn Sie auswählbaren Text aus einem gescannten Dokument benötigen, verarbeiten Sie es zuerst mit OCR-Software (Optische Zeichenerkennung) und konvertieren Sie es dann in den Dunkelmodus.</p>
 
         <h3>Komplexe Layouts</h3>
-        <p>Dokumente mit ungewöhnlicher Textpositionierung — überlappende Elemente, gedrehter Text oder nicht standardmäßige Schriftarten — können leichte Ausrichtungsunterschiede zwischen dem sichtbaren Text und der auswählbaren Textebene aufweisen. Für Standarddokumente wie Forschungsarbeiten, Lehrbücher, Berichte und Artikel ist die Ausrichtung praktisch perfekt.</p>
+        <p>Dokumente mit ungewöhnlicher Textpositionierung - überlappende Elemente, gedrehter Text oder nicht standardmäßige Schriftarten - können leichte Ausrichtungsunterschiede zwischen dem sichtbaren Text und der auswählbaren Textebene aufweisen. Für Standarddokumente wie Forschungsarbeiten, Lehrbücher, Berichte und Artikel ist die Ausrichtung praktisch perfekt.</p>
 
         <h3>Rechts-nach-links und vertikaler Text</h3>
         <p>Arabischer, hebräischer und vertikaler CJK-Text (Chinesisch/Japanisch/Koreanisch) stellen zusätzliche Layout-Herausforderungen dar. Die Textebene bewahrt die Zeichen in der Regel korrekt, aber das Auswahlverhalten kann je nach Unterstützung Ihres PDF-Readers für diese Schriftsysteme variieren.</p>
@@ -207,7 +207,7 @@
             <li>Öffnen Sie das konvertierte PDF in einem beliebigen PDF-Reader (Adobe Acrobat, Chrome, Firefox, Vorschau usw.)</li>
             <li>Versuchen Sie, Text auszuwählen, indem Sie über einen Absatz klicken und ziehen</li>
             <li>Wenn der Text sich blau markiert (oder in der Auswahlfarbe Ihres Readers), funktioniert die Textebene</li>
-            <li>Drücken Sie Strg+F und suchen Sie nach einem Wort, das auf der Seite sichtbar ist — wenn es gefunden wird, funktioniert die Textsuche</li>
+            <li>Drücken Sie Strg+F und suchen Sie nach einem Wort, das auf der Seite sichtbar ist - wenn es gefunden wird, funktioniert die Textsuche</li>
         </ol>
         <p>Wenn weder Auswahl noch Suche funktionieren, hat das Tool, das Ihr PDF konvertiert hat, es in flache Bilder gerastert.</p>
 

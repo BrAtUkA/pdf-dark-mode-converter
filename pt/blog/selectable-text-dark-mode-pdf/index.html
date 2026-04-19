@@ -148,27 +148,27 @@
         <p>Quando a maioria das ferramentas de modo escuro processa seu PDF, elas fazem algo chamado <strong>rasterização</strong>. Renderizam cada página como uma imagem plana (como uma captura de tela), aplicam a transformação de cor a essa imagem e então empacotam o resultado em um novo PDF. O resultado parece escuro, mas os dados textuais estruturados desapareceram. Cada página agora é uma fotografia do texto em vez de texto real.</p>
         <p>Isso significa:</p>
         <ul>
-            <li><strong>Sem seleção de texto</strong> — você não pode destacar uma frase ou parágrafo</li>
-            <li><strong>Sem copiar e colar</strong> — você não pode extrair uma citação ou referência</li>
-            <li><strong>Sem pesquisa</strong> — Ctrl+F / Cmd+F não encontra nada</li>
-            <li><strong>Sem acessibilidade</strong> — leitores de tela não conseguem ler o documento</li>
-            <li><strong>Sem anotações</strong> — ferramentas de marcação baseadas em texto param de funcionar</li>
-            <li><strong>Arquivos maiores</strong> — imagens ocupam mais espaço que texto estruturado</li>
+            <li><strong>Sem seleção de texto</strong> - você não pode destacar uma frase ou parágrafo</li>
+            <li><strong>Sem copiar e colar</strong> - você não pode extrair uma citação ou referência</li>
+            <li><strong>Sem pesquisa</strong> - Ctrl+F / Cmd+F não encontra nada</li>
+            <li><strong>Sem acessibilidade</strong> - leitores de tela não conseguem ler o documento</li>
+            <li><strong>Sem anotações</strong> - ferramentas de marcação baseadas em texto param de funcionar</li>
+            <li><strong>Arquivos maiores</strong> - imagens ocupam mais espaço que texto estruturado</li>
         </ul>
         <p>Para um folheto de uma página, isso pode não importar. Para um artigo de pesquisa de 50 páginas ou um livro didático que você consulta regularmente, perder o texto pesquisável é um problema sério.</p>
 
         <h2>Como as camadas de texto resolvem isso</h2>
         <p>A solução é uma técnica chamada <strong>camada de texto oculta</strong>. Em vez de descartar os dados textuais originais, o conversor os mantém e os posiciona de forma invisível sobre cada imagem de página. O resultado é um PDF com duas camadas:</p>
         <ol>
-            <li><strong>Camada visual</strong> — a imagem da página com tema escuro que você vê na tela</li>
-            <li><strong>Camada de texto</strong> — texto invisível, perfeitamente alinhado, com o qual seu leitor de PDF pode interagir</li>
+            <li><strong>Camada visual</strong> - a imagem da página com tema escuro que você vê na tela</li>
+            <li><strong>Camada de texto</strong> - texto invisível, perfeitamente alinhado, com o qual seu leitor de PDF pode interagir</li>
         </ol>
         <p>Quando você seleciona texto no PDF convertido, está na verdade selecionando da camada de texto oculta. Quando pesquisa, seu leitor examina a camada de texto. Quando um leitor de tela processa o documento, ele lê a camada de texto. A aparência visual é escura; o texto funcional por baixo está completamente intacto.</p>
         <p>É exatamente assim que o <a href="../../index.html">Conversor PDF Modo Escuro</a> funciona. Cada página convertida inclui uma camada de texto sincronizada, para que você mantenha a funcionalidade completa de texto no resultado.</p>
 
         <figure class="wide">
-            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
-            <figcaption>O texto pode ser selecionado, copiado e pesquisado no PDF convertido para modo escuro — a camada de texto oculta torna isso possível.</figcaption>
+            <picture><source srcset="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.webp" type="image/webp"><img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" fetchpriority="high" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780"></picture>
+            <figcaption>O texto pode ser selecionado, copiado e pesquisado no PDF convertido para modo escuro - a camada de texto oculta torna isso possível.</figcaption>
         </figure>
 
         <h2>O que você pode fazer com o texto preservado</h2>
@@ -184,7 +184,7 @@
         <p>As anotações baseadas em texto nos leitores de PDF dependem da camada de texto. Você pode destacar frases, adicionar comentários inline e criar marcadores vinculados ao texto. Essas funcionalidades quebram completamente em PDFs de modo escuro que são apenas imagens.</p>
 
         <h3>Acessibilidade e leitores de tela</h3>
-        <p>Leitores de tela como JAWS, NVDA e VoiceOver dependem da camada de texto do PDF para ler o conteúdo em voz alta. Um PDF em modo escuro que é apenas imagem é completamente opaco para tecnologia assistiva. Preservar a camada de texto significa que seus PDFs em modo escuro permanecem acessíveis a usuários com deficiência visual — o tema escuro ajuda os usuários videntes enquanto a camada de texto serve a todos.</p>
+        <p>Leitores de tela como JAWS, NVDA e VoiceOver dependem da camada de texto do PDF para ler o conteúdo em voz alta. Um PDF em modo escuro que é apenas imagem é completamente opaco para tecnologia assistiva. Preservar a camada de texto significa que seus PDFs em modo escuro permanecem acessíveis a usuários com deficiência visual - o tema escuro ajuda os usuários videntes enquanto a camada de texto serve a todos.</p>
 
         <h3>Tamanho do arquivo</h3>
         <p>PDFs com camadas de texto podem ser mais eficientes em tamanho comparados a conversões puramente baseadas em imagens em alta resolução. Os dados textuais são compactos. As imagens das páginas podem usar compressão JPEG moderada enquanto a camada de texto garante que nada se perca em termos de fidelidade do conteúdo.</p>
@@ -196,7 +196,7 @@
         <p>Se o seu PDF é uma digitalização de uma página impressa (comum com artigos acadêmicos antigos, formulários governamentais e documentos arquivados), não há dados textuais para preservar. O original já é uma imagem. O conversor de modo escuro o escurecerá, mas não há camada de texto para transferir porque nunca existiu uma. Se você precisa de texto selecionável de um documento escaneado, passe-o primeiro por um software OCR (Reconhecimento Óptico de Caracteres) e depois converta para modo escuro.</p>
 
         <h3>Layouts complexos</h3>
-        <p>Documentos com posicionamento de texto incomum — elementos sobrepostos, texto rotacionado ou fontes não padrão — podem apresentar leves diferenças de alinhamento entre o texto visível e a camada de texto selecionável. Para documentos padrão como artigos de pesquisa, livros didáticos, relatórios e artigos, o alinhamento é praticamente perfeito.</p>
+        <p>Documentos com posicionamento de texto incomum - elementos sobrepostos, texto rotacionado ou fontes não padrão - podem apresentar leves diferenças de alinhamento entre o texto visível e a camada de texto selecionável. Para documentos padrão como artigos de pesquisa, livros didáticos, relatórios e artigos, o alinhamento é praticamente perfeito.</p>
 
         <h3>Texto da direita para a esquerda e vertical</h3>
         <p>Texto em árabe, hebraico e CJK vertical (chinês/japonês/coreano) apresenta desafios adicionais de layout. A camada de texto geralmente preserva os caracteres corretamente, mas o comportamento de seleção pode variar dependendo do suporte do seu leitor de PDF para esses sistemas de escrita.</p>
@@ -207,7 +207,7 @@
             <li>Abra o PDF convertido em qualquer leitor de PDF (Adobe Acrobat, Chrome, Firefox, Pré-visualização, etc.)</li>
             <li>Tente selecionar algum texto clicando e arrastando sobre um parágrafo</li>
             <li>Se o texto ficar destacado em azul (ou na cor de seleção do seu leitor), a camada de texto está funcionando</li>
-            <li>Pressione Ctrl+F e pesquise uma palavra visível na página — se encontrar, a pesquisa textual está funcional</li>
+            <li>Pressione Ctrl+F e pesquise uma palavra visível na página - se encontrar, a pesquisa textual está funcional</li>
         </ol>
         <p>Se nem a seleção nem a pesquisa funcionam, a ferramenta que converteu seu PDF o rasterizou em imagens planas.</p>
 

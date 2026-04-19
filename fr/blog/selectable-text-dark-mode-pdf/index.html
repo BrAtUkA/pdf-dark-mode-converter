@@ -148,27 +148,27 @@
         <p>Lorsque la plupart des outils de mode sombre traitent votre PDF, ils effectuent ce qu'on appelle une <strong>rastérisation</strong>. Ils rendent chaque page sous forme d'image aplatie (comme une capture d'écran), appliquent la transformation de couleur à cette image, puis enveloppent le résultat dans un nouveau PDF. Le résultat a l'air sombre, mais les données textuelles structurées ont disparu. Chaque page est désormais une photographie du texte plutôt que du texte réel.</p>
         <p>Cela signifie :</p>
         <ul>
-            <li><strong>Pas de sélection de texte</strong> — vous ne pouvez pas surligner une phrase ou un paragraphe</li>
-            <li><strong>Pas de copier-coller</strong> — vous ne pouvez pas extraire une citation ou une référence</li>
-            <li><strong>Pas de recherche</strong> — Ctrl+F / Cmd+F ne trouve rien</li>
-            <li><strong>Pas d'accessibilité</strong> — les lecteurs d'écran ne peuvent pas lire le document</li>
-            <li><strong>Pas d'annotations</strong> — les outils de balisage basés sur le texte cessent de fonctionner</li>
-            <li><strong>Fichiers plus volumineux</strong> — les images prennent plus de place que le texte structuré</li>
+            <li><strong>Pas de sélection de texte</strong> - vous ne pouvez pas surligner une phrase ou un paragraphe</li>
+            <li><strong>Pas de copier-coller</strong> - vous ne pouvez pas extraire une citation ou une référence</li>
+            <li><strong>Pas de recherche</strong> - Ctrl+F / Cmd+F ne trouve rien</li>
+            <li><strong>Pas d'accessibilité</strong> - les lecteurs d'écran ne peuvent pas lire le document</li>
+            <li><strong>Pas d'annotations</strong> - les outils de balisage basés sur le texte cessent de fonctionner</li>
+            <li><strong>Fichiers plus volumineux</strong> - les images prennent plus de place que le texte structuré</li>
         </ul>
         <p>Pour un dépliant d'une page, cela n'a peut-être pas d'importance. Pour un article de recherche de 50 pages ou un manuel que vous consultez régulièrement, perdre le texte consultable est un problème sérieux.</p>
 
         <h2>Comment les couches de texte résolvent ce problème</h2>
         <p>La solution est une technique appelée <strong>couche de texte cachée</strong>. Au lieu de jeter les données textuelles originales, le convertisseur les conserve et les positionne de façon invisible par-dessus chaque image de page. Le résultat est un PDF à deux couches :</p>
         <ol>
-            <li><strong>Couche visuelle</strong> — l'image de la page avec le thème sombre que vous voyez à l'écran</li>
-            <li><strong>Couche de texte</strong> — du texte invisible, parfaitement aligné, avec lequel votre lecteur PDF peut interagir</li>
+            <li><strong>Couche visuelle</strong> - l'image de la page avec le thème sombre que vous voyez à l'écran</li>
+            <li><strong>Couche de texte</strong> - du texte invisible, parfaitement aligné, avec lequel votre lecteur PDF peut interagir</li>
         </ol>
         <p>Lorsque vous sélectionnez du texte dans le PDF converti, vous sélectionnez en réalité depuis la couche de texte cachée. Lorsque vous cherchez, votre lecteur parcourt la couche de texte. Lorsqu'un lecteur d'écran traite le document, il lit la couche de texte. L'apparence visuelle est sombre ; le texte fonctionnel en dessous est parfaitement intact.</p>
         <p>C'est exactement ainsi que fonctionne le <a href="../../index.html">Convertisseur PDF Mode Sombre</a>. Chaque page convertie inclut une couche de texte synchronisée, pour que vous conserviez toutes les fonctionnalités textuelles dans le résultat.</p>
 
         <figure class="wide">
-            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
-            <figcaption>Le texte peut être sélectionné, copié et recherché dans le PDF converti en mode sombre — la couche de texte cachée rend cela possible.</figcaption>
+            <picture><source srcset="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.webp" type="image/webp"><img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" fetchpriority="high" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780"></picture>
+            <figcaption>Le texte peut être sélectionné, copié et recherché dans le PDF converti en mode sombre - la couche de texte cachée rend cela possible.</figcaption>
         </figure>
 
         <h2>Ce que vous pouvez faire avec le texte préservé</h2>
@@ -184,7 +184,7 @@
         <p>Les annotations basées sur le texte dans les lecteurs PDF dépendent de la couche de texte. Vous pouvez surligner des phrases, ajouter des commentaires en ligne et créer des signets liés au texte. Ces fonctionnalités ne marchent plus du tout dans les PDF en mode sombre qui ne sont que des images.</p>
 
         <h3>Accessibilité et lecteurs d'écran</h3>
-        <p>Les lecteurs d'écran comme JAWS, NVDA et VoiceOver s'appuient sur la couche de texte du PDF pour lire le contenu à voix haute. Un PDF en mode sombre qui n'est qu'une image est totalement opaque pour les technologies d'assistance. Préserver la couche de texte signifie que vos PDF en mode sombre restent accessibles aux utilisateurs malvoyants — le thème sombre aide les utilisateurs voyants tandis que la couche de texte sert tout le monde.</p>
+        <p>Les lecteurs d'écran comme JAWS, NVDA et VoiceOver s'appuient sur la couche de texte du PDF pour lire le contenu à voix haute. Un PDF en mode sombre qui n'est qu'une image est totalement opaque pour les technologies d'assistance. Préserver la couche de texte signifie que vos PDF en mode sombre restent accessibles aux utilisateurs malvoyants - le thème sombre aide les utilisateurs voyants tandis que la couche de texte sert tout le monde.</p>
 
         <h3>Taille du fichier</h3>
         <p>Les PDF avec couches de texte peuvent être plus efficaces en termes de taille par rapport aux conversions purement basées sur des images à haute résolution. Les données textuelles sont compactes. Les images de pages peuvent utiliser une compression JPEG modérée tandis que la couche de texte garantit que rien n'est perdu en termes de fidélité du contenu.</p>
@@ -196,7 +196,7 @@
         <p>Si votre PDF est un scan d'une page imprimée (courant pour les anciens articles académiques, les formulaires administratifs et les documents archivés), il n'y a pas de données textuelles à préserver. L'original est déjà une image. Le convertisseur en mode sombre l'assombrira, mais il n'y a pas de couche de texte à transférer car elle n'a jamais existé. Si vous avez besoin de texte sélectionnable à partir d'un document numérisé, passez-le d'abord par un logiciel OCR (Reconnaissance Optique de Caractères) puis convertissez-le en mode sombre.</p>
 
         <h3>Mises en page complexes</h3>
-        <p>Les documents avec un positionnement de texte inhabituel — éléments superposés, texte pivoté ou polices non standard — peuvent présenter de légers décalages d'alignement entre le texte visible et la couche de texte sélectionnable. Pour les documents standards comme les articles de recherche, manuels, rapports et articles, l'alignement est pratiquement parfait.</p>
+        <p>Les documents avec un positionnement de texte inhabituel - éléments superposés, texte pivoté ou polices non standard - peuvent présenter de légers décalages d'alignement entre le texte visible et la couche de texte sélectionnable. Pour les documents standards comme les articles de recherche, manuels, rapports et articles, l'alignement est pratiquement parfait.</p>
 
         <h3>Texte droite-à-gauche et vertical</h3>
         <p>Le texte en arabe, hébreu et CJK vertical (chinois/japonais/coréen) présente des défis de mise en page supplémentaires. La couche de texte préserve généralement les caractères correctement, mais le comportement de sélection peut varier selon le support de votre lecteur PDF pour ces systèmes d'écriture.</p>
@@ -207,7 +207,7 @@
             <li>Ouvrez le PDF converti dans n'importe quel lecteur PDF (Adobe Acrobat, Chrome, Firefox, Aperçu, etc.)</li>
             <li>Essayez de sélectionner du texte en cliquant et glissant sur un paragraphe</li>
             <li>Si le texte se surligne en bleu (ou dans la couleur de sélection de votre lecteur), la couche de texte fonctionne</li>
-            <li>Appuyez sur Ctrl+F et cherchez un mot visible sur la page — s'il le trouve, la recherche textuelle fonctionne</li>
+            <li>Appuyez sur Ctrl+F et cherchez un mot visible sur la page - s'il le trouve, la recherche textuelle fonctionne</li>
         </ol>
         <p>Si ni la sélection ni la recherche ne fonctionnent, l'outil qui a converti votre PDF l'a rastérisé en images aplaties.</p>
 

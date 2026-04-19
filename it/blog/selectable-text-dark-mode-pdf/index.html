@@ -148,27 +148,27 @@
         <p>Quando la maggior parte degli strumenti di modalità scura elabora il tuo PDF, esegue quella che si chiama <strong>rasterizzazione</strong>. Rendono ogni pagina come un'immagine piatta (come uno screenshot), applicano la trasformazione del colore a quell'immagine e poi avvolgono il risultato in un nuovo PDF. Il risultato sembra scuro, ma i dati testuali strutturati sono spariti. Ogni pagina è ora una fotografia del testo piuttosto che testo reale.</p>
         <p>Questo significa:</p>
         <ul>
-            <li><strong>Nessuna selezione del testo</strong> — non puoi evidenziare una frase o un paragrafo</li>
-            <li><strong>Nessun copia-incolla</strong> — non puoi estrarre una citazione o un riferimento</li>
-            <li><strong>Nessuna ricerca</strong> — Ctrl+F / Cmd+F non trova nulla</li>
-            <li><strong>Nessuna accessibilità</strong> — gli screen reader non possono leggere il documento</li>
-            <li><strong>Nessuna annotazione</strong> — gli strumenti di markup basati sul testo smettono di funzionare</li>
-            <li><strong>File più grandi</strong> — le immagini occupano più spazio del testo strutturato</li>
+            <li><strong>Nessuna selezione del testo</strong> - non puoi evidenziare una frase o un paragrafo</li>
+            <li><strong>Nessun copia-incolla</strong> - non puoi estrarre una citazione o un riferimento</li>
+            <li><strong>Nessuna ricerca</strong> - Ctrl+F / Cmd+F non trova nulla</li>
+            <li><strong>Nessuna accessibilità</strong> - gli screen reader non possono leggere il documento</li>
+            <li><strong>Nessuna annotazione</strong> - gli strumenti di markup basati sul testo smettono di funzionare</li>
+            <li><strong>File più grandi</strong> - le immagini occupano più spazio del testo strutturato</li>
         </ul>
         <p>Per un volantino di una pagina, potrebbe non importare. Per un articolo di ricerca di 50 pagine o un libro di testo che consulti regolarmente, perdere il testo ricercabile è un problema serio.</p>
 
         <h2>Come i livelli di testo risolvono questo problema</h2>
         <p>La soluzione è una tecnica chiamata <strong>livello di testo nascosto</strong>. Invece di eliminare i dati testuali originali, il convertitore li conserva e li posiziona in modo invisibile sopra ogni immagine di pagina. Il risultato è un PDF con due livelli:</p>
         <ol>
-            <li><strong>Livello visivo</strong> — l'immagine della pagina con tema scuro che vedi sullo schermo</li>
-            <li><strong>Livello di testo</strong> — testo invisibile, perfettamente allineato, con cui il tuo lettore PDF può interagire</li>
+            <li><strong>Livello visivo</strong> - l'immagine della pagina con tema scuro che vedi sullo schermo</li>
+            <li><strong>Livello di testo</strong> - testo invisibile, perfettamente allineato, con cui il tuo lettore PDF può interagire</li>
         </ol>
         <p>Quando selezioni il testo nel PDF convertito, stai selezionando dal livello di testo nascosto. Quando cerchi, il tuo lettore scansiona il livello di testo. Quando uno screen reader elabora il documento, legge il livello di testo. L'aspetto visivo è scuro; il testo funzionale sottostante è completamente intatto.</p>
         <p>Questo è esattamente come funziona il <a href="../../index.html">Convertitore PDF Modalità Scura</a>. Ogni pagina convertita include un livello di testo sincronizzato, così mantieni la piena funzionalità testuale nel risultato.</p>
 
         <figure class="wide">
-            <img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780" loading="lazy">
-            <figcaption>Il testo può essere selezionato, copiato e cercato nel PDF convertito in modalità scura — il livello di testo nascosto rende tutto ciò possibile.</figcaption>
+            <picture><source srcset="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.webp" type="image/webp"><img src="../../../blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png" fetchpriority="high" alt="A dark mode PDF with text highlighted by the user, demonstrating that the selectable text layer is preserved after conversion" width="1200" height="780"></picture>
+            <figcaption>Il testo può essere selezionato, copiato e cercato nel PDF convertito in modalità scura - il livello di testo nascosto rende tutto ciò possibile.</figcaption>
         </figure>
 
         <h2>Cosa puoi fare con il testo preservato</h2>
@@ -184,7 +184,7 @@
         <p>Le annotazioni basate sul testo nei lettori PDF dipendono dal livello di testo. Puoi evidenziare frasi, aggiungere commenti inline e creare segnalibri collegati al testo. Queste funzionalità si rompono completamente nei PDF in modalità scura che sono solo immagini.</p>
 
         <h3>Accessibilità e screen reader</h3>
-        <p>Gli screen reader come JAWS, NVDA e VoiceOver si basano sul livello di testo del PDF per leggere i contenuti ad alta voce. Un PDF in modalità scura solo immagine è completamente opaco per la tecnologia assistiva. Preservare il livello di testo significa che i tuoi PDF in modalità scura rimangono accessibili agli utenti ipovedenti — il tema scuro aiuta gli utenti vedenti mentre il livello di testo serve tutti.</p>
+        <p>Gli screen reader come JAWS, NVDA e VoiceOver si basano sul livello di testo del PDF per leggere i contenuti ad alta voce. Un PDF in modalità scura solo immagine è completamente opaco per la tecnologia assistiva. Preservare il livello di testo significa che i tuoi PDF in modalità scura rimangono accessibili agli utenti ipovedenti - il tema scuro aiuta gli utenti vedenti mentre il livello di testo serve tutti.</p>
 
         <h3>Dimensione del file</h3>
         <p>I PDF con livelli di testo possono essere più efficienti in termini di dimensione rispetto alle conversioni puramente basate su immagini ad alta risoluzione. I dati testuali sono compatti. Le immagini delle pagine possono usare una compressione JPEG moderata mentre il livello di testo garantisce che nulla vada perso in termini di fedeltà del contenuto.</p>
@@ -196,7 +196,7 @@
         <p>Se il tuo PDF è una scansione di una pagina stampata (comune con vecchi articoli accademici, moduli governativi e documenti archiviati), non ci sono dati testuali da preservare. L'originale è già un'immagine. Il convertitore in modalità scura lo scurirà, ma non c'è un livello di testo da trasferire perché non ne è mai esistito uno. Se hai bisogno di testo selezionabile da un documento scansionato, passalo prima attraverso un software OCR (Riconoscimento Ottico dei Caratteri) e poi convertilo in modalità scura.</p>
 
         <h3>Layout complessi</h3>
-        <p>I documenti con posizionamento del testo insolito — elementi sovrapposti, testo ruotato o font non standard — possono presentare lievi differenze di allineamento tra il testo visibile e il livello di testo selezionabile. Per documenti standard come articoli di ricerca, libri di testo, report e articoli, l'allineamento è praticamente perfetto.</p>
+        <p>I documenti con posizionamento del testo insolito - elementi sovrapposti, testo ruotato o font non standard - possono presentare lievi differenze di allineamento tra il testo visibile e il livello di testo selezionabile. Per documenti standard come articoli di ricerca, libri di testo, report e articoli, l'allineamento è praticamente perfetto.</p>
 
         <h3>Testo da destra a sinistra e verticale</h3>
         <p>Il testo arabo, ebraico e CJK verticale (cinese/giapponese/coreano) presenta sfide di layout aggiuntive. Il livello di testo generalmente preserva i caratteri correttamente, ma il comportamento di selezione può variare a seconda del supporto del tuo lettore PDF per questi sistemi di scrittura.</p>
@@ -207,7 +207,7 @@
             <li>Apri il PDF convertito in qualsiasi lettore PDF (Adobe Acrobat, Chrome, Firefox, Anteprima, ecc.)</li>
             <li>Prova a selezionare del testo cliccando e trascinando su un paragrafo</li>
             <li>Se il testo si evidenzia in blu (o nel colore di selezione del tuo lettore), il livello di testo funziona</li>
-            <li>Premi Ctrl+F e cerca una parola visibile sulla pagina — se la trova, la ricerca testuale funziona</li>
+            <li>Premi Ctrl+F e cerca una parola visibile sulla pagina - se la trova, la ricerca testuale funziona</li>
         </ol>
         <p>Se né la selezione né la ricerca funzionano, lo strumento che ha convertito il tuo PDF lo ha rasterizzato in immagini piatte.</p>
 

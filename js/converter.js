@@ -1,4 +1,4 @@
-// PDF Dark Mode Converter — Core Engine
+// PDF Dark Mode Converter - Core Engine
 // Shared between main converter and invert-pdf-colors pages.
 (function() {
     'use strict';
@@ -37,7 +37,7 @@
     // Naive `'filter' in ctx` is insufficient: Firefox exposes the property
     // but silently fails when using `url(#id)` SVG filter references on canvas
     // (especially when the SVG is hidden with display:none).
-    // We test against the ACTUAL #darkModeFilter in the page — same element,
+    // We test against the ACTUAL #darkModeFilter in the page - same element,
     // same display:none parent, identical conditions to production usage.
     // Both initial matrices (dark-mode & invert) map white→black, so if the
     // pixel stays white the filter wasn't applied and we must use the JS path.
@@ -157,7 +157,7 @@
             document.documentElement.style.setProperty('--btn-bg', `rgb(${btnR}, ${btnG}, ${btnB})`);
         }
 
-        // Tint carousel arrows (CSS vars — harmless if no carousel on page)
+        // Tint carousel arrows (CSS vars - harmless if no carousel on page)
         const root = document.documentElement;
         if (isLight) {
             const cf = Math.max(0.3, 0.6 - (luminance - 150) * 0.003);
@@ -257,6 +257,29 @@
             root.style.setProperty('--toolbar-text-active', `rgba(255, 255, 255, 0.85)`);
             root.style.setProperty('--toolbar-text-disabled', `rgba(255, 255, 255, 0.18)`);
             root.style.setProperty('--toolbar-sep', `rgba(255, 255, 255, 0.12)`);
+        }
+
+        // Tint PDF container, scrollbar, pill, more-pages label
+        if (isLight) {
+            const pcR = Math.max(theme.r - 15, 0), pcG = Math.max(theme.g - 15, 0), pcB = Math.max(theme.b - 15, 0);
+            root.style.setProperty('--pdf-container-bg', `rgb(${pcR}, ${pcG}, ${pcB})`);
+            root.style.setProperty('--scrollbar-thumb', `rgba(0,0,0,0.15)`);
+            root.style.setProperty('--scrollbar-hover', `rgba(0,0,0,0.28)`);
+            root.style.setProperty('--pill-bg', `rgba(255,255,255,0.85)`);
+            root.style.setProperty('--pill-color', `rgba(0,0,0,0.6)`);
+            root.style.setProperty('--pill-border', `rgba(0,0,0,0.1)`);
+            root.style.setProperty('--more-pages-color', `rgba(0,0,0,0.35)`);
+            root.style.setProperty('--pdf-container-border', `rgba(0,0,0,0.08)`);
+        } else {
+            const pcR = Math.min(theme.r + 14, 255), pcG = Math.min(theme.g + 14, 255), pcB = Math.min(theme.b + 14, 255);
+            root.style.setProperty('--pdf-container-bg', `rgb(${pcR}, ${pcG}, ${pcB})`);
+            root.style.setProperty('--scrollbar-thumb', `rgba(255,255,255,0.12)`);
+            root.style.setProperty('--scrollbar-hover', `rgba(255,255,255,0.22)`);
+            root.style.setProperty('--pill-bg', `rgba(${pcR}, ${pcG}, ${pcB}, 0.85)`);
+            root.style.setProperty('--pill-color', `rgba(255,255,255,0.65)`);
+            root.style.setProperty('--pill-border', `rgba(255,255,255,0.1)`);
+            root.style.setProperty('--more-pages-color', `rgba(255,255,255,0.3)`);
+            root.style.setProperty('--pdf-container-border', `rgba(255,255,255,0.08)`);
         }
     }
 
@@ -526,7 +549,9 @@
     function onSettingsChange() {
         saveSettings();
         if (originalPdfData) {
+            currentRenderId++;
             ensurePdfLibraries().then(() => {
+                document.getElementById('dropZone').classList.add('processing');
                 document.getElementById('progressContainer').classList.add('visible');
                 document.getElementById('downloadBtn').style.display = 'none';
                 renderPDF(originalPdfData).catch(err => {
@@ -547,7 +572,9 @@
         document.getElementById('settingsToggle').classList.toggle('open');
     });
 
-    // Preserve Images tips — two-way: one for ON, one for OFF
+    // converter-stage is baked into HTML (wraps tips + dropZone + progressContainer)
+
+    // Preserve Images tips - two-way: one for ON, one for OFF
     const scannedTipEl = document.getElementById('scannedTip');
     const scannedTipLink = document.getElementById('scannedTipLink');
     const imagesTipEl = document.getElementById('imagesTip');
@@ -607,9 +634,6 @@
     // Apply initial theme background
     applyThemeBackground(getCurrentTheme());
 
-    // Reveal page now that theme is applied (prevents flash)
-    document.body.classList.add('ready');
-
     // --- File handling ---
     function getOutputName(baseName) {
         const themeKey = getCurrentThemeKey();
@@ -661,7 +685,11 @@
         const valid = validateFiles(Array.from(files));
         if (valid.length === 0) return;
 
+        // Show progress + hide dropZone synchronously (within 500ms input window → excluded from CLS)
         document.getElementById('dropZone').classList.add('processing');
+        document.getElementById('progressContainer').classList.add('visible');
+        document.getElementById('downloadBtn').style.display = 'none';
+        updatePreserveImagesTips();
 
         if (valid.length === 1) {
             handleSingleFile(valid[0]);
@@ -675,10 +703,8 @@
         const fileData = await readFileAsArrayBuffer(file);
         await ensurePdfLibraries();
         originalPdfData = fileData;
-        document.getElementById('batchInfo').style.display = 'none';
-        document.getElementById('progressContainer').classList.add('visible');
-        document.getElementById('downloadBtn').style.display = 'none';
         updatePreserveImagesTips();
+        document.getElementById('batchInfo').style.display = 'none';
         try {
             await renderPDF(fileData);
         } catch (err) {
@@ -705,10 +731,7 @@
         const pdfContainer = document.getElementById('pdfContainer');
 
         batchInfo.style.display = 'block';
-        progressContainer.classList.add('visible');
-        document.getElementById('downloadBtn').style.display = 'none';
         document.getElementById('cancelBtn').style.display = 'inline-block';
-        updatePreserveImagesTips();
         pdfContainer.innerHTML = '';
         modifiedPdfBytes = null;
         originalPdfData = null;
@@ -756,7 +779,7 @@
         if (batchId !== currentRenderId) return;
 
         const totalTime = ((performance.now() - startTime) / 1000).toFixed(1);
-        progressText.innerText = `Done — ${totalFiles} files in ${totalTime}s`;
+        progressText.innerText = `Done - ${totalFiles} files in ${totalTime}s`;
         document.getElementById('cancelBtn').style.display = 'none';
 
         // Store ZIP blob for manual download
@@ -811,7 +834,9 @@
             applyThemeBackground(themes[selectedTheme]);
             saveSettings();
             if (originalPdfData) {
+                currentRenderId++;
                 await ensurePdfLibraries();
+                document.getElementById('dropZone').classList.add('processing');
                 document.getElementById('progressContainer').classList.add('visible');
                 document.getElementById('downloadBtn').style.display = 'none';
                 try {
@@ -872,12 +897,61 @@
         const previewSlots = [];
         if (!isBatch) {
             const pdfContainer = document.getElementById('pdfContainer');
-            for (let i = 0; i < Math.min(PREVIEW_LIMIT, totalPages); i++) {
+            pdfContainer.classList.add('has-previews');
+            const firstPage = await pdf.getPage(1);
+            const firstVp = firstPage.getViewport({ scale: 1 });
+            const slotRatio = firstVp.width + ' / ' + firstVp.height;
+
+            // Wrap pdfContainer if not already wrapped
+            let wrap = pdfContainer.parentElement;
+            if (!wrap.classList.contains('pdf-container-wrap')) {
+                wrap = document.createElement('div');
+                wrap.className = 'pdf-container-wrap';
+                pdfContainer.parentNode.insertBefore(wrap, pdfContainer);
+                wrap.appendChild(pdfContainer);
+            }
+            wrap.classList.add('visible');
+
+            // Page number pill (positioned over scroll area)
+            let pill = wrap.querySelector('.page-pill');
+            if (!pill) {
+                pill = document.createElement('div');
+                pill.className = 'page-pill';
+                wrap.appendChild(pill);
+            }
+            pill.textContent = 'Page 1';
+
+            const showCount = Math.min(PREVIEW_LIMIT, totalPages);
+            for (let i = 0; i < showCount; i++) {
                 const slot = document.createElement('div');
                 slot.className = 'preview-slot';
+                slot.style.aspectRatio = slotRatio;
+                slot.innerHTML = '<div class="preview-loader"><div class="spinner"></div>Loading preview…</div>';
                 pdfContainer.appendChild(slot);
                 previewSlots.push(slot);
             }
+
+            // "X more pages" indicator
+            if (totalPages > PREVIEW_LIMIT) {
+                const more = document.createElement('div');
+                more.className = 'more-pages';
+                more.textContent = `+${totalPages - PREVIEW_LIMIT} more pages`;
+                pdfContainer.appendChild(more);
+            }
+
+            // Scroll handler: show page pill
+            let pillTimer;
+            pdfContainer.onscroll = () => {
+                const st = pdfContainer.scrollTop;
+                let cur = 1;
+                for (let i = 0; i < previewSlots.length; i++) {
+                    if (previewSlots[i].offsetTop - pdfContainer.offsetTop <= st + 60) cur = i + 1;
+                }
+                pill.textContent = `Page ${cur} of ${totalPages}`;
+                pill.classList.add('visible');
+                clearTimeout(pillTimer);
+                pillTimer = setTimeout(() => pill.classList.remove('visible'), 1200);
+            };
         }
 
         let completedPages = 0;
@@ -916,6 +990,8 @@
                         img.src = URL.createObjectURL(previewBlob);
                         img.alt = `Page ${pageIdx + 1}`;
                         img.draggable = false;
+                        const loader = previewSlots[pageIdx].querySelector('.preview-loader');
+                        if (loader) loader.remove();
                         previewSlots[pageIdx].appendChild(img);
 
                         if (result.textItems && result.textItems.length > 0) {
@@ -1062,8 +1138,25 @@
         this.style.display = 'none';
         document.getElementById('progressText').innerText = 'Cancelled';
         document.getElementById('batchInfo').style.display = 'none';
-        document.getElementById('dropZone').classList.remove('processing');
-        setTimeout(() => { document.getElementById('progressContainer').classList.remove('visible'); }, 1200);
+        // Hide tips immediately
+        if (scannedTipEl) scannedTipEl.classList.remove('visible');
+        if (imagesTipEl) imagesTipEl.classList.remove('visible');
+        // Collapse preview container immediately (max-height transition handles animation)
+        const pdfC = document.getElementById('pdfContainer');
+        pdfC.querySelectorAll('img').forEach(img => { if (img.src.startsWith('blob:')) URL.revokeObjectURL(img.src); });
+        pdfC.classList.remove('has-previews');
+        const wrap = pdfC.closest('.pdf-container-wrap');
+        if (wrap) wrap.classList.remove('visible');
+        const pill = document.querySelector('.page-pill');
+        if (pill) pill.classList.remove('visible');
+        // Clear innerHTML after collapse transition ends
+        setTimeout(() => { pdfC.innerHTML = ''; }, 400);
+        // Swap: fade out progress, fade in dropZone after user sees "Cancelled"
+        setTimeout(() => {
+            document.getElementById('progressContainer').classList.remove('visible');
+            document.getElementById('dropZone').classList.remove('processing');
+            updatePreserveImagesTips();
+        }, 2200);
     });
 
     document.getElementById('downloadBtn').addEventListener('click', triggerDownload);

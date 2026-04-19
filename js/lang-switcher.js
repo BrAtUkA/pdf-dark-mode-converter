@@ -1,5 +1,5 @@
 /**
- * Language Switcher — globe dropdown for all pages.
+ * Language Switcher - globe dropdown for all pages.
  * Detects current language from <html lang>, builds RELATIVE links to
  * equivalent pages in other available languages, and saves preference.
  *
@@ -93,7 +93,7 @@
   if (available.indexOf(currentLang) === -1) available.unshift(currentLang);
   if (available.length < 2) return;
 
-  // --- Language suggestion banner (never redirect — bad for SEO & UX) ---
+  // --- Language suggestion banner (never redirect - bad for SEO & UX) ---
   // Check: (1) stored preference, or (2) browser language
   var suggestLang = null;
   try {
@@ -106,7 +106,7 @@
   if (!suggestLang) {
     // Walk browser language preferences (most preferred first).
     // If the page's language appears before any other supported language,
-    // the user is already on a preferred language — no suggestion needed.
+    // the user is already on a preferred language - no suggestion needed.
     var browserLangs = navigator.languages || [navigator.language || ''];
     for (var bl = 0; bl < browserLangs.length; bl++) {
       var blCode = browserLangs[bl].split('-')[0].toLowerCase();

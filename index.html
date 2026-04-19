@@ -133,6 +133,9 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2522'/%3E%3Cpath d='M21 6H13l-4 4v14a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2z' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cpath d='M13 6v4H9' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cline x1='12' y1='16' x2='20' y2='16' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3Cline x1='12' y1='20' x2='18' y2='20' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3C/svg%3E">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="stylesheet" href="css/converter.css">
+    <script>
+    (function(){var t={classic:[0,0,0],slate:[40,42,46],claude:[42,37,34],chatgpt:[52,53,65],sepia:[40,35,25],midnight:[25,30,45],forest:[25,35,30],solarized:[0,43,54],nord:[46,52,64],dracula:[40,42,54],gruvbox:[40,40,40],monokai:[39,40,34],tokyonight:[26,27,38],rosepine:[35,33,54],cobalt:[0,28,53]};var k;try{var s=JSON.parse(localStorage.getItem('pdfDM_settings'));if(s&&s.theme)k=s.theme}catch(e){}var p=new URLSearchParams(location.search).get('theme');if(p&&t[p])k=p;var c=t[k]||t.claude;document.documentElement.style.backgroundColor='rgb('+c[0]+','+c[1]+','+c[2]+')'})();
+    </script>
 
 <link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/">
     <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/">
@@ -259,7 +262,8 @@
         </div>
         <p class="tool-desc">Convert any PDF to dark mode instantly in your browser. Choose from 16+ themes like Dracula, Nord, and Solarized, adjust resolution and quality, and download the result in seconds. No uploads, no sign-up, fully offline and private.</p>
         <input type="file" id="fileInput" class="file-input" accept="application/pdf" multiple="">
-        <p class="scanned-tip" id="imagesTip">Images look wrong? Try <a href="#" id="imagesTipLink">turning on Preserve Images</a><span class="scanned-tip-tooltip">Preserve Images detects photos and graphics and keeps their original colors after the dark mode transform. Turn it on to protect images from being darkened.</span></p>
+        <div class="converter-stage">
+<p class="scanned-tip" id="imagesTip">Images look wrong? Try <a href="#" id="imagesTipLink">turning on Preserve Images</a><span class="scanned-tip-tooltip">Preserve Images detects photos and graphics and keeps their original colors after the dark mode transform. Turn it on to protect images from being darkened.</span></p>
         <p class="scanned-tip" id="scannedTip">Not working? Try <a href="#" id="scannedTipLink">turning off Preserve Images</a><span class="scanned-tip-tooltip">Scanned PDFs are made of images, not text. When Preserve Images is on, the converter keeps those images as-is, which means the page stays bright. Turning it off lets the converter darken everything.</span></p>
         <div id="dropZone" class="drop-zone">
             <div class="drop-zone-idle">
@@ -275,6 +279,7 @@
             <div id="progressTrack"><div id="progressBar"></div></div>
             <div id="progressText">0/0</div>
             <button id="cancelBtn" type="button">Cancel</button>
+        </div>
         </div>
         <div id="batchInfo">
             <div class="batch-label"></div>

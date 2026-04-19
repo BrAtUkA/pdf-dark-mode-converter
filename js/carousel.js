@@ -1,4 +1,4 @@
-// PDF Dark Mode Converter — Blog Carousel & Icons
+// PDF Dark Mode Converter - Blog Carousel & Icons
 // Only included on pages with a blog carousel.
 (function() {
     'use strict';

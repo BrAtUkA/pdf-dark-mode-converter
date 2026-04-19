@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="de"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF-Farben online invertieren – Kostenlos, Sofort &amp; Privat | PDF Dunkelmodus Konverter</title>
+    <title>PDF-Farben online invertieren - Kostenlos, Sofort &amp; Privat | PDF Dunkelmodus Konverter</title>
     <meta name="description" content="Invertiere die Farben eines PDFs dauerhaft in deinem Browser. Echte RGB-Komplementinversion: weiße Seiten werden schwarz und schwarzer Text wird weiß. Kein Upload, keine Registrierung, 100 % privat. Lade das invertierte PDF in Sekunden herunter.">
     <meta name="author" content="BrAtUkA">
     <meta name="robots" content="index, follow">
@@ -24,14 +24,14 @@
     <meta property="og:locale:alternate" content="ja_JP">
     <meta property="og:locale:alternate" content="ru_RU">
 
-<meta property="og:title" content="PDF-Farben online invertieren – Kostenlos &amp; Sofort">
+<meta property="og:title" content="PDF-Farben online invertieren - Kostenlos &amp; Sofort">
     <meta property="og:description" content="Invertiere die Farben eines PDFs dauerhaft in deinem Browser. Echte RGB-Komplementinversion, kein Upload, kostenlos, privat.">
     <meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/img/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PDF-Farben online invertieren – Kostenlos &amp; Sofort">
+    <meta name="twitter:title" content="PDF-Farben online invertieren - Kostenlos &amp; Sofort">
     <meta name="twitter:description" content="Invertiere die Farben eines PDFs dauerhaft in deinem Browser. Echte RGB-Komplementinversion, kein Upload, kostenlos, privat.">
     <meta name="twitter:image" content="https://bratuka.dev/pdf-dark-mode-converter/img/og-image.png">
 
@@ -127,6 +127,9 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2522'/%3E%3Cpath d='M21 6H13l-4 4v14a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2z' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cpath d='M13 6v4H9' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cline x1='12' y1='16' x2='20' y2='16' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3Cline x1='12' y1='20' x2='18' y2='20' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3C/svg%3E">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../css/converter.css">
+    <script>
+    (function(){var t={classic:[0,0,0],slate:[40,42,46],claude:[42,37,34],chatgpt:[52,53,65],sepia:[40,35,25],midnight:[25,30,45],forest:[25,35,30],solarized:[0,43,54],nord:[46,52,64],dracula:[40,42,54],gruvbox:[40,40,40],monokai:[39,40,34],tokyonight:[26,27,38],rosepine:[35,33,54],cobalt:[0,28,53]};var k;try{var s=JSON.parse(localStorage.getItem('pdfDM_settings'));if(s&&s.theme)k=s.theme}catch(e){}var p=new URLSearchParams(location.search).get('theme');if(p&&t[p])k=p;var c=t[k]||t.claude;document.documentElement.style.backgroundColor='rgb('+c[0]+','+c[1]+','+c[2]+')'})();
+    </script>
 
 <link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/">
     <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/">
@@ -213,10 +216,11 @@
                 </div>
             </div>
         </div>
-        <p class="tool-desc">Invertiere die Farben jedes PDFs dauerhaft in deinem Browser. Echte RGB-Komplementinversion – weiße Seiten werden schwarz, schwarzer Text wird weiß. Passe Auflösung und Qualität an und lade herunter. Kein Upload, keine Registrierung, komplett offline und privat.</p>
+        <p class="tool-desc">Invertiere die Farben jedes PDFs dauerhaft in deinem Browser. Echte RGB-Komplementinversion - weiße Seiten werden schwarz, schwarzer Text wird weiß. Passe Auflösung und Qualität an und lade herunter. Kein Upload, keine Registrierung, komplett offline und privat.</p>
         <input type="file" id="fileInput" class="file-input" accept="application/pdf" multiple="">
-        <p class="scanned-tip" id="imagesTip">Bilder sehen falsch aus? Versuche <a href="#" id="imagesTipLink">Bilder beibehalten zu aktivieren</a><span class="scanned-tip-tooltip">Bilder beibehalten erkennt Fotos und Grafiken und behält deren Originalfarben nach der Invertierung. Aktiviere es, um Bilder vor der Invertierung zu schützen.</span></p>
-        <p class="scanned-tip" id="scannedTip">Funktioniert nicht? Versuche <a href="#" id="scannedTipLink">Bilder beibehalten zu deaktivieren</a><span class="scanned-tip-tooltip">Gescannte PDFs bestehen aus Bildern, nicht aus Text. Wenn Bilder beibehalten aktiviert ist, lässt der Konverter diese Bilder unverändert — die Seite bleibt hell. Deaktiviere es, um alles zu invertieren.</span></p>
+        <div class="converter-stage">
+<p class="scanned-tip" id="imagesTip">Bilder sehen falsch aus? Versuche <a href="#" id="imagesTipLink">Bilder beibehalten zu aktivieren</a><span class="scanned-tip-tooltip">Bilder beibehalten erkennt Fotos und Grafiken und behält deren Originalfarben nach der Invertierung. Aktiviere es, um Bilder vor der Invertierung zu schützen.</span></p>
+        <p class="scanned-tip" id="scannedTip">Funktioniert nicht? Versuche <a href="#" id="scannedTipLink">Bilder beibehalten zu deaktivieren</a><span class="scanned-tip-tooltip">Gescannte PDFs bestehen aus Bildern, nicht aus Text. Wenn Bilder beibehalten aktiviert ist, lässt der Konverter diese Bilder unverändert - die Seite bleibt hell. Deaktiviere es, um alles zu invertieren.</span></p>
         <div id="dropZone" class="drop-zone">
             <div class="drop-zone-idle">
                 <svg class="drop-zone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
@@ -232,6 +236,7 @@
             <div id="progressText">0/0</div>
             <button id="cancelBtn" type="button">Abbrechen</button>
         </div>
+        </div>
         <div id="batchInfo">
             <div class="batch-label"></div>
             <div class="batch-file-current"></div>
@@ -244,7 +249,7 @@
             <div class="steps">
                 <div class="step">
                     <h3>Lade dein PDF hoch</h3>
-                    <p>Klicke auf den Upload-Button oder ziehe ein PDF auf die Seite. Es wird nichts hochgeladen – die Datei wird lokal in deinem Browser gelesen.</p>
+                    <p>Klicke auf den Upload-Button oder ziehe ein PDF auf die Seite. Es wird nichts hochgeladen - die Datei wird lokal in deinem Browser gelesen.</p>
                 </div>
                 <div class="step">
                     <h3>Die Farben werden invertiert</h3>
@@ -258,13 +263,13 @@
 
             <h2>Was ist PDF-Farbinversion?</h2>
             <p>Farbinversion ersetzt jede Farbe in einem PDF durch ihr RGB-Komplement. Weiße Hintergründe werden schwarz, schwarzer Text wird weiß und jede andere Farbe wechselt zu ihrem Gegenstück im Spektrum. Das Ergebnis ist ein echtes fotografisches Negativ des Originaldokuments.</p>
-            <p>Anders als Bedienungshilfen-Filter des Betriebssystems oder Browser-Erweiterungen, die nur die Bildschirmanzeige ändern, erstellt dieses Tool eine <strong>neue PDF-Datei</strong> mit dauerhaft eingebetteten invertierten Farben. Teile sie, drucke sie, öffne sie auf einem anderen Gerät – die Farben bleiben invertiert.</p>
+            <p>Anders als Bedienungshilfen-Filter des Betriebssystems oder Browser-Erweiterungen, die nur die Bildschirmanzeige ändern, erstellt dieses Tool eine <strong>neue PDF-Datei</strong> mit dauerhaft eingebetteten invertierten Farben. Teile sie, drucke sie, öffne sie auf einem anderen Gerät - die Farben bleiben invertiert.</p>
 
             <h2>Warum dieses Tool nutzen</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <h3>Dauerhafte Inversion</h3>
-                    <p>Erstellt ein echtes PDF mit invertierten Farben. Kein Bildschirmfilter – die Datei selbst wird geändert.</p>
+                    <p>Erstellt ein echtes PDF mit invertierten Farben. Kein Bildschirmfilter - die Datei selbst wird geändert.</p>
                 </div>
                 <div class="feature-card">
                     <h3>GPU-beschleunigt</h3>
@@ -289,7 +294,7 @@
             </div>
 
             <h2>Inversion vs. Dunkelmodus</h2>
-            <p>Echte Farbinversion wandelt jede Farbe in ihr mathematisches Komplement um. Weiß wird Reinschwarz, Blau wird Orange, Grün wird Magenta. Das erzeugt einen ‚Negativ'-Effekt, der auch Bilder und farbige Grafiken betrifft.</p>
+            <p>Echte Farbinversion wandelt jede Farbe in ihr mathematisches Komplement um. Weiß wird Reinschwarz, Blau wird Orange, Grün wird Magenta. Das erzeugt einen 'Negativ'-Effekt, der auch Bilder und farbige Grafiken betrifft.</p>
             <p><strong>Dunkelmodus-Konvertierung</strong> ist intelligenter: Sie wandelt weiße Hintergründe in einen bestimmten dunklen Ton um, während Bildfarben erhalten bleiben und Text lesbar bleibt. Wenn du ein ausgefeilteres Leseerlebnis möchtest, bietet der <a href="../index.html">vollständige Konverter</a> über 16 thematische Dunkelmodi wie Dracula, Nord, Solarized und mehr.</p>
 
             <h2>Häufig gestellte Fragen</h2>

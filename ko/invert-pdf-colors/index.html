@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="ko"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF 색상 반전 온라인 – 무료, 즉시, 프라이버시 보장 | PDF 다크 모드 변환기</title>
+    <title>PDF 색상 반전 온라인 - 무료, 즉시, 프라이버시 보장 | PDF 다크 모드 변환기</title>
     <meta name="description" content="브라우저에서 PDF 색상을 영구적으로 반전하세요. 실제 RGB 보색 반전: 흰 페이지는 검정으로, 검정 텍스트는 흰색으로. 업로드 없음, 가입 없음, 100% 프라이버시.">
     <meta name="author" content="BrAtUkA">
     <meta name="robots" content="index, follow">
@@ -24,14 +24,14 @@
     <meta property="og:locale:alternate" content="ja_JP">
     <meta property="og:locale:alternate" content="ru_RU">
 
-<meta property="og:title" content="PDF 색상 반전 온라인 – 무료 즉시 변환">
+<meta property="og:title" content="PDF 색상 반전 온라인 - 무료 즉시 변환">
     <meta property="og:description" content="브라우저에서 PDF 색상을 영구적으로 반전하세요. 실제 RGB 보색 반전, 업로드 없음, 무료, 프라이버시 보장.">
     <meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/img/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PDF 색상 반전 온라인 – 무료 즉시 변환">
+    <meta name="twitter:title" content="PDF 색상 반전 온라인 - 무료 즉시 변환">
     <meta name="twitter:description" content="브라우저에서 PDF 색상을 영구적으로 반전하세요. 실제 RGB 보색 반전, 업로드 없음, 무료, 프라이버시 보장.">
     <meta name="twitter:image" content="https://bratuka.dev/pdf-dark-mode-converter/img/og-image.png">
 
@@ -127,6 +127,9 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2522'/%3E%3Cpath d='M21 6H13l-4 4v14a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2z' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cpath d='M13 6v4H9' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cline x1='12' y1='16' x2='20' y2='16' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3Cline x1='12' y1='20' x2='18' y2='20' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3C/svg%3E">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../css/converter.css">
+    <script>
+    (function(){var t={classic:[0,0,0],slate:[40,42,46],claude:[42,37,34],chatgpt:[52,53,65],sepia:[40,35,25],midnight:[25,30,45],forest:[25,35,30],solarized:[0,43,54],nord:[46,52,64],dracula:[40,42,54],gruvbox:[40,40,40],monokai:[39,40,34],tokyonight:[26,27,38],rosepine:[35,33,54],cobalt:[0,28,53]};var k;try{var s=JSON.parse(localStorage.getItem('pdfDM_settings'));if(s&&s.theme)k=s.theme}catch(e){}var p=new URLSearchParams(location.search).get('theme');if(p&&t[p])k=p;var c=t[k]||t.claude;document.documentElement.style.backgroundColor='rgb('+c[0]+','+c[1]+','+c[2]+')'})();
+    </script>
 
 <link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/">
     <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/">
@@ -213,9 +216,10 @@
                 </div>
             </div>
         </div>
-        <p class="tool-desc">브라우저에서 PDF 색상을 영구적으로 반전하세요. 실제 RGB 보색 반전 — 흰 페이지는 검정으로, 검정 텍스트는 흰색으로. 해상도와 품질을 조절한 후 다운로드하세요. 업로드 없음, 가입 없음, 완전 오프라인 및 프라이버시 보장.</p>
+        <p class="tool-desc">브라우저에서 PDF 색상을 영구적으로 반전하세요. 실제 RGB 보색 반전 - 흰 페이지는 검정으로, 검정 텍스트는 흰색으로. 해상도와 품질을 조절한 후 다운로드하세요. 업로드 없음, 가입 없음, 완전 오프라인 및 프라이버시 보장.</p>
         <input type="file" id="fileInput" class="file-input" accept="application/pdf" multiple="">
-        <p class="scanned-tip" id="imagesTip">이미지가 이상하게 보이나요? <a href="#" id="imagesTipLink">이미지 보존 활성화</a>를 시도해 보세요<span class="scanned-tip-tooltip">이미지 보존은 사진과 그래픽을 감지하여 반전 후에도 원래 색상을 유지합니다. 이미지가 반전되지 않도록 보호하려면 활성화하세요.</span></p>
+        <div class="converter-stage">
+<p class="scanned-tip" id="imagesTip">이미지가 이상하게 보이나요? <a href="#" id="imagesTipLink">이미지 보존 활성화</a>를 시도해 보세요<span class="scanned-tip-tooltip">이미지 보존은 사진과 그래픽을 감지하여 반전 후에도 원래 색상을 유지합니다. 이미지가 반전되지 않도록 보호하려면 활성화하세요.</span></p>
         <p class="scanned-tip" id="scannedTip">작동하지 않나요? <a href="#" id="scannedTipLink">이미지 보존 비활성화</a>를 시도해 보세요<span class="scanned-tip-tooltip">스캔된 PDF는 텍스트가 아닌 이미지로 구성되어 있습니다. 이미지 보존이 켜져 있으면 변환기가 이미지를 그대로 두어 페이지가 밝게 유지됩니다. 모든 것을 반전하려면 비활성화하세요.</span></p>
         <div id="dropZone" class="drop-zone">
             <div class="drop-zone-idle">
@@ -232,6 +236,7 @@
             <div id="progressText">0/0</div>
             <button id="cancelBtn" type="button">취소</button>
         </div>
+        </div>
         <div id="batchInfo">
             <div class="batch-label"></div>
             <div class="batch-file-current"></div>
@@ -244,7 +249,7 @@
             <div class="steps">
                 <div class="step">
                     <h3>PDF 업로드</h3>
-                    <p>업로드 버튼을 클릭하거나 PDF를 페이지에 드래그하세요. 업로드되지 않습니다 — 브라우저에서 로컬로 읽힙니다.</p>
+                    <p>업로드 버튼을 클릭하거나 PDF를 페이지에 드래그하세요. 업로드되지 않습니다 - 브라우저에서 로컬로 읽힙니다.</p>
                 </div>
                 <div class="step">
                     <h3>색상이 반전됩니다</h3>

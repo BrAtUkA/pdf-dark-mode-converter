@@ -1,4 +1,4 @@
-/* Language switcher + suggestion banner — loaded by lang-switcher.js */
+/* Language switcher + suggestion banner - loaded by lang-switcher.js */
 
 /* Shared base */
 .lang-switcher { position: relative; }
@@ -75,7 +75,7 @@
 .lang-item.active .lang-code { opacity: 0.8; }
 .lang-name { flex: 1; }
 
-/* Context: tools-bar — absolutely positioned, right side */
+/* Context: tools-bar - absolutely positioned, right side */
 .tools-bar .lang-switcher {
     position: absolute;
     right: 60px;
@@ -84,7 +84,7 @@
     margin: 0;
 }
 
-/* Context: blog-nav — sits after ← Blog link, both pushed right by site-name margin */
+/* Context: blog-nav - sits after ← Blog link, both pushed right by site-name margin */
 .blog-nav .lang-switcher { margin-left: 0; }
 
 /* ── Mobile: prevent lang-switcher from overlapping nav items ── */

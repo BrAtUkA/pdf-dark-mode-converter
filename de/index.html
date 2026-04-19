@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="de"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF in Dunkelmodus umwandeln – Kostenloses Online-Tool | Über 16 Themes</title>
+    <title>PDF in Dunkelmodus umwandeln - Kostenloses Online-Tool | Über 16 Themes</title>
     <meta name="description" content="Wandle jedes PDF sofort im Browser in den Dunkelmodus um. Bis zu 10x schneller, über 16 Themes (Dracula, Nord, Solarized), komplett offline. Kein Upload, keine Registrierung, 100 % privat.">
     <meta name="author" content="BrAtUkA">
     <meta name="robots" content="index, follow">
@@ -24,14 +24,14 @@
     <meta property="og:locale:alternate" content="ja_JP">
     <meta property="og:locale:alternate" content="ru_RU">
 
-<meta property="og:title" content="PDF in Dunkelmodus umwandeln – Kostenlos &amp; Sofort">
+<meta property="og:title" content="PDF in Dunkelmodus umwandeln - Kostenlos &amp; Sofort">
     <meta property="og:description" content="Wandle jedes PDF im Browser in den Dunkelmodus um. 10x schneller, über 16 Themes, kostenlos, offline, privat.">
     <meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/img/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PDF in Dunkelmodus umwandeln – Kostenlos &amp; Sofort">
+    <meta name="twitter:title" content="PDF in Dunkelmodus umwandeln - Kostenlos &amp; Sofort">
     <meta name="twitter:description" content="Wandle jedes PDF im Browser in den Dunkelmodus um. 10x schneller, über 16 Themes, kostenlos, offline, privat.">
     <meta name="twitter:image" content="https://bratuka.dev/pdf-dark-mode-converter/img/og-image.png">
 
@@ -135,6 +135,9 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2522'/%3E%3Cpath d='M21 6H13l-4 4v14a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2z' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cpath d='M13 6v4H9' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.7'/%3E%3Cline x1='12' y1='16' x2='20' y2='16' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3Cline x1='12' y1='20' x2='18' y2='20' stroke='%23fff' stroke-width='1.2' opacity='.4'/%3E%3C/svg%3E">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="../css/converter.css">
+    <script>
+    (function(){var t={classic:[0,0,0],slate:[40,42,46],claude:[42,37,34],chatgpt:[52,53,65],sepia:[40,35,25],midnight:[25,30,45],forest:[25,35,30],solarized:[0,43,54],nord:[46,52,64],dracula:[40,42,54],gruvbox:[40,40,40],monokai:[39,40,34],tokyonight:[26,27,38],rosepine:[35,33,54],cobalt:[0,28,53]};var k;try{var s=JSON.parse(localStorage.getItem('pdfDM_settings'));if(s&&s.theme)k=s.theme}catch(e){}var p=new URLSearchParams(location.search).get('theme');if(p&&t[p])k=p;var c=t[k]||t.claude;document.documentElement.style.backgroundColor='rgb('+c[0]+','+c[1]+','+c[2]+')'})();
+    </script>
 
 <link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/">
     <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/">
@@ -261,7 +264,8 @@
         </div>
         <p class="tool-desc">Wandle jedes PDF sofort im Browser in den Dunkelmodus um. Wähle aus über 16 Themes wie Dracula, Nord und Solarized, passe Auflösung und Qualität an und lade das Ergebnis in Sekunden herunter. Kein Upload, keine Registrierung, komplett offline und privat.</p>
         <input type="file" id="fileInput" class="file-input" accept="application/pdf" multiple="">
-        <p class="scanned-tip" id="imagesTip">Bilder sehen seltsam aus? Versuche <a href="#" id="imagesTipLink">Bilder beibehalten zu aktivieren</a><span class="scanned-tip-tooltip">Bilder beibehalten erkennt Fotos und Grafiken und bewahrt ihre Originalfarben nach der Dunkelmodus-Transformation. Aktiviere es, um Bilder vor dem Abdunkeln zu schützen.</span></p>
+        <div class="converter-stage">
+<p class="scanned-tip" id="imagesTip">Bilder sehen seltsam aus? Versuche <a href="#" id="imagesTipLink">Bilder beibehalten zu aktivieren</a><span class="scanned-tip-tooltip">Bilder beibehalten erkennt Fotos und Grafiken und bewahrt ihre Originalfarben nach der Dunkelmodus-Transformation. Aktiviere es, um Bilder vor dem Abdunkeln zu schützen.</span></p>
         <p class="scanned-tip" id="scannedTip">Funktioniert nicht? Versuche <a href="#" id="scannedTipLink">Bilder beibehalten zu deaktivieren</a><span class="scanned-tip-tooltip">Gescannte PDFs bestehen aus Bildern, nicht aus Text. Wenn Bilder beibehalten aktiviert ist, belässt der Konverter diese Bilder unverändert, wodurch die Seite hell bleibt. Das Deaktivieren ermöglicht dem Konverter, alles abzudunkeln.</span></p>
         <div id="dropZone" class="drop-zone">
             <div class="drop-zone-idle">
@@ -277,6 +281,7 @@
             <div id="progressTrack"><div id="progressBar"></div></div>
             <div id="progressText">0/0</div>
             <button id="cancelBtn" type="button">Abbrechen</button>
+        </div>
         </div>
         <div id="batchInfo">
             <div class="batch-label"></div>
@@ -327,7 +332,7 @@
             <div class="steps">
                 <div class="step">
                     <h3>Wähle deine Datei</h3>
-                    <p>Klicke auf den Upload-Button oder ziehe ein PDF auf die Seite. Es wird nichts hochgeladen – die Datei wird lokal in deinem Browser gelesen.</p>
+                    <p>Klicke auf den Upload-Button oder ziehe ein PDF auf die Seite. Es wird nichts hochgeladen - die Datei wird lokal in deinem Browser gelesen.</p>
                 </div>
                 <div class="step">
                     <h3>Wähle ein Theme</h3>
@@ -335,7 +340,7 @@
                 </div>
                 <div class="step">
                     <h3>Herunterladen</h3>
-                    <p>Die Konvertierung startet automatisch und das Dunkelmodus-PDF wird heruntergeladen, wenn es fertig ist. Öffne es in jedem PDF-Reader – die Farben sind dauerhaft.</p>
+                    <p>Die Konvertierung startet automatisch und das Dunkelmodus-PDF wird heruntergeladen, wenn es fertig ist. Öffne es in jedem PDF-Reader - die Farben sind dauerhaft.</p>
                 </div>
             </div>
 
@@ -442,7 +447,7 @@
                     </a>
                     <a href="blog/read-pdf-at-night/index.html" class="blog-post-card">
                         <div class="bp-title">PDF-Farben invertieren</div>
-                        <div class="bp-desc">Von Bedienungshilfen-Shortcuts bis zur dauerhaften Konvertierung – Methoden, die wirklich funktionieren.</div>
+                        <div class="bp-desc">Von Bedienungshilfen-Shortcuts bis zur dauerhaften Konvertierung - Methoden, die wirklich funktionieren.</div>
                         <div class="bp-date">March 6, 2026</div>
                     </a>
                     <a href="blog/invert-pdf-colors/index.html" class="blog-post-card">

@@ -13,7 +13,7 @@
 - 16 built-in dark themes: Classic, Slate, Claude Warm, ChatGPT Cool, Sepia, Midnight Blue, Forest Green, Solarized, Nord, Dracula, Gruvbox, Monokai, Tokyo Night, Rosé Pine, Cobalt, plus Invert (Negative)
 - Custom theme with hex color picker and preset swatches
 - Dark and light mode output (light-to-dark and dark-to-light)
-- Adjustable resolution (0.5x–4x) and JPEG quality (50–100%)
+- Adjustable resolution (0.5x-4x) and JPEG quality (50-100%)
 - Selectable text layer preserved in converted PDFs
 - Image preservation toggle (keeps photos intact)
 - Batch conversion (multiple PDFs at once)
