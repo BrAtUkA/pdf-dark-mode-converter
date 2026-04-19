@@ -871,6 +871,8 @@ body.light-mode .toggle-group label { color: #555; }
     .tool-desc {
         padding: 0 20px;
     }
+    /* Mobile: move lang-switcher into flex flow so it doesn't overlap */
+    .tools-bar .lang-switcher { position: static; transform: none; margin-left: auto; }
 }
 @media (max-width: 480px) {
     .github-ribbon img {
@@ -1352,6 +1354,13 @@ body.light-mode .blog-post-card .bp-date { color: rgba(0,0,0,0.22); }
 body.light-mode .blog-view-all { color: rgba(0,0,0,0.4); }
 body.light-mode .blog-view-all:hover { color: rgba(0,0,0,0.7); }
 
+/* Language switcher — critical sizing (prevents CLS before async lang.css loads) */
+.lang-switcher { position: relative; }
+.lang-toggle { display: flex; align-items: center; gap: 4px; padding: 3px 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 5px; color: rgba(255,255,255,0.38); font-size: 11px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+.lang-globe { width: 13px; height: 13px; flex-shrink: 0; }
+.lang-chevron { width: 7px; height: 4px; flex-shrink: 0; opacity: 0.4; }
+.lang-dropdown { position: absolute; opacity: 0; max-height: 0; pointer-events: none; overflow: hidden; }
+
 /* Tools bar (persistent across all tool pages) */
 .tools-bar {
     display: flex;
@@ -1377,6 +1386,8 @@ body.light-mode .blog-view-all:hover { color: rgba(0,0,0,0.7); }
     transition: color 0.2s;
     padding: 4px 14px;
 }
+/* Position lang-switcher absolutely so it doesn't shift toolbar content */
+.tools-bar .lang-switcher { position: absolute; right: 60px; top: 50%; transform: translateY(-50%); margin: 0; }
 .tools-bar a:hover {
     color: var(--toolbar-text-hover, rgba(255,255,255,0.7));
 }

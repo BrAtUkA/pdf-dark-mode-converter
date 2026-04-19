@@ -29,7 +29,7 @@
     footer.className = s.getAttribute('data-class') || 'site-footer';
     footer.innerHTML =
       '<a href="https://github.com/BrAtUkA" class="footer-logo" aria-label="BrAtUkA on GitHub">' +
-        '<img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo">' +
+        '<img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA logo" width="26" height="32">' +
       '</a>' +
       '<nav class="footer-links" aria-label="Footer">' +
         '<a href="' + home + '">' + t.home + '</a>' +
