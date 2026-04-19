@@ -1153,6 +1153,7 @@
         setTimeout(() => { pdfC.innerHTML = ''; }, 400);
         // Swap: fade out progress, fade in dropZone after user sees "Cancelled"
         setTimeout(() => {
+            originalPdfData = null;
             document.getElementById('progressContainer').classList.remove('visible');
             document.getElementById('dropZone').classList.remove('processing');
             updatePreserveImagesTips();
