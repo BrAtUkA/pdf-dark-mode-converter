@@ -69,8 +69,10 @@
       break;
     }
   }
-  // Normalize trailing slash to index.html
-  if (!pagePath || pagePath.charAt(pagePath.length - 1) === '/') pagePath += 'index.html';
+  // Ensure clean SEO URLs by removing index.html if present
+  if (pagePath.indexOf('index.html') !== -1) {
+    pagePath = pagePath.replace('index.html', '');
+  }
 
   // Build a relative URL for a target language
   function buildRelativeUrl(lang) {

@@ -19,8 +19,8 @@
   };
   var t = labels[htmlLang] || labels.en;
 
-  var home = depth + langPrefix + 'index.html';
-  var blog = depth + langPrefix + 'blog/index.html';
+  var home = depth + langPrefix;
+  var blog = depth + langPrefix + 'blog/';
 
   // Skip DOM footer creation if a baked (pre-rendered) footer already exists
   var prev = s.previousElementSibling;
@@ -34,11 +34,11 @@
       '<nav class="footer-links" aria-label="Footer">' +
         '<a href="' + home + '">' + t.home + '</a>' +
         '<a href="' + blog + '">' + t.blog + '</a>' +
-        '<a href="' + depth + langPrefix + 'about/index.html">' + t.about + '</a>' +
-        '<a href="' + depth + langPrefix + 'privacy/index.html">' + t.privacy + '</a>' +
-        '<a href="' + depth + langPrefix + 'terms/index.html">' + t.terms + '</a>' +
-        '<a href="' + depth + langPrefix + 'contact/index.html">' + t.contact + '</a>' +
-        '<a href="' + depth + langPrefix + 'changelog/index.html">' + t.changelog + '</a>' +
+        '<a href="' + depth + langPrefix + 'about/">' + t.about + '</a>' +
+        '<a href="' + depth + langPrefix + 'privacy/">' + t.privacy + '</a>' +
+        '<a href="' + depth + langPrefix + 'terms/">' + t.terms + '</a>' +
+        '<a href="' + depth + langPrefix + 'contact/">' + t.contact + '</a>' +
+        '<a href="' + depth + langPrefix + 'changelog/">' + t.changelog + '</a>' +
         '<a href="https://github.com/BrAtUkA/pdf-dark-mode-converter">GitHub</a>' +
       '</nav>' +
       '<p class="footer-copy">\u00a9 ' + new Date().getFullYear() + ' BrAtUkA \u00b7 ' + t.copy + '</p>' +
