@@ -4,8 +4,6 @@
 
 # PDF Dark Mode Converter
 
-> Originally created by [Chizkiyahu](https://github.com/Chizkiyahu/pdf-dark-mode-converter) · Made up to 10x faster and massively improved by [BrAtUkA](https://github.com/BrAtUkA)
-
 **[Use it now →](https://bratuka.dev/pdf-dark-mode-converter/)**
 
 Convert any PDF to dark mode instantly in your browser. No uploads, no server, no sign-up - fully offline and private.
@@ -54,9 +52,9 @@ Available in 10 languages: English, Spanish, French, German, Italian, Portuguese
 ## License
 
 This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE) - free for personal use, commercial use is not permitted.
+> Project Originally created by [Chizkiyahu](https://github.com/Chizkiyahu/pdf-dark-mode-converter) · Made up to 10x faster and massively improved by [BrAtUkA](https://github.com/BrAtUkA)
 
 <br/>
-
 <p align="center">
   <a href="https://github.com/BrAtUkA">
     <img src="https://raw.githubusercontent.com/BrAtUkA/BrAtUkA/main/imgs/logo-flat-white.png" alt="BrAtUkA" height="30"/>
