@@ -83,3 +83,21 @@ a:hover{text-decoration:underline}
 @media(max-width:600px){
     .blog-article figure.wide{margin-left:-20px;margin-right:-20px}
 }
+
+/* Byline (author + dates) */
+.blog-article .byline{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:36px}
+.blog-article .byline a{color:rgba(255,255,255,0.55)}
+.blog-article .byline .sep{margin:0 8px;opacity:0.4}
+
+/* Quick-answer callout */
+.blog-article .tldr{background:rgba(127,179,255,0.07);border:1px solid rgba(127,179,255,0.18);border-left:3px solid #7fb3ff;border-radius:8px;padding:16px 20px;margin:0 0 28px}
+.blog-article .tldr p{margin-bottom:0;color:rgba(255,255,255,0.7)}
+.blog-article .tldr strong{color:#fff}
+
+/* Comparison tables */
+.blog-article .table-wrap{overflow-x:auto;margin:24px 0 28px}
+.blog-article table{width:100%;border-collapse:collapse;font-size:14px}
+.blog-article th,.blog-article td{text-align:left;padding:10px 14px;border:1px solid rgba(255,255,255,0.1);vertical-align:top}
+.blog-article thead th{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.85);font-weight:600}
+.blog-article tbody td{color:rgba(255,255,255,0.6)}
+.blog-article tbody th{background:rgba(255,255,255,0.02);color:rgba(255,255,255,0.8);font-weight:600;white-space:nowrap}

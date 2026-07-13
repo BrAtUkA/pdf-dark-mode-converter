@@ -137,11 +137,12 @@
           pt: 'Esta página está disponível em Português',
           zh: '此页面有中文版本',
           ko: '이 페이지는 한국어로 제공됩니다',
-          ja: 'このページは日本語でご利用いただけます'
+          ja: 'このページは日本語でご利用いただけます',
+          ru: 'Эта страница доступна на русском языке'
         };
         var switchLabels = {
           en: 'Switch', es: 'Cambiar', fr: 'Changer', de: 'Wechseln',
-          it: 'Cambia', pt: 'Mudar', zh: '切换', ko: '전환', ja: '切替'
+          it: 'Cambia', pt: 'Mudar', zh: '切换', ko: '전환', ja: '切替', ru: 'Переключить'
         };
         banner.innerHTML =
           '<span class="lang-banner-text">' + (msgs[suggestLang] || msgs.en) + '</span>' +

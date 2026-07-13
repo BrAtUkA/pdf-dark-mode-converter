@@ -20,7 +20,8 @@
   var t = labels[htmlLang] || labels.en;
 
   var home = depth + langPrefix;
-  var blog = depth + langPrefix + 'blog/';
+  // Blog is English-only (not localized) — always link to the root /blog/
+  var blog = depth + 'blog/';
 
   // Skip DOM footer creation if a baked (pre-rendered) footer already exists
   var prev = s.previousElementSibling;

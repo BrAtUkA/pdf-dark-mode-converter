@@ -15,17 +15,7 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
     <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="de_DE">
-    <meta property="og:locale:alternate" content="it_IT">
-    <meta property="og:locale:alternate" content="pt_BR">
-    <meta property="og:locale:alternate" content="zh_CN">
-    <meta property="og:locale:alternate" content="ko_KR">
-    <meta property="og:locale:alternate" content="ja_JP">
-    <meta property="og:locale:alternate" content="ru_RU">
-
-<meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
+    <meta property="og:image" content="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
@@ -38,9 +28,9 @@
       "@type": "Article",
       "headline": "Selectable Text in Dark Mode PDFs: Why Most Tools Break It",
       "datePublished": "2026-04-15",
-      "dateModified": "2026-04-15",
+      "dateModified": "2026-06-14",
       "image": "https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/img/text-selection-demo.png",
-      "author": { "@type": "Person", "name": "BrAtUkA" },
+      "author": { "@type": "Person", "name": "BrAtUkA", "url": "https://bratuka.dev/pdf-dark-mode-converter/about/" },
       "publisher": { "@type": "Organization", "name": "PDF Dark Mode Converter", "logo": { "@type": "ImageObject", "url": "https://bratuka.dev/pdf-dark-mode-converter/favicon.ico" } }
     }
     </script>
@@ -69,17 +59,6 @@
     }
     </script>
 
-<link rel="alternate" hreflang="en" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="x-default" href="https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="es" href="https://bratuka.dev/pdf-dark-mode-converter/es/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="fr" href="https://bratuka.dev/pdf-dark-mode-converter/fr/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="de" href="https://bratuka.dev/pdf-dark-mode-converter/de/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="it" href="https://bratuka.dev/pdf-dark-mode-converter/it/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="pt" href="https://bratuka.dev/pdf-dark-mode-converter/pt/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="zh" href="https://bratuka.dev/pdf-dark-mode-converter/zh/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="ko" href="https://bratuka.dev/pdf-dark-mode-converter/ko/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="ja" href="https://bratuka.dev/pdf-dark-mode-converter/ja/blog/selectable-text-dark-mode-pdf/">
-    <link rel="alternate" hreflang="ru" href="https://bratuka.dev/pdf-dark-mode-converter/ru/blog/selectable-text-dark-mode-pdf/">
     <link rel="preload" as="image" type="image/webp" href="img/text-selection-demo.webp">
 </head>
 
@@ -90,7 +69,11 @@
     </nav>
     <article class="blog-article">
         <h1>Selectable Text in Dark Mode PDFs: Why Most Tools Break It</h1>
-        <p class="meta">April 15, 2026</p>
+        <p class="byline">By <a href="../../about/">BrAtUkA</a><span class="sep">·</span>Maker of the PDF Dark Mode Converter<span class="sep">·</span>Updated June 14, 2026</p>
+
+        <div class="tldr">
+            <p><strong>Quick answer:</strong> most dark-mode tools flatten each page into an image, which destroys the PDF's text - no copy, no search, no screen-reader support. The fix is a <strong>hidden text layer</strong>: the converter keeps the original text invisibly aligned under each darkened page. The <a href="../../">PDF Dark Mode Converter</a> does this automatically, so your converted PDF stays fully selectable and searchable.</p>
+        </div>
 
         <p>You convert a PDF to dark mode, open the result, and try to copy a paragraph. Nothing happens. You try to
             search for a word. No results. The text is right there on the page, but your PDF reader treats it like a
@@ -240,8 +223,7 @@
             </tbody>
         </table>
 
-        <p>For a deeper comparison of dark mode versus color inversion, see <a href="../pdf-dark-mode-vs-invert-colors/">PDF Dark Mode vs. Inverting Colors: What Is the
-                Difference?</a>.</p>
+        <p>For a deeper comparison of dark mode versus color inversion, see the <a href="../convert-pdf-to-dark-mode-online/">dark mode vs. inverting colors section</a> in the main converter guide.</p>
 
         <div class="cta-box">
             <p><strong>Keep your text, lose the glare.</strong> The <a href="../../">PDF Dark Mode
