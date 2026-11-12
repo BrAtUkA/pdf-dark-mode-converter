@@ -36,7 +36,7 @@
       <h1>&#x1F5FA; Sitemap</h1>
       <p class="meta">
         <xsl:value-of select="count(sitemap:urlset/sitemap:url)"/> URLs ·
-        <a href="https://bratuka.dev/pdf-dark-mode-converter/">PDF Dark Mode Converter</a>
+        <a href="https://bratuka.github.io/pdf-dark-mode-converter/">PDF Dark Mode Converter</a>
       </p>
       <table>
         <thead>

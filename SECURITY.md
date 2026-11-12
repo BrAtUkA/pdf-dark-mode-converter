@@ -105,4 +105,4 @@ We appreciate responsible disclosure. Reporters who follow this policy will be c
 
 - **Security email:** bratuka@bratuka.dev
 - **GitHub:** [BrAtUkA/pdf-dark-mode-converter](https://github.com/BrAtUkA/pdf-dark-mode-converter)
-- **Contact page:** https://bratuka.dev/pdf-dark-mode-converter/contact/
+- **Contact page:** https://bratuka.github.io/pdf-dark-mode-converter/contact/
