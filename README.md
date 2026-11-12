@@ -20,10 +20,6 @@ Convert any PDF to dark mode instantly in your browser. No uploads, no server, n
 - **Invert PDF Colors** - separate tool at [`/invert-pdf-colors/`](https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/) for true RGB complement inversion
 - **100% private** - everything runs client-side, nothing is uploaded
 
-## Languages
-
-Available in 10 languages: English, Spanish, French, German, Italian, Portuguese, Chinese, Korean, Japanese, and Russian.
-
 ## How to Use
 
 1. Open the [PDF Dark Mode Converter](https://bratuka.dev/pdf-dark-mode-converter/).

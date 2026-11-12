@@ -31,9 +31,6 @@
 - Terms of Service: /terms/
 - Contact: /contact/
 
-## Languages
-Available in 10 languages: English, Spanish, French, German, Italian, Portuguese, Chinese, Korean, Japanese, Russian
-
 ## Technical details
 - Uses pdf.js for rendering and pdf-lib for PDF assembly
 - GPU-accelerated via SVG feColorMatrix filter
