@@ -4,7 +4,7 @@
 
 # PDF Dark Mode Converter
 
-**[Use it now →](https://bratuka.dev/pdf-dark-mode-converter/)**
+**[Use it now →](https://bratuka.github.io/pdf-dark-mode-converter/)**
 
 Convert any PDF to dark mode instantly in your browser. No uploads, no server, no sign-up - fully offline and private.
 
@@ -17,12 +17,12 @@ Convert any PDF to dark mode instantly in your browser. No uploads, no server, n
 - **Batch conversion** - drop multiple PDFs at once
 - **Dark and light output** - convert light-to-dark or dark-to-light
 - **Adjustable resolution** (0.5x-4x) and **JPEG quality** (50-100%)
-- **Invert PDF Colors** - separate tool at [`/invert-pdf-colors/`](https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/) for true RGB complement inversion
+- **Invert PDF Colors** - separate tool at [`/invert-pdf-colors/`](https://bratuka.github.io/pdf-dark-mode-converter/invert-pdf-colors/) for true RGB complement inversion
 - **100% private** - everything runs client-side, nothing is uploaded
 
 ## How to Use
 
-1. Open the [PDF Dark Mode Converter](https://bratuka.dev/pdf-dark-mode-converter/).
+1. Open the [PDF Dark Mode Converter](https://bratuka.github.io/pdf-dark-mode-converter/).
 2. Click **Choose PDF Files** or drag and drop one or more PDFs onto the page.
 3. Pick a theme from the dropdown, or use the custom color picker.
 4. Optionally adjust resolution, quality, and toggle selectable text or image preservation in **Settings**.
@@ -32,11 +32,11 @@ Convert any PDF to dark mode instantly in your browser. No uploads, no server, n
 
 14 guides covering dark mode on every platform:
 
-- [Chrome](https://bratuka.dev/pdf-dark-mode-converter/blog/chrome-pdf-dark-mode/) · [Firefox](https://bratuka.dev/pdf-dark-mode-converter/blog/firefox-pdf-dark-mode/) · [Edge](https://bratuka.dev/pdf-dark-mode-converter/blog/pdf-dark-mode-microsoft-edge/) · [Windows](https://bratuka.dev/pdf-dark-mode-converter/blog/pdf-dark-mode-windows/)
-- [iPhone](https://bratuka.dev/pdf-dark-mode-converter/blog/pdf-dark-mode-iphone/) · [iPad](https://bratuka.dev/pdf-dark-mode-converter/blog/pdf-dark-mode-ipad/) · [Android](https://bratuka.dev/pdf-dark-mode-converter/blog/pdf-dark-mode-android/)
-- [Adobe Acrobat](https://bratuka.dev/pdf-dark-mode-converter/blog/adobe-acrobat-pdf-dark-mode/) · [Google Drive](https://bratuka.dev/pdf-dark-mode-converter/blog/pdf-dark-mode-google-drive/)
-- [Dark Mode vs Invert](https://bratuka.dev/pdf-dark-mode-converter/blog/pdf-dark-mode-vs-invert-colors/) · [Invert PDF Colors](https://bratuka.dev/pdf-dark-mode-converter/blog/invert-pdf-colors/) · [Invert for Printing](https://bratuka.dev/pdf-dark-mode-converter/blog/invert-pdf-for-printing/)
-- [Read PDFs at Night](https://bratuka.dev/pdf-dark-mode-converter/blog/read-pdf-at-night/) · [Convert Online](https://bratuka.dev/pdf-dark-mode-converter/blog/convert-pdf-to-dark-mode-online/)
+- [Chrome](https://bratuka.github.io/pdf-dark-mode-converter/blog/chrome-pdf-dark-mode/) · [Firefox](https://bratuka.github.io/pdf-dark-mode-converter/blog/firefox-pdf-dark-mode/) · [Edge](https://bratuka.github.io/pdf-dark-mode-converter/blog/pdf-dark-mode-microsoft-edge/) · [Windows](https://bratuka.github.io/pdf-dark-mode-converter/blog/pdf-dark-mode-windows/)
+- [iPhone](https://bratuka.github.io/pdf-dark-mode-converter/blog/pdf-dark-mode-iphone/) · [iPad](https://bratuka.github.io/pdf-dark-mode-converter/blog/pdf-dark-mode-ipad/) · [Android](https://bratuka.github.io/pdf-dark-mode-converter/blog/pdf-dark-mode-android/)
+- [Adobe Acrobat](https://bratuka.github.io/pdf-dark-mode-converter/blog/adobe-acrobat-pdf-dark-mode/) · [Google Drive](https://bratuka.github.io/pdf-dark-mode-converter/blog/pdf-dark-mode-google-drive/)
+- [Dark Mode vs Invert](https://bratuka.github.io/pdf-dark-mode-converter/blog/pdf-dark-mode-vs-invert-colors/) · [Invert PDF Colors](https://bratuka.github.io/pdf-dark-mode-converter/blog/invert-pdf-colors/) · [Invert for Printing](https://bratuka.github.io/pdf-dark-mode-converter/blog/invert-pdf-for-printing/)
+- [Read PDFs at Night](https://bratuka.github.io/pdf-dark-mode-converter/blog/read-pdf-at-night/) · [Convert Online](https://bratuka.github.io/pdf-dark-mode-converter/blog/convert-pdf-to-dark-mode-online/)
 
 ## Technical Details
 

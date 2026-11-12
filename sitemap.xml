@@ -2,79 +2,79 @@
 <?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/invert-pdf-colors/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/invert-pdf-colors/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/blog/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/blog/</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/blog/convert-pdf-to-dark-mode-online/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/blog/convert-pdf-to-dark-mode-online/</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/blog/pdf-dark-mode-in-your-browser/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/blog/pdf-dark-mode-in-your-browser/</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/blog/pdf-dark-mode-on-any-device/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/blog/pdf-dark-mode-on-any-device/</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/blog/invert-pdf-colors/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/blog/invert-pdf-colors/</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/blog/selectable-text-dark-mode-pdf/</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/about/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/about/</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/changelog/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/changelog/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/contact/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/contact/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/privacy/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/privacy/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://bratuka.dev/pdf-dark-mode-converter/terms/</loc>
+    <loc>https://bratuka.github.io/pdf-dark-mode-converter/terms/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

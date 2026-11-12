@@ -39,7 +39,7 @@
 - Static site hosted on GitHub Pages, no server-side code
 
 ## URL
-https://bratuka.dev/pdf-dark-mode-converter/
+https://bratuka.github.io/pdf-dark-mode-converter/
 
 ## Source
 https://github.com/BrAtUkA/pdf-dark-mode-converter
